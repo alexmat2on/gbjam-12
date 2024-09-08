@@ -1,4 +1,4 @@
-# gbjam
+# ✨ gbjam 🎮
 
 Repo is organized into `art/` for aseprite project files and `godot/` for the Godot project itself. Import the `godot/` directory in Godot 4 to begin working on the game.
 
