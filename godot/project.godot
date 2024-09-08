@@ -13,6 +13,7 @@ config_version=5
 config/name="gbjam-12"
 run/main_scene="res://root.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/image="res://assets/splash.png"
 
 [filesystem]
 
