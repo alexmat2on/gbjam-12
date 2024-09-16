@@ -1,0 +1,11 @@
+class_name Ingredient
+enum {
+	BONES,
+	ZOMBIE_FLESH,
+	ECTO_SEASONING,
+	WHEAT,
+	PUMPKIN_SLICE,
+	SLIME_JELLY,
+	VENUS_HERB,
+	SHROOMS
+}
