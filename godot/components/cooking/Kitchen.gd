@@ -16,16 +16,19 @@ func _ready():
 
 	for child in [stockpot, grill, fryer]:
 		self.add_child(child)
-		child.dish_pickup.connect(carry_dish_in_hands)
+		child.dish_pickup.connect(carry_dish)
 
 # TODO: Move below methods to be a part of the player's implementation.
-
-func hands_full() -> bool:
-	return _hands != null
 
 func dish_in_hands() -> int:
 	return _hands
 
-func carry_dish_in_hands(recipe: int) -> void:
+func carry_dish(recipe: int) -> void:
 	if not hands_full():
-		_hands.append(recipe)
+		_hands = recipe
+
+func hands_full() -> bool:
+	return _hands != null
+
+func drop_hands() -> void:
+	_hands = null
