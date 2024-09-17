@@ -173,21 +173,19 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uca6y"]
 radius = 7.0
-height = 34.0
+height = 32.0
 
-[node name="Player" type="Node2D"]
-position = Vector2(1, 0)
-
-[node name="player" type="CharacterBody2D" parent="."]
+[node name="player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_0ke4j")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 99
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_u0yn2")
 animation = &"walk_up"
+offset = Vector2(0, -16)
 
-[node name="Hitbox" type="CollisionShape2D" parent="player"]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_uca6y")
-
-[node name="Camera2D" type="Camera2D" parent="player"]
