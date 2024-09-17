@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqhymk434xpmh"]
+
+[ext_resource type="Texture2D" uid="uid://b1f321jv54b0y" path="res://components/ghost/ghost.png" id="1_bjw6m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma0nn"]
+atlas = ExtResource("1_bjw6m")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_378mb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma0nn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t5lpa"]
+radius = 8.0
+
+[node name="Ghost" type="Node2D"]
+
+[node name="ghost" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ghost"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_378mb")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ghost"]
+shape = SubResource("CapsuleShape2D_t5lpa")
