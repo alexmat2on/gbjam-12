@@ -1,4 +1,4 @@
-class_name Ingredient
+class_name Item
 enum {
 	BONES,
 	ZOMBIE_FLESH,
