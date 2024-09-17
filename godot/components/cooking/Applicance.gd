@@ -16,14 +16,14 @@ func _init(type: int, capacity: int = 1) -> void:
 # Attempts to cook the recipe on the appliance.
 # Returns true if cooking began successfully, false otherwise.
 func cook(recipe: int) -> bool:
-	if not can_cook(recipe):
+	if not self.can_cook(recipe):
 		return false
 
 	var cooking_time = RecipeUtils.get_cooking_time(recipe)
 	var burn_time = RecipeUtils.get_burn_time(recipe)
 	var dish_slot = self._state.find(null)
 
-	var cook_timer = _create_timer(cooking_time)
+	var cook_timer = self._create_timer(cooking_time)
 	cook_timer.timeout.connect(_on_cooking_complete.bind(dish_slot))
 	self.add_child(cook_timer)
 
