@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://58x3fo260fua"]
+
+[ext_resource type="Texture2D" uid="uid://botgfmx3tkryo" path="res://components/zombie/zombie.png" id="1_vs8e5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3f74"]
+atlas = ExtResource("1_vs8e5")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tpbw6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3f74")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1p6uu"]
+radius = 8.0
+height = 34.0
+
+[node name="Zombie" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_tpbw6")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_1p6uu")
