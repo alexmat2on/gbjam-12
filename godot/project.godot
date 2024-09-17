@@ -26,6 +26,13 @@ PlayerVariables="*res://components/player/PlayerVariables.gd"
 
 import/blender/enabled=false
 
+[gui]
+
+theme/default_font_antialiasing=0
+theme/default_font_hinting=0
+theme/default_font_subpixel_positioning=0
+theme/lcd_subpixel_layout=0
+
 [input]
 
 up={
