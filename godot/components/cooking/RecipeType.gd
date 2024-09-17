@@ -1,4 +1,4 @@
-class_name Recipe
+class_name RecipeType
 enum {
 	ZOMBIE_STEW,
 	ZOMBIE_STEAK,
