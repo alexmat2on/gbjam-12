@@ -29,4 +29,6 @@ func _physics_process(_delta):
 	animSprite.play(animation)
 	velocity.x = horizontal_direction * playerSpeed
 	
+	
+	
 	move_and_slide()

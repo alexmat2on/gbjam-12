@@ -20,6 +20,7 @@ boot_splash/image="res://assets/splash.png"
 Inventory="*res://components/Inventory.gd"
 RecipeUtils="*res://components/cooking/RecipeUtils.gd"
 Kitchen="*res://components/cooking/Kitchen.gd"
+PlayerVariables="*res://components/player/PlayerVariables.gd"
 
 [filesystem]
 
@@ -57,3 +58,6 @@ right={
 2d_physics/layer_1="GROUND"
 2d_physics/layer_2="PLAYER"
 2d_physics/layer_3="ENEMY"
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.258824, 0.415686, 0.270588, 1)
