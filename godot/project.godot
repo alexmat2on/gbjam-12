@@ -19,6 +19,7 @@ boot_splash/image="res://assets/splash.png"
 
 Inventory="*res://components/Inventory.gd"
 RecipeUtils="*res://components/cooking/RecipeUtils.gd"
+Kitchen="*res://components/cooking/Kitchen.gd"
 
 [filesystem]
 
