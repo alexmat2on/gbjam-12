@@ -10,3 +10,10 @@ The initial project consists of a few elements already to get us started:
   - The viewport is set to the required GB screensize of 160x144 pixels, 
   - but scaled up in the engine for better playability, 
   - and kept centered in the window
+
+## Color Palette
+
+1. `#11032c` - dark (purple tint)
+2. `#426a45` - medium (green)
+3. `#99a376` - light (pistachio)
+4. `#f2c37b` - highlight (orange tint)

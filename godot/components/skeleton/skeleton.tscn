@@ -23,7 +23,7 @@ animations = [{
 radius = 8.0
 height = 32.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("idle_behavior")]
+[node name="skeleton" type="CharacterBody2D" node_paths=PackedStringArray("idle_behavior")]
 collision_layer = 4
 script = ExtResource("1_ylskn")
 idle_behavior = NodePath("PatrolBehavior")
