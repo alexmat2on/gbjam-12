@@ -2,28 +2,30 @@ extends CharacterBody2D
 
 @onready var animSprite = $AnimatedSprite2D;
 
-const playerSpeed := 500;
+const playerSpeed := 250;
+const jumpSpeed := 200;
+const gravity := 15;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animSprite.play("idle")
 
 func _physics_process(_delta):
-	var vertical_direction := Input.get_axis("up", "down")
 	var horizontal_direction := Input.get_axis("left", "right")
+		
+	if Input.is_action_pressed("up") and is_on_floor():
+		velocity.y -= jumpSpeed
+	else:
+		velocity.y += gravity
 	
 	var animation = "idle"
-	
-	if vertical_direction > 0:
-		animation = "walk_down"
-	if vertical_direction < 0:
-		animation = "walk_up"
+
 	if horizontal_direction > 0:
 		animation = "walk_right"
 	if horizontal_direction < 0:
 		animation = "walk_left"
 	
 	animSprite.play(animation)
-	velocity = Vector2(horizontal_direction, vertical_direction) * playerSpeed
+	velocity.x = horizontal_direction * playerSpeed
 	
 	move_and_slide()

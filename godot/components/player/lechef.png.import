@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bre3b67wn5mk5"
-path="res://.godot/imported/tiles-0001.png-9774ab24967265b8284251e9eb2b6665.ctex"
+uid="uid://c00hm435rt6bc"
+path="res://.godot/imported/lechef.png-5cdd635993fc86845cecd276bcc4746b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles-0001.png"
-dest_files=["res://.godot/imported/tiles-0001.png-9774ab24967265b8284251e9eb2b6665.ctex"]
+source_file="res://components/player/lechef.png"
+dest_files=["res://.godot/imported/lechef.png-5cdd635993fc86845cecd276bcc4746b.ctex"]
 
 [params]
 
