@@ -21,6 +21,8 @@ Inventory="*res://components/Inventory.gd"
 RecipeUtils="*res://components/cooking/RecipeUtils.gd"
 Kitchen="*res://components/cooking/Kitchen.gd"
 PlayerVariables="*res://components/player/PlayerVariables.gd"
+InputHandler="*res://components/InputHandler.gd"
+SoundManager="*res://components/sound/SoundManager.gd"
 
 [display]
 

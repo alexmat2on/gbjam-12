@@ -7,8 +7,8 @@ extends Node
 var _inventory = {}
 
 # Items such as ingredients can be supplied to the inventory's methods like so:
-# Inventory.add(Item.ZOMBIE_FLESH)
-# var removed = Inventory.remove(Item.ECTO_SEASONING, 2)
+# Inventory.add(ItemType.ZOMBIE_FLESH)
+# var removed = Inventory.remove(ItemType.ECTO_SEASONING, 2)
 
 func add(item: int, amount: int = 1) -> void:
 	_inventory[item] = self.count(item) + amount
