@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dyaci2ciwkxfh"]
+[gd_scene load_steps=13 format=4 uid="uid://dyaci2ciwkxfh"]
 
 [ext_resource type="PackedScene" uid="uid://d1cbw1acmg7nt" path="res://components/skeleton/skeleton.tscn" id="1_25xm7"]
 [ext_resource type="PackedScene" uid="uid://75n2j6mgpexf" path="res://components/player/player.tscn" id="1_jxhnh"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://58x3fo260fua" path="res://components/zombie/zombie.tscn" id="5_kg0fl"]
 [ext_resource type="FontFile" uid="uid://dt07fim45khyb" path="res://assets/Early GameBoy.ttf" id="6_15wmi"]
 [ext_resource type="Script" path="res://healthbar.gd" id="7_uww2n"]
+[ext_resource type="PackedScene" uid="uid://chsbdtdd08otb" path="res://components/cooking/stockpot/stockpot.tscn" id="8_xtnka"]
+[ext_resource type="PackedScene" uid="uid://y4kpf6rmy7bi" path="res://components/cooking/griller/griller.tscn" id="9_g5rne"]
+[ext_resource type="PackedScene" uid="uid://bn0efw4v83pyv" path="res://components/cooking/fryer/fryer.tscn" id="10_027yx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_60vbj"]
 texture = ExtResource("3_lhxll")
@@ -52,3 +55,12 @@ theme_override_colors/default_color = Color(0.94902, 0.764706, 0.482353, 1)
 theme_override_fonts/normal_font = ExtResource("6_15wmi")
 scroll_active = false
 script = ExtResource("7_uww2n")
+
+[node name="Stockpot" parent="." instance=ExtResource("8_xtnka")]
+position = Vector2(112, 14)
+
+[node name="Griller" parent="." instance=ExtResource("9_g5rne")]
+position = Vector2(90, 14)
+
+[node name="Fryer" parent="." instance=ExtResource("10_027yx")]
+position = Vector2(134, 14)
