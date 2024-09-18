@@ -22,6 +22,12 @@ texture = ExtResource("3_lhxll")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_60vbj")
 
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e3epy"]
+width = 16
+height = 16
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpoaw"]
+
 [node name="Game" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
