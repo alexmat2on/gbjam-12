@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1cbw1acmg7nt"]
+[gd_scene load_steps=10 format=3 uid="uid://d1cbw1acmg7nt"]
 
 [ext_resource type="Texture2D" uid="uid://dgjyb6i7kr4ui" path="res://components/skeleton/skeleton.png" id="1_di0av"]
 [ext_resource type="Script" path="res://components/entities/Entity.gd" id="1_ylskn"]
 [ext_resource type="Script" path="res://components/entities/behaviors/scripts/PatrolBehavior.gd" id="3_je6g3"]
+[ext_resource type="Script" path="res://components/entities/behaviors/scripts/ChaseBehavior.gd" id="4_66pso"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_khr7p"]
 atlas = ExtResource("1_di0av")
@@ -23,10 +24,19 @@ animations = [{
 radius = 8.0
 height = 32.0
 
-[node name="skeleton" type="CharacterBody2D" node_paths=PackedStringArray("idle_behavior")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_hleqa"]
+radius = 64.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7sx5x"]
+radius = 128.0
+
+[node name="skeleton" type="CharacterBody2D" node_paths=PackedStringArray("idle_behavior", "aggro_behavior", "detection_area", "undetection_area")]
 collision_layer = 4
 script = ExtResource("1_ylskn")
 idle_behavior = NodePath("PatrolBehavior")
+aggro_behavior = NodePath("ChaseBehavior")
+detection_area = NodePath("DetectionArea2D")
+undetection_area = NodePath("UnDetectionArea2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -40,3 +50,22 @@ shape = SubResource("CapsuleShape2D_nmafq")
 
 [node name="PatrolBehavior" type="Node2D" parent="."]
 script = ExtResource("3_je6g3")
+
+[node name="ChaseBehavior" type="Node2D" parent="."]
+script = ExtResource("4_66pso")
+
+[node name="DetectionArea2D" type="Area2D" parent="."]
+position = Vector2(0, -16)
+collision_layer = 0
+collision_mask = 2
+
+[node name="DetectionShape2D" type="CollisionShape2D" parent="DetectionArea2D"]
+shape = SubResource("CircleShape2D_hleqa")
+
+[node name="UnDetectionArea2D" type="Area2D" parent="."]
+position = Vector2(0, -16)
+collision_layer = 8
+collision_mask = 2
+
+[node name="UnDetectionShape2D" type="CollisionShape2D" parent="UnDetectionArea2D"]
+shape = SubResource("CircleShape2D_7sx5x")
