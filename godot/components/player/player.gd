@@ -28,11 +28,10 @@ func _physics_process(_delta):
 		velocity.y += gravity
 	
 	var animation = "idle"
-
-	if horizontal_direction > 0:
-		animation = "walk_right"
-	if horizontal_direction < 0:
-		animation = "walk_left"
+	
+	if horizontal_direction != 0:
+		_animated_sprite.flip_h = horizontal_direction < 0
+		animation = "walk"
 	
 	_animated_sprite.play(animation)
 	velocity.x = horizontal_direction * playerSpeed
