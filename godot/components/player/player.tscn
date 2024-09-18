@@ -1,8 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://75n2j6mgpexf"]
+[gd_scene load_steps=26 format=3 uid="uid://75n2j6mgpexf"]
 
 [ext_resource type="Script" path="res://components/player/player.gd" id="1_0ke4j"]
 [ext_resource type="Texture2D" uid="uid://c00hm435rt6bc" path="res://components/player/lechef.png" id="2_e1o3v"]
-[ext_resource type="Script" path="res://components/utils/Interactor2D.gd" id="3_w7xhj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_db3ca"]
 atlas = ExtResource("2_e1o3v")
@@ -194,10 +193,9 @@ offset = Vector2(0, -16)
 position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_uca6y")
 
-[node name="Interactor2D" type="Area2D" parent="."]
-script = ExtResource("3_w7xhj")
+[node name="Interactor" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactor2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactor"]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_fw7ub")
 debug_color = Color(0.637653, 0.509923, 0.365063, 0.42)

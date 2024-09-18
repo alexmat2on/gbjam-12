@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://ddt0x3jt2sldy" path="res://assets/tiles.png" id="3_lhxll"]
 [ext_resource type="PackedScene" uid="uid://dqhymk434xpmh" path="res://components/ghost/ghost.tscn" id="3_tsgwt"]
 [ext_resource type="PackedScene" uid="uid://58x3fo260fua" path="res://components/zombie/zombie.tscn" id="5_kg0fl"]
-[ext_resource type="FontFile" uid="uid://dt07fim45khyb" path="res://assets/Early GameBoy.ttf" id="6_15wmi"]
 [ext_resource type="Script" path="res://healthbar.gd" id="7_uww2n"]
 [ext_resource type="PackedScene" uid="uid://chsbdtdd08otb" path="res://components/cooking/stockpot/stockpot.tscn" id="8_xtnka"]
 [ext_resource type="PackedScene" uid="uid://y4kpf6rmy7bi" path="res://components/cooking/griller/griller.tscn" id="9_g5rne"]
@@ -21,12 +20,6 @@ texture = ExtResource("3_lhxll")
 [sub_resource type="TileSet" id="TileSet_46f3p"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_60vbj")
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e3epy"]
-width = 16
-height = 16
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpoaw"]
 
 [node name="Game" type="Node2D"]
 
@@ -52,14 +45,10 @@ position = Vector2(369, -37)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
-clip_contents = false
+[node name="HeartMeter" type="Label" parent="CanvasLayer"]
 offset_right = 100.0
 offset_bottom = 50.0
 size_flags_horizontal = 3
-theme_override_colors/default_color = Color(0.94902, 0.764706, 0.482353, 1)
-theme_override_fonts/normal_font = ExtResource("6_15wmi")
-scroll_active = false
 script = ExtResource("7_uww2n")
 
 [node name="Stockpot" parent="." instance=ExtResource("8_xtnka")]
