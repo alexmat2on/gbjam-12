@@ -1,14 +1,14 @@
 extends CharacterBody2D
 class_name Player
 
-@onready var animSprite = $AnimatedSprite2D;
+@onready var animSprite = $AnimatedSprite2D
 
-const playerSpeed := 250;
-const jumpSpeed := 200;
-const gravity := 15;
+const playerSpeed := 250
+const jumpSpeed := 200
+const gravity := 15
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready():	
 	animSprite.play("idle")
 
 func _physics_process(_delta):
