@@ -1,6 +1,6 @@
 extends Node
 
-func _input(event):
+func _input(event) -> void:
 	if event is InputEventKey and event.pressed and event.shift_pressed:
 		if event.keycode == KEY_Z:
 			Inventory.add(ItemType.ZOMBIE_FLESH, 1)

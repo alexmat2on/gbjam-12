@@ -6,9 +6,6 @@ class_name Player
 
 const playerSpeed := 60
 const jumpSpeed := 250
-
-var current_interactible = null
-
 const gravity := 15
 
 enum State {
@@ -43,6 +40,7 @@ func _physics_process(_delta):
 		State.IDLE:
 			var horizontal_direction := Input.get_axis("left", "right")
 			if Input.is_action_pressed("up") and is_on_floor():
+				SoundManager.play(SoundEffect.JUMP)
 				velocity.y -= jumpSpeed
 			else:
 				velocity.y += gravity
