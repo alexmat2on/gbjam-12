@@ -190,7 +190,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ayb03")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_cleaver",
 "speed": 12.0
 }, {
@@ -219,7 +219,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sd1f7")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_flamethrower",
 "speed": 12.0
 }, {
