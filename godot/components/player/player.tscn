@@ -190,9 +190,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ayb03")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_cleaver",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -219,9 +219,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sd1f7")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_flamethrower",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -250,7 +250,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_mallet",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -308,7 +308,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uca6y"]
