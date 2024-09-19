@@ -16,6 +16,8 @@ func _ready():
 	_interactor.connect("area_exited", self._on_interaction_area_exited)
 	_animated_sprite.play("idle")
 
+var attack_playing = false
+
 func _physics_process(_delta):
 	if is_instance_valid(current_interactible) && Input.is_action_just_pressed("start"):
 		current_interactible.interact()
@@ -28,11 +30,10 @@ func _physics_process(_delta):
 		velocity.y += gravity
 	
 	var animation = "idle"
-
-	if horizontal_direction > 0:
-		animation = "walk_right"
-	if horizontal_direction < 0:
-		animation = "walk_left"
+	
+	if horizontal_direction != 0:
+		_animated_sprite.flip_h = horizontal_direction < 0
+		animation = "walk"
 	
 	_animated_sprite.play(animation)
 	velocity.x = horizontal_direction * playerSpeed
