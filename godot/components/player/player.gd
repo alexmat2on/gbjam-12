@@ -31,6 +31,10 @@ func _physics_process(_delta):
 	# TODO - change to current weapon held in "A" slot
 	if Input.is_action_pressed("button_a"):
 		_current_state = State.MALLET
+	
+	# TODO - change to current weapon held in "B" slot
+	if Input.is_action_pressed("button_b"):
+		_current_state = State.FLAMETHROWER
 		
 	match _current_state:
 		State.IDLE:
@@ -52,8 +56,10 @@ func _physics_process(_delta):
 			velocity.x = 0
 			_animated_sprite.play("attack_mallet")
 		State.CLEAVER:
+			velocity.x = 0
 			_animated_sprite.play("attack_cleaver")
 		State.FLAMETHROWER:
+			velocity.x = 0
 			_animated_sprite.play("attack_flamethrower")
 	
 	move_and_slide()
