@@ -25,6 +25,7 @@ func _physics_process(_delta):
 	var horizontal_direction := Input.get_axis("left", "right")
 		
 	if Input.is_action_pressed("up") and is_on_floor():
+		SoundManager.play(SoundEffect.JUMP)
 		velocity.y -= jumpSpeed
 	else:
 		velocity.y += gravity
