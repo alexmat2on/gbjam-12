@@ -11,17 +11,17 @@ config_version=5
 [application]
 
 config/name="gbjam-12"
-run/main_scene="res://components/game/game.tscn"
+run/main_scene="res://scenes/levels/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-boot_splash/image="res://assets/splash.png"
+boot_splash/image="res://art/splash.png"
 
 [autoload]
 
-Inventory="*res://components/Inventory.gd"
-RecipeUtils="*res://components/cooking/RecipeUtils.gd"
-PlayerVariables="*res://components/player/PlayerVariables.gd"
-InputHandler="*res://components/InputHandler.gd"
-SoundManager="*res://components/sound/SoundManager.gd"
+Inventory="*res://scripts/utils/Inventory.gd"
+RecipeUtils="*res://scripts/utils/RecipeUtils.gd"
+PlayerVariables="*res://scripts/utils/PlayerVariables.gd"
+InputHandler="*res://scripts/utils/InputHandler.gd"
+SoundManager="*res://scripts/utils/SoundManager.gd"
 
 [display]
 
@@ -36,7 +36,7 @@ import/blender/enabled=false
 
 [gui]
 
-theme/custom="res://theme.tres"
+theme/custom="res://tilesets/theme.tres"
 theme/default_font_antialiasing=0
 theme/default_font_hinting=0
 theme/default_font_subpixel_positioning=0

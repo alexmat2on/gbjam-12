@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://c20t0qxnwpf0p"]
+
+[ext_resource type="Script" path="res://scripts/entities/Projectile.gd" id="1_kj3ub"]
+[ext_resource type="Texture2D" uid="uid://bl6lik1sm3pak" path="res://art/entities/projectiles/bone-projectile.png" id="2_66csa"]
+[ext_resource type="Script" path="res://scripts/components/Hurtbox2D.gd" id="3_3f7kn"]
+[ext_resource type="Script" path="res://scripts/components/Hitbox2D.gd" id="4_wpecf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyd2r"]
+size = Vector2(5, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrjne"]
+size = Vector2(7, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qd6h"]
+size = Vector2(5, 8)
+
+[node name="BoneProjectile" type="RigidBody2D"]
+collision_layer = 0
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
+angular_damp_mode = 1
+script = ExtResource("1_kj3ub")
+rotational_speed = 10.0
+lifetime = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_66csa")
+offset = Vector2(-0.5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gyd2r")
+
+[node name="Hurtbox2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("3_3f7kn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
+shape = SubResource("RectangleShape2D_hrjne")
+
+[node name="Hitbox2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4_wpecf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D"]
+shape = SubResource("RectangleShape2D_7qd6h")
