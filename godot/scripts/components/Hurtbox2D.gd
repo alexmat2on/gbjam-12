@@ -17,6 +17,6 @@ func _on_hitbox_entered(hitbox):
 	
 	if owner.has_method("take_damage"):
 		owner.take_damage(hitbox)
-		hitbox.hit_something.emit()
+		hitbox.hit_something.emit(owner)
 	else:
 		print("owner does not have take_damage")
