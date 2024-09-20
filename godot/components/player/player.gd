@@ -5,7 +5,10 @@ class_name Player
 @onready var _interactor = $Interactor
 
 const playerSpeed := 60
-const jumpSpeed := 200
+const jumpSpeed := 250
+
+var current_interactible = null
+
 const gravity := 15
 
 enum State {

@@ -15,7 +15,10 @@ func _ready():
 		hitbox.hit_something.connect(self._on_collided_with_object)
 	var lifetimer = get_tree().create_timer(lifetime)
 	lifetimer.timeout.connect(queue_free)
-	angular_velocity = rotational_speed
+	get_tree().create_timer(0.01).timeout.connect(_init_angular_velocity)
+
+func _init_angular_velocity():
+	angular_velocity = rotational_speed if linear_velocity.x > 0 else -rotational_speed
 
 func _on_collided_with_object(body):
 	if !has_piercing:
