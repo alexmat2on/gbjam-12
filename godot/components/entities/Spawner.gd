@@ -20,7 +20,6 @@ func _ready():
 
 
 func spawn(override_direction: Vector2 = direction):
-	print("spawning bone at ", override_direction)
 	var spawn_instance = spawn_object.instantiate()
 	get_tree().root.add_child(spawn_instance)
 	if spawn_instance is RigidBody2D:

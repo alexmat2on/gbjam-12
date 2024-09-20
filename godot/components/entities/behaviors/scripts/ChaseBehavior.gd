@@ -5,6 +5,7 @@ class_name ChaseBehavior
 @export var speed = 100.0
 @export var edge_detecting_x_distance = 8
 @export var jump_velocity = -200.0
+@export var min_chase_distance = 0
 
 func apply_behavior(entity: Entity, delta: float):
 	# Add the gravity.
@@ -15,13 +16,15 @@ func apply_behavior(entity: Entity, delta: float):
 	# var displacement_to_player = entity._targeted_player.global_position - entity.global_position
 	if !_is_facing_player(entity):
 		scale.x = -1
-		print("flipping skele")
 		entity._is_facing_right = !entity._is_facing_right
-		
-	if jump_velocity < 0 && entity.is_on_floor() && (entity.is_on_wall() || _is_near_edge(entity)):
-		entity.velocity.y = jump_velocity
-		
-	entity.velocity.x = (1 if entity._is_facing_right else -1) * speed
+	
+	if min_chase_distance <= 0 || entity.global_position.distance_to(entity._targeted_player.global_position) > min_chase_distance:
+		if jump_velocity < 0 && entity.is_on_floor() && (entity.is_on_wall() || _is_near_edge(entity)):
+			entity.velocity.y = jump_velocity
+			
+		entity.velocity.x = (1 if entity._is_facing_right else -1) * speed
+	else:
+		entity.velocity.x = 0
 	
 func _is_near_edge(entity: Entity):
 	if edge_detecting_x_distance <= 0 || !entity.is_on_floor():

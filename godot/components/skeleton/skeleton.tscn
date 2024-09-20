@@ -151,7 +151,7 @@ radius = 8.0
 height = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hleqa"]
-radius = 64.0
+radius = 80.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7sx5x"]
 radius = 128.0
@@ -180,6 +180,7 @@ speed = 40.0
 [node name="ChaseBehavior" type="Node2D" parent="."]
 script = ExtResource("4_66pso")
 speed = 40.0
+min_chase_distance = 60
 
 [node name="DetectionArea2D" type="Area2D" parent="."]
 position = Vector2(0, -16)
