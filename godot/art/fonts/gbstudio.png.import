@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://l7nkc47v7lv4"
+path="res://.godot/imported/gbstudio.png-3ac0f58d83b60043d2dd7cbeaeb69cd6.fontdata"
+
+[deps]
+
+source_file="res://art/fonts/gbstudio.png"
+dest_files=["res://.godot/imported/gbstudio.png-3ac0f58d83b60043d2dd7cbeaeb69cd6.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("32-127")
+kerning_pairs=PackedStringArray("32-127")
+columns=16
+rows=14
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=2

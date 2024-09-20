@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpsja80kfbip7"]
+[gd_scene load_steps=4 format=3 uid="uid://cpsja80kfbip7"]
 
 [ext_resource type="Script" path="res://scripts/ui/HealthDisplay.gd" id="1_afltq"]
 [ext_resource type="Script" path="res://scripts/ui/InventoryDisplay.gd" id="2_f0qp4"]
+[ext_resource type="FontFile" uid="uid://l7nkc47v7lv4" path="res://art/fonts/gbstudio.png" id="3_mcdo2"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -29,3 +30,19 @@ grow_vertical = 0
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 6
 script = ExtResource("2_f0qp4")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 10.0
+text = "Test: 8px"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 12.0
+offset_right = 69.0
+offset_bottom = 22.0
+theme_override_fonts/font = ExtResource("3_mcdo2")
+theme_override_font_sizes/font_size = 6
+text = "TEST: 6PX"
