@@ -72,3 +72,4 @@ shape = SubResource("CapsuleShape2D_n6mpg")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("5_s0vu2")
+damage_tag = 1

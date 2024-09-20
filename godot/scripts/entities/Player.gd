@@ -87,5 +87,4 @@ func _on_animation_finished():
 			_current_state = State.IDLE
 
 func _on_health_updated(new_health):
-	Logger.log(["health updated!", new_health])
 	SignalBus.player_health_updated.emit(new_health)
