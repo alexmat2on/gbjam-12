@@ -1,12 +1,12 @@
 extends Node
 
 var _audio_streams: Dictionary = {
-	SoundEffect.JUMP: preload("res://tunes/jump.wav"),
-	SoundEffect.BLIP: preload("res://tunes/menu-beep.wav"),
-	SoundEffect.TAKE_DAMAGE: preload("res://tunes/damage-taken.wav"),
-	SoundEffect.FLAMETHROWER: preload("res://tunes/flamethrower.wav"),
-	SoundEffect.HEAVY_WEAPON: preload("res://tunes/heavy-hit.wav"),
-	SoundEffect.LIGHT_WEAPON: preload("res://tunes/light-hit.wav")
+	Enums.SoundEffect.JUMP: preload("res://tunes/jump.wav"),
+	Enums.SoundEffect.BLIP: preload("res://tunes/menu-beep.wav"),
+	Enums.SoundEffect.TAKE_DAMAGE: preload("res://tunes/damage-taken.wav"),
+	Enums.SoundEffect.FLAMETHROWER: preload("res://tunes/flamethrower.wav"),
+	Enums.SoundEffect.HEAVY_WEAPON: preload("res://tunes/heavy-hit.wav"),
+	Enums.SoundEffect.LIGHT_WEAPON: preload("res://tunes/light-hit.wav")
 }
 
 var _audio_stream_players: Dictionary = {}
@@ -18,14 +18,14 @@ func _ready() -> void:
 		_audio_stream_players[sfx] = asp
 		self.add_child(asp)
 
-func _get_audio_stream(sfx: int) -> AudioStream:
+func _get_audio_stream(sfx: Enums.SoundEffect) -> AudioStream:
 	return _audio_streams[sfx]
 
-func _get_audio_stream_player(sfx: int) -> AudioStreamPlayer:
+func _get_audio_stream_player(sfx: Enums.SoundEffect) -> AudioStreamPlayer:
 	return _audio_stream_players[sfx]
 
-func play(sfx: int) -> void:
+func play(sfx: Enums.SoundEffect) -> void:
 	_get_audio_stream_player(sfx).play()
 
-func stop(sfx: int) -> void:
+func stop(sfx: Enums.SoundEffect) -> void:
 	_get_audio_stream_player(sfx).stop()
