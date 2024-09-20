@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cm5kp75peb2cj" path="res://art/appliances/griller-glow.png" id="3_htyu6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpp4k"]
+size = Vector2(14, 20)
 
 [node name="Griller" type="Node2D"]
 

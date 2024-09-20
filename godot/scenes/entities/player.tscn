@@ -317,7 +317,7 @@ radius = 7.0
 height = 32.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fw7ub"]
-size = Vector2(20, 32)
+size = Vector2(12, 32)
 
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
