@@ -4,7 +4,7 @@ class_name Player
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _interactor = $Interactor
 
-const playerSpeed := 250
+const playerSpeed := 60
 const jumpSpeed := 200
 const gravity := 15
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d1cbw1acmg7nt"]
+[gd_scene load_steps=30 format=3 uid="uid://d1cbw1acmg7nt"]
 
 [ext_resource type="Texture2D" uid="uid://dgjyb6i7kr4ui" path="res://components/skeleton/skeleton.png" id="1_di0av"]
 [ext_resource type="Script" path="res://components/entities/Entity.gd" id="1_ylskn"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://components/entities/behaviors/scripts/PatrolBehavior.gd" id="3_je6g3"]
 [ext_resource type="Texture2D" uid="uid://mrbuu4sekink" path="res://components/skeleton/skeleton-throw.png" id="4_3jyb6"]
 [ext_resource type="Script" path="res://components/entities/behaviors/scripts/ChaseBehavior.gd" id="4_66pso"]
+[ext_resource type="Script" path="res://components/entities/Spawner.gd" id="7_yuklc"]
+[ext_resource type="PackedScene" uid="uid://c20t0qxnwpf0p" path="res://components/skeleton/bone_projectile.tscn" id="8_yrmil"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tsmua"]
 atlas = ExtResource("2_00321")
@@ -173,9 +175,11 @@ shape = SubResource("CapsuleShape2D_nmafq")
 
 [node name="PatrolBehavior" type="Node2D" parent="."]
 script = ExtResource("3_je6g3")
+speed = 40.0
 
 [node name="ChaseBehavior" type="Node2D" parent="."]
 script = ExtResource("4_66pso")
+speed = 40.0
 
 [node name="DetectionArea2D" type="Area2D" parent="."]
 position = Vector2(0, -16)
@@ -187,8 +191,17 @@ shape = SubResource("CircleShape2D_hleqa")
 
 [node name="UnDetectionArea2D" type="Area2D" parent="."]
 position = Vector2(0, -16)
-collision_layer = 8
+collision_layer = 0
 collision_mask = 2
 
 [node name="UnDetectionShape2D" type="CollisionShape2D" parent="UnDetectionArea2D"]
 shape = SubResource("CircleShape2D_7sx5x")
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(0, -16)
+script = ExtResource("7_yuklc")
+spawn_object = ExtResource("8_yrmil")
+speed = 60.0
+direction = Vector2(1, 0)
+maxCooldown = 3.0
+auto_spawn = false

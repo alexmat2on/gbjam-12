@@ -15,6 +15,7 @@ func apply_behavior(entity: Entity, delta: float):
 	# var displacement_to_player = entity._targeted_player.global_position - entity.global_position
 	if !_is_facing_player(entity):
 		scale.x = -1
+		print("flipping skele")
 		entity._is_facing_right = !entity._is_facing_right
 		
 	if jump_velocity < 0 && entity.is_on_floor() && (entity.is_on_wall() || _is_near_edge(entity)):
