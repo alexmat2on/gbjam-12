@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://58x3fo260fua"]
+[gd_scene load_steps=10 format=3 uid="uid://58x3fo260fua"]
 
 [ext_resource type="Script" path="res://scripts/entities/Entity.gd" id="1_c078v"]
 [ext_resource type="Script" path="res://scripts/components/behaviors/PatrolBehavior.gd" id="1_pa6th"]
 [ext_resource type="Texture2D" uid="uid://botgfmx3tkryo" path="res://art/entities/enemies/zombie/zombie.png" id="1_vs8e5"]
+[ext_resource type="Script" path="res://scripts/components/behaviors/ChaseBehavior.gd" id="4_40skr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l3f74"]
 atlas = ExtResource("1_vs8e5")
@@ -19,14 +20,23 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1p6uu"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m52u8"]
 radius = 8.0
-height = 34.0
+height = 32.0
 
-[node name="zombie" type="CharacterBody2D" node_paths=PackedStringArray("idle_behavior")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_he5vq"]
+radius = 80.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l1byq"]
+radius = 192.0
+
+[node name="zombie" type="CharacterBody2D" node_paths=PackedStringArray("idle_behavior", "aggro_behavior", "detection_area", "undetection_area")]
 collision_layer = 4
 script = ExtResource("1_c078v")
 idle_behavior = NodePath("PatrolBehavior")
+aggro_behavior = NodePath("ChaseBehavior")
+detection_area = NodePath("DetectionArea2D")
+undetection_area = NodePath("UnDetectionArea2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -36,7 +46,30 @@ offset = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
-shape = SubResource("CapsuleShape2D_1p6uu")
+shape = SubResource("CapsuleShape2D_m52u8")
 
 [node name="PatrolBehavior" type="Node2D" parent="."]
 script = ExtResource("1_pa6th")
+speed = 20.0
+edge_detecting_x_distance = 4
+
+[node name="ChaseBehavior" type="Node2D" parent="."]
+script = ExtResource("4_40skr")
+speed = 25.0
+edge_detecting_x_distance = 4
+
+[node name="DetectionArea2D" type="Area2D" parent="."]
+position = Vector2(0, -16)
+collision_layer = 0
+collision_mask = 2
+
+[node name="DetectionShape2D" type="CollisionShape2D" parent="DetectionArea2D"]
+shape = SubResource("CircleShape2D_he5vq")
+
+[node name="UnDetectionArea2D" type="Area2D" parent="."]
+position = Vector2(0, -16)
+collision_layer = 0
+collision_mask = 2
+
+[node name="UnDetectionShape2D" type="CollisionShape2D" parent="UnDetectionArea2D"]
+shape = SubResource("CircleShape2D_l1byq")

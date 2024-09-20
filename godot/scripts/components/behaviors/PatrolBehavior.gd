@@ -4,6 +4,10 @@ class_name PatrolBehavior
 
 @export var speed = 100.0
 @export var edge_detecting_x_distance = 8
+@export var max_patrol_radius = 0
+
+func reset_behavior():
+	return
 
 func apply_behavior(entity: Entity, delta: float):
 	# Add the gravity.
@@ -11,8 +15,8 @@ func apply_behavior(entity: Entity, delta: float):
 		entity.velocity.y += entity.gravity * delta
 		entity.velocity.y = minf(entity.velocity.y, entity.MAX_FALL_SPEED)
 		
-	if entity.is_on_wall() || _is_near_edge(entity):
-		scale.x = -1
+	if entity.is_on_wall() || _is_near_edge(entity) || _walked_out_of_patrol_area(entity):
+		entity.scale.x = -1
 		entity._is_facing_right = !entity._is_facing_right
 		
 	entity.velocity.x = (1 if entity._is_facing_right else -1) * speed
@@ -27,3 +31,10 @@ func _is_near_edge(entity: Entity):
 	var edge_result = space_state.intersect_ray(edge_raycast)
 	
 	return not edge_result
+
+func _walked_out_of_patrol_area(entity: Entity):
+	if max_patrol_radius <= 0 || entity.global_position.distance_to(entity._initial_spawn_point) <= max_patrol_radius:
+		return false
+	else:
+		return (entity._is_facing_right && entity.global_position.x > entity._initial_spawn_point.x) || (!entity._is_facing_right && entity.global_position.x < entity._initial_spawn_point.x)
+		

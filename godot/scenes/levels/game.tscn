@@ -36,12 +36,13 @@ position = Vector2(11, -9)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 offset = Vector2(0, -48)
+process_callback = 0
 
 [node name="Skeleton" parent="." instance=ExtResource("3_0awi7")]
 position = Vector2(239, -2)
 
 [node name="Ghost" parent="." instance=ExtResource("4_ksvfd")]
-position = Vector2(350, -34)
+position = Vector2(328, -81)
 
 [node name="Zombie" parent="." instance=ExtResource("5_lv2i3")]
 position = Vector2(369, -37)

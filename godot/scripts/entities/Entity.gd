@@ -23,6 +23,8 @@ var _current_state = State.IDLE
 var _is_facing_right = true
 var _is_ready_to_spawn = true
 
+var _initial_spawn_point: Vector2
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,6 +34,8 @@ func _ready():
 		undetection_area.body_exited.connect(self._on_player_undetected)
 	if is_instance_valid(spawner):
 		spawner.ready_to_spawn.connect(self.activate_spawner)
+	
+	get_tree().create_timer(0.01).timeout.connect(_initialize_spawn_point)
 
 func _physics_process(delta):
 	if aggro_behavior != null && _current_state == State.AGGRO:
@@ -42,14 +46,18 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_player_detected(player):
-	if player != null && player is Player:
+	if is_instance_valid(aggro_behavior) && player != null && player is Player:
+		if _current_state == State.IDLE:
+			idle_behavior.reset_behavior()
 		_targeted_player = player
 		_current_state = State.AGGRO
 		if is_instance_valid(spawner) && _is_ready_to_spawn:
 			activate_spawner()
 
 func _on_player_undetected(player):
-	if player != null && player is Player && player == _targeted_player:
+	if is_instance_valid(idle_behavior) && player != null && player is Player && player == _targeted_player:
+		if _current_state == State.AGGRO:
+			aggro_behavior.reset_behavior()
 		_current_state = State.IDLE
 		_targeted_player = null
 
@@ -59,3 +67,6 @@ func activate_spawner():
 		_is_ready_to_spawn = false
 	else:
 		_is_ready_to_spawn = true
+
+func _initialize_spawn_point():
+	_initial_spawn_point = global_position
