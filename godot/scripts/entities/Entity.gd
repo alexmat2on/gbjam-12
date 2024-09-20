@@ -11,6 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var spawner: Spawner = get_node_or_null("Spawner")
 
+@export var health: Health
 @export var idle_behavior: EntityBehavior
 @export var aggro_behavior: EntityBehavior
 @export var detection_area: Area2D

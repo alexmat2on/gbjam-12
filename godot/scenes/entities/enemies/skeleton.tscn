@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://d1cbw1acmg7nt"]
+[gd_scene load_steps=31 format=3 uid="uid://d1cbw1acmg7nt"]
 
 [ext_resource type="Texture2D" uid="uid://dgjyb6i7kr4ui" path="res://art/entities/enemies/skeleton/skeleton.png" id="1_di0av"]
 [ext_resource type="Script" path="res://scripts/entities/Entity.gd" id="1_ylskn"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/components/behaviors/ChaseBehavior.gd" id="4_66pso"]
 [ext_resource type="Script" path="res://scripts/entities/Spawner.gd" id="7_yuklc"]
 [ext_resource type="PackedScene" uid="uid://c20t0qxnwpf0p" path="res://scenes/entities/projectiles/bone_projectile.tscn" id="8_yrmil"]
+[ext_resource type="Script" path="res://scripts/components/Health.gd" id="9_a1qwm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tsmua"]
 atlas = ExtResource("2_00321")
@@ -156,9 +157,10 @@ radius = 80.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_7sx5x"]
 radius = 128.0
 
-[node name="skeleton" type="CharacterBody2D" node_paths=PackedStringArray("idle_behavior", "aggro_behavior", "detection_area")]
+[node name="skeleton" type="CharacterBody2D" node_paths=PackedStringArray("health", "idle_behavior", "aggro_behavior", "detection_area")]
 collision_layer = 4
 script = ExtResource("1_ylskn")
+health = NodePath("Health")
 idle_behavior = NodePath("PatrolBehavior")
 aggro_behavior = NodePath("ChaseBehavior")
 detection_area = NodePath("DetectionArea2D")
@@ -206,3 +208,7 @@ speed = 60.0
 direction = Vector2(1, 0)
 maxCooldown = 3.0
 auto_spawn = false
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("9_a1qwm")
+damage_tag = 2

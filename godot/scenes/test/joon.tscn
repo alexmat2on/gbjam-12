@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d1cbw1acmg7nt" path="res://scenes/entities/enemies/skeleton.tscn" id="3_3hyal"]
 [ext_resource type="PackedScene" uid="uid://dqhymk434xpmh" path="res://scenes/entities/enemies/ghost.tscn" id="4_tm5ts"]
 [ext_resource type="PackedScene" uid="uid://58x3fo260fua" path="res://scenes/entities/enemies/zombie.tscn" id="5_wnx4n"]
-[ext_resource type="Script" path="res://scripts/components/healthbar.gd" id="6_4dypg"]
+[ext_resource type="Script" path="res://scripts/ui/HealthDisplay.gd" id="6_4dypg"]
 [ext_resource type="Script" path="res://scripts/ui/InventoryDisplay.gd" id="7_oqah0"]
 [ext_resource type="PackedScene" uid="uid://chsbdtdd08otb" path="res://scenes/appliances/stockpot.tscn" id="7_p1l43"]
 [ext_resource type="PackedScene" uid="uid://y4kpf6rmy7bi" path="res://scenes/appliances/griller.tscn" id="8_xtejl"]

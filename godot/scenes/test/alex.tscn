@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d1cbw1acmg7nt" path="res://scenes/entities/enemies/skeleton.tscn" id="3_jgmd5"]
 [ext_resource type="PackedScene" uid="uid://dqhymk434xpmh" path="res://scenes/entities/enemies/ghost.tscn" id="4_jempc"]
 [ext_resource type="PackedScene" uid="uid://58x3fo260fua" path="res://scenes/entities/enemies/zombie.tscn" id="5_66of7"]
-[ext_resource type="Script" path="res://scripts/components/healthbar.gd" id="6_s1waw"]
+[ext_resource type="Script" path="res://scripts/ui/HealthDisplay.gd" id="6_s1waw"]
 [ext_resource type="Script" path="res://scripts/test/unholy_pink_cube.gd" id="7_rxhy8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_60vbj"]
