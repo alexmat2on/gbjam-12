@@ -1,0 +1,27 @@
+class_name Enums
+
+enum Item {
+	BONES,
+	ZOMBIE_FLESH,
+	ECTO_SEASONING,
+	WHEAT,
+	PUMPKIN_SLICE,
+	SLIME_JELLY,
+	VENUS_HERB,
+	SHROOMS
+}
+
+enum Recipe {
+	ZOMBIE_STEW,
+	ZOMBIE_STEAK,
+	BONE_CHIPS
+}
+
+enum SoundEffect {
+	JUMP,
+	BLIP,
+	TAKE_DAMAGE,
+	FLAMETHROWER,
+	HEAVY_WEAPON,
+	LIGHT_WEAPON
+}

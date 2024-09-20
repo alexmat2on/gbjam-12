@@ -1,4 +1,4 @@
-class_name Interactible2D
+class_name Interactable2D
 extends Node2D
 
 @onready var popup = get_node_or_null("Popup")

@@ -19,7 +19,6 @@ boot_splash/image="res://assets/splash.png"
 
 Inventory="*res://components/Inventory.gd"
 RecipeUtils="*res://components/cooking/RecipeUtils.gd"
-Kitchen="*res://components/cooking/Kitchen.gd"
 PlayerVariables="*res://components/player/PlayerVariables.gd"
 InputHandler="*res://components/InputHandler.gd"
 SoundManager="*res://components/sound/SoundManager.gd"
@@ -95,6 +94,7 @@ button_b={
 2d_physics/layer_1="GROUND"
 2d_physics/layer_2="PLAYER"
 2d_physics/layer_3="ENEMY"
+2d_physics/layer_4="BLOCK"
 
 [rendering]
 
