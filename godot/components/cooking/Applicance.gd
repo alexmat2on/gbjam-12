@@ -3,19 +3,18 @@ extends Node
 # We're leaving some potential for the appliances to have larger capacity (max 4),
 # perhaps through upgrades. Keeping things simple for now with capacities of 1.
 # Think of the state as a kitchen burner with 4 quadrants.
-var type: int
-var _state: Array
-var capacity: int
-signal dish_pickup(recipe: int)
+@export var recipes: Array[Enums.Recipe]
+@export var capacity: int = 1
 
-func _init(type: int, capacity: int = 1) -> void:
-	self.type = type
+var _state: Array
+signal dish_pickup(recipe: Enums.Recipe)
+
+func _ready() -> void:
 	self._state = [null, null, null, null]
-	self.capacity = capacity
 
 # Attempts to cook the recipe on the appliance.
 # Returns true if cooking began successfully, false otherwise.
-func cook(recipe: int) -> bool:
+func cook(recipe: Enums.Recipe) -> bool:
 	if not self.can_cook(recipe):
 		return false
 
@@ -50,7 +49,7 @@ func cook(recipe: int) -> bool:
 # - There must be free space on the appliance.
 # - The recipe must be compatible with the appliance.
 # - Inventory needs to have the required items.
-func can_cook(recipe: int) -> bool:
+func can_cook(recipe: Enums.Recipe) -> bool:
 	if not self.is_free():
 		print("No space to cook recipe!")
 		return false
@@ -68,9 +67,7 @@ func pickup(slot: int = 0) -> bool:
 	if self._state[slot] == null:
 		return false
 
-	if Kitchen.hands_full():
-		print("Chef's hands are full!")
-		return false
+	# TODO: Handle hands full
 
 	var dish = self._state[slot]
 	if not dish["ready"]:
@@ -105,8 +102,8 @@ func is_free() -> bool:
 	return false
 
 # Returns an array of all recipes for the appliance.
-func get_recipes() -> Array[int]:
-	return RecipeUtils.get_recipes_for_appliance(self.type)
+func get_recipes() -> Array:
+	return self.recipes
 
 # Runs whenever a dish is finished cooking on an appliance slot.
 func _on_cooking_complete(slot: int) -> void:

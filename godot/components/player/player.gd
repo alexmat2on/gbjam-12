@@ -15,7 +15,7 @@ enum State {
 	FLAMETHROWER
 }
 
-var _current_interactible = null
+var _current_interactable = null
 var _current_state = State.IDLE
 
 # Called when the node enters the scene tree for the first time.
@@ -25,8 +25,8 @@ func _ready():
 	_animated_sprite.animation_finished.connect(self._on_animation_finished)
 
 func _physics_process(_delta):
-	if is_instance_valid(_current_interactible) && Input.is_action_just_pressed("start"):
-		_current_interactible.interact()
+	if is_instance_valid(_current_interactable) && Input.is_action_just_pressed("start"):
+		_current_interactable.interact()
 	
 	# TODO - change to current weapon held in "A" slot
 	if Input.is_action_pressed("button_a"):
@@ -40,7 +40,7 @@ func _physics_process(_delta):
 		State.IDLE:
 			var horizontal_direction := Input.get_axis("left", "right")
 			if Input.is_action_pressed("up") and is_on_floor():
-				SoundManager.play(SoundEffect.JUMP)
+				SoundManager.play(Enums.SoundEffect.JUMP)
 				velocity.y -= jumpSpeed
 			else:
 				velocity.y += gravity
@@ -65,17 +65,17 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 
-func _on_interaction_area_entered(interactible: Area2D):
+func _on_interaction_area_entered(interactable: Area2D):
 	print("interaction entered!")
-	if interactible.get_parent() is Interactible2D:
-		_current_interactible = interactible.get_parent()
-		_current_interactible.on_interact_enter()
+	if interactable.get_parent() is Interactable2D:
+		_current_interactable = interactable.get_parent()
+		_current_interactable.on_interact_enter()
 
-func _on_interaction_area_exited(interactible: Area2D):
+func _on_interaction_area_exited(interactable: Area2D):
 	print("interaction exit!")
-	if _current_interactible == interactible.get_parent():
-		_current_interactible.on_interact_exit()
-		_current_interactible = null
+	if _current_interactable == interactable.get_parent():
+		_current_interactable.on_interact_exit()
+		_current_interactable = null
 
 func _on_animation_finished():
 	match _current_state:
