@@ -1,9 +1,0 @@
-class_name SoundEffect
-enum {
-	JUMP,
-	BLIP,
-	TAKE_DAMAGE,
-	FLAMETHROWER,
-	HEAVY_WEAPON,
-	LIGHT_WEAPON
-}

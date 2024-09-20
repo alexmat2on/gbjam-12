@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dyaci2ciwkxfh"]
+[gd_scene load_steps=15 format=4 uid="uid://dyaci2ciwkxfh"]
 
 [ext_resource type="PackedScene" uid="uid://d1cbw1acmg7nt" path="res://components/skeleton/skeleton.tscn" id="1_25xm7"]
 [ext_resource type="PackedScene" uid="uid://75n2j6mgpexf" path="res://components/player/player.tscn" id="1_jxhnh"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://y4kpf6rmy7bi" path="res://components/cooking/griller/griller.tscn" id="9_g5rne"]
 [ext_resource type="PackedScene" uid="uid://bn0efw4v83pyv" path="res://components/cooking/fryer/fryer.tscn" id="10_027yx"]
 [ext_resource type="AudioStream" uid="uid://bnusoor4jfcw6" path="res://tunes/campfire.wav" id="11_4hhf1"]
+[ext_resource type="Script" path="res://components/sound/BGM.gd" id="11_dflv3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_60vbj"]
 texture = ExtResource("3_lhxll")
@@ -73,6 +74,7 @@ position = Vector2(90, 14)
 [node name="Fryer" parent="." instance=ExtResource("10_027yx")]
 position = Vector2(134, 14)
 
-[node name="BGM" type="AudioStreamPlayer" parent="."]
+[node name="BGM" type="Node" parent="."]
+script = ExtResource("11_dflv3")
 stream = ExtResource("11_4hhf1")
 autoplay = true
