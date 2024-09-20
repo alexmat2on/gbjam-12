@@ -21,7 +21,7 @@ texture = ExtResource("1_4wb8j")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_60vbj")
 
-[node name="Game" type="Node2D"]
+[node name="Game2" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -42,10 +42,10 @@ offset = Vector2(0, -48)
 process_callback = 0
 
 [node name="Stockpot" parent="." instance=ExtResource("5_bwvqj")]
-position = Vector2(112, 14)
+position = Vector2(108, 14)
 
 [node name="Griller" parent="." instance=ExtResource("6_6aqfy")]
-position = Vector2(90, 14)
+position = Vector2(80, 14)
 
 [node name="Fryer" parent="." instance=ExtResource("7_f2v7y")]
 position = Vector2(134, 14)
