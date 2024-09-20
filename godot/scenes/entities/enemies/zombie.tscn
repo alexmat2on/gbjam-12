@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://58x3fo260fua"]
+[gd_scene load_steps=11 format=3 uid="uid://58x3fo260fua"]
 
 [ext_resource type="Script" path="res://scripts/entities/Entity.gd" id="1_c078v"]
 [ext_resource type="Script" path="res://scripts/components/behaviors/PatrolBehavior.gd" id="1_pa6th"]
 [ext_resource type="Texture2D" uid="uid://botgfmx3tkryo" path="res://art/entities/enemies/zombie/zombie.png" id="1_vs8e5"]
+[ext_resource type="Script" path="res://scripts/components/Health.gd" id="2_0xyos"]
 [ext_resource type="Script" path="res://scripts/components/behaviors/ChaseBehavior.gd" id="4_40skr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l3f74"]
@@ -30,9 +31,10 @@ radius = 80.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_l1byq"]
 radius = 192.0
 
-[node name="zombie" type="CharacterBody2D" node_paths=PackedStringArray("idle_behavior", "aggro_behavior", "detection_area", "undetection_area")]
+[node name="zombie" type="CharacterBody2D" node_paths=PackedStringArray("health", "idle_behavior", "aggro_behavior", "detection_area", "undetection_area")]
 collision_layer = 4
 script = ExtResource("1_c078v")
+health = NodePath("Health")
 idle_behavior = NodePath("PatrolBehavior")
 aggro_behavior = NodePath("ChaseBehavior")
 detection_area = NodePath("DetectionArea2D")
@@ -73,3 +75,6 @@ collision_mask = 2
 
 [node name="UnDetectionShape2D" type="CollisionShape2D" parent="UnDetectionArea2D"]
 shape = SubResource("CircleShape2D_l1byq")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_0xyos")

@@ -18,15 +18,15 @@ func _ready() -> void:
 	self._state = [null, null, null, null]
 	self._sprite.texture = self.texture
 
-func on_interact_enter():
-	super.on_interact_enter()
+func on_interact_enter(player):
+	super.on_interact_enter(player)
 	self._sprite.texture = self.glow_texture
 
-func on_interact_exit():
-	super.on_interact_exit()
+func on_interact_exit(player):
+	super.on_interact_exit(player)
 	self._sprite.texture = self.texture
 
-func interact():
+func interact(_player):
 	print("available recipes for appliance: " + str(self.get_recipes()))
 
 # Attempts to cook the recipe on the appliance.

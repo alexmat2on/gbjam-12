@@ -3,6 +3,7 @@ class_name Player
 
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _interactor = $Interactor
+@onready var health = $Health
 
 const playerSpeed := 60
 const jumpSpeed := 250
@@ -23,10 +24,13 @@ func _ready():
 	_interactor.connect("area_entered", self._on_interaction_area_entered)
 	_interactor.connect("area_exited", self._on_interaction_area_exited)
 	_animated_sprite.animation_finished.connect(self._on_animation_finished)
+	
+	health.connect("health_updated", self._on_health_updated)
+	PlayerVariables.health = health.get_health()
 
 func _physics_process(_delta):
 	if is_instance_valid(_current_interactable) && Input.is_action_just_pressed("start"):
-		_current_interactable.interact()
+		_current_interactable.interact(self)
 	
 	# TODO - change to current weapon held in "A" slot
 	if Input.is_action_pressed("button_a"):
@@ -69,15 +73,19 @@ func _on_interaction_area_entered(interactable: Area2D):
 	print("interaction entered!")
 	if interactable.get_parent() is Interactable2D:
 		_current_interactable = interactable.get_parent()
-		_current_interactable.on_interact_enter()
+		_current_interactable.on_interact_enter(self)
 
 func _on_interaction_area_exited(interactable: Area2D):
 	print("interaction exit!")
 	if _current_interactable == interactable.get_parent():
-		_current_interactable.on_interact_exit()
+		_current_interactable.on_interact_exit(self)
 		_current_interactable = null
 
 func _on_animation_finished():
 	match _current_state:
 		State.MALLET, State.CLEAVER, State.FLAMETHROWER:
 			_current_state = State.IDLE
+
+func _on_health_updated(new_health):
+	Logger.log(["health updated!", new_health])
+	PlayerVariables.health = new_health

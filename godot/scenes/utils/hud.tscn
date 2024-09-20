@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpsja80kfbip7"]
 
-[ext_resource type="Script" path="res://scripts/components/healthbar.gd" id="1_afltq"]
+[ext_resource type="Script" path="res://scripts/ui/HealthDisplay.gd" id="1_afltq"]
 [ext_resource type="Script" path="res://scripts/ui/InventoryDisplay.gd" id="2_f0qp4"]
 
 [node name="HUD" type="Control"]
@@ -8,6 +8,7 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="HeartMeter" type="Label" parent="."]
+layout_mode = 0
 offset_top = 132.0
 offset_right = 33.0
 offset_bottom = 155.0
