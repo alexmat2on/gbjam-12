@@ -26,7 +26,7 @@ func _ready():
 	_animated_sprite.animation_finished.connect(self._on_animation_finished)
 	
 	health.connect("health_updated", self._on_health_updated)
-	PlayerVariables.health = health.get_health()
+	SignalBus.player_health_updated.emit(health.get_health())
 
 func _physics_process(_delta):
 	if is_instance_valid(_current_interactable) && Input.is_action_just_pressed("start"):
@@ -88,4 +88,4 @@ func _on_animation_finished():
 
 func _on_health_updated(new_health):
 	Logger.log(["health updated!", new_health])
-	PlayerVariables.health = new_health
+	SignalBus.player_health_updated.emit(new_health)

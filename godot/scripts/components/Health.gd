@@ -4,7 +4,7 @@ extends Node
 @export var max_health: int = 3;
 var _health: int;
 
-signal health_updated(new_health)
+signal health_updated(new_health: int)
 
 func _ready():
 	_health = max_health;
