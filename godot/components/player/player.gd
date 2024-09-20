@@ -4,10 +4,11 @@ class_name Player
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _interactor = $Interactor
 
+const playerSpeed := 60
+const jumpSpeed := 250
+
 var current_interactible = null
 
-const playerSpeed := 120
-const jumpSpeed := 220
 const gravity := 15
 
 enum State {

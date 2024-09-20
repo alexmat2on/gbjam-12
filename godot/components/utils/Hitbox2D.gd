@@ -3,3 +3,5 @@ extends Area2D
 
 @export var tag = ""
 @export var damage = 10
+
+signal hit_something
