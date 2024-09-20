@@ -71,7 +71,7 @@ func _physics_process(_delta):
 
 func _on_interaction_area_entered(interactable: Area2D):
 	print("interaction entered!")
-	if interactable.get_parent() is Interactable2D:
+	if _current_interactable == null && interactable.get_parent() is Interactable2D:
 		_current_interactable = interactable.get_parent()
 		_current_interactable.on_interact_enter(self)
 
