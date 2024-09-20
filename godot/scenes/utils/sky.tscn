@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1yom6ggeaemk"]
+
+[ext_resource type="Texture2D" uid="uid://c8gtsnx6dhdh7" path="res://art/levels/general/sky-moon1.png" id="1_mw5gl"]
+[ext_resource type="Texture2D" uid="uid://de2rd61l625d1" path="res://art/levels/general/sky-clouds2.png" id="2_p43ap"]
+[ext_resource type="Texture2D" uid="uid://yqp21tjgi4mg" path="res://art/levels/general/sky-clouds1.png" id="3_q56tv"]
+
+[node name="Sky" type="ParallaxBackground"]
+
+[node name="Moon" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Moon"]
+position = Vector2(114, 100)
+texture = ExtResource("1_mw5gl")
+
+[node name="Clouds1" type="ParallaxLayer" parent="."]
+position = Vector2(0, -4)
+motion_scale = Vector2(0.15, 0.1)
+motion_mirroring = Vector2(220, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds1"]
+position = Vector2(99, 71)
+texture = ExtResource("2_p43ap")
+
+[node name="Clouds2" type="ParallaxLayer" parent="."]
+position = Vector2(0, 16)
+motion_scale = Vector2(0.25, 0.2)
+motion_mirroring = Vector2(200, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds2"]
+position = Vector2(120, 58)
+texture = ExtResource("3_q56tv")

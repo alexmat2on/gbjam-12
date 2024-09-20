@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpsja80kfbip7"]
+
+[ext_resource type="Script" path="res://scripts/components/healthbar.gd" id="1_afltq"]
+[ext_resource type="Script" path="res://scripts/ui/InventoryDisplay.gd" id="2_f0qp4"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="HeartMeter" type="Label" parent="."]
+offset_top = 132.0
+offset_right = 33.0
+offset_bottom = 155.0
+size_flags_horizontal = 3
+horizontal_alignment = 1
+script = ExtResource("1_afltq")
+
+[node name="InventoryDisplay" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = 137.0
+offset_right = 161.0
+offset_bottom = 160.0
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+script = ExtResource("2_f0qp4")

@@ -2,7 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://dt07fim45khyb" path="res://art/fonts/Early GameBoy.ttf" id="1_g2jim"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yr22q"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p44us"]
+bg_color = Color(0.258824, 0.415686, 0.270588, 1)
 
 [resource]
 default_font = ExtResource("1_g2jim")
@@ -15,4 +16,4 @@ Label/constants/outline_size = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
-Label/styles/normal = SubResource("StyleBoxEmpty_yr22q")
+Label/styles/normal = SubResource("StyleBoxFlat_p44us")
