@@ -25,9 +25,3 @@ enum SoundEffect {
 	HEAVY_WEAPON,
 	LIGHT_WEAPON
 }
-
-enum Appliance {
-	STOCKPOT,
-	GRILL,
-	FRYER
-}
