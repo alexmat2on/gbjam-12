@@ -1,4 +1,4 @@
-extends Node
+extends Interactable2D
 
 # We're leaving some potential for the appliances to have larger capacity (max 4),
 # perhaps through upgrades. Keeping things simple for now with capacities of 1.
@@ -11,6 +11,15 @@ signal dish_pickup(recipe: Enums.Recipe)
 
 func _ready() -> void:
 	self._state = [null, null, null, null]
+
+func on_interact_enter():
+	super.on_interact_enter()
+
+func on_interact_exit():
+	super.on_interact_exit()
+
+func interact():
+	print("available recipes for appliance: " + str(self.get_recipes()))
 
 # Attempts to cook the recipe on the appliance.
 # Returns true if cooking began successfully, false otherwise.
