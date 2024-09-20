@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://y4kpf6rmy7bi"]
+[gd_scene load_steps=5 format=3 uid="uid://y4kpf6rmy7bi"]
 
 [ext_resource type="Texture2D" uid="uid://c3nw8icuqodi7" path="res://art/appliances/griller.png" id="1_2d1dg"]
 [ext_resource type="Script" path="res://scripts/interactables/Appliance.gd" id="2_jimd8"]
+[ext_resource type="Texture2D" uid="uid://cm5kp75peb2cj" path="res://art/appliances/griller-glow.png" id="3_htyu6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpp4k"]
 
@@ -10,6 +11,8 @@
 [node name="Appliance" type="Node2D" parent="."]
 script = ExtResource("2_jimd8")
 recipes = Array[int]([1])
+texture = ExtResource("1_2d1dg")
+glow_texture = ExtResource("3_htyu6")
 
 [node name="Area2D" type="Area2D" parent="Appliance"]
 

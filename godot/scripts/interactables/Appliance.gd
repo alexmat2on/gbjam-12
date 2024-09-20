@@ -3,20 +3,28 @@ extends Interactable2D
 # We're leaving some potential for the appliances to have larger capacity (max 4),
 # perhaps through upgrades. Keeping things simple for now with capacities of 1.
 # Think of the state as a kitchen burner with 4 quadrants.
+@export var appliance_name: String
 @export var recipes: Array[Enums.Recipe]
 @export var capacity: int = 1
+@export var texture: Texture2D
+@export var glow_texture: Texture2D
+
+@onready var _sprite: Sprite2D = $Area2D/CollisionShape2D/Sprite2D
 
 var _state: Array
 signal dish_pickup(recipe: Enums.Recipe)
 
 func _ready() -> void:
 	self._state = [null, null, null, null]
+	self._sprite.texture = self.texture
 
 func on_interact_enter():
 	super.on_interact_enter()
+	self._sprite.texture = self.glow_texture
 
 func on_interact_exit():
 	super.on_interact_exit()
+	self._sprite.texture = self.texture
 
 func interact():
 	print("available recipes for appliance: " + str(self.get_recipes()))
