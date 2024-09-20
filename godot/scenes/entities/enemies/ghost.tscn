@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqhymk434xpmh"]
+[gd_scene load_steps=9 format=3 uid="uid://dqhymk434xpmh"]
 
 [ext_resource type="Texture2D" uid="uid://b1f321jv54b0y" path="res://art/entities/enemies/ghost/ghost.png" id="1_bjw6m"]
 [ext_resource type="Script" path="res://scripts/entities/Entity.gd" id="1_hncny"]
 [ext_resource type="Script" path="res://scripts/components/behaviors/PatrolBehavior.gd" id="2_hyf4b"]
+[ext_resource type="Script" path="res://scripts/components/behaviors/GhostBehavior.gd" id="4_q64ju"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ma0nn"]
 atlas = ExtResource("1_bjw6m")
@@ -19,13 +20,23 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t5lpa"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8mkj0"]
 radius = 8.0
+height = 32.0
 
-[node name="ghost" type="CharacterBody2D" node_paths=PackedStringArray("idle_behavior")]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6mpg"]
+radius = 50.0
+height = 250.0
+
+[node name="ghost" type="CharacterBody2D" node_paths=PackedStringArray("idle_behavior", "aggro_behavior", "detection_area")]
 collision_layer = 4
+collision_mask = 0
+motion_mode = 1
 script = ExtResource("1_hncny")
 idle_behavior = NodePath("PatrolBehavior")
+aggro_behavior = NodePath("GhostBehavior")
+detection_area = NodePath("DetectionArea2D")
+has_gravity = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -35,7 +46,24 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
-shape = SubResource("CapsuleShape2D_t5lpa")
+shape = SubResource("CapsuleShape2D_8mkj0")
 
 [node name="PatrolBehavior" type="Node2D" parent="."]
 script = ExtResource("2_hyf4b")
+speed = 50.0
+edge_detecting_x_distance = 0
+max_patrol_radius = 60
+
+[node name="GhostBehavior" type="Node2D" parent="."]
+script = ExtResource("4_q64ju")
+danceSpeed = 200.0
+rushSpeed = 250.0
+max_dance_radius = 40
+
+[node name="DetectionArea2D" type="Area2D" parent="."]
+position = Vector2(0, -16)
+collision_layer = 0
+collision_mask = 2
+
+[node name="DetectionShape2D" type="CollisionShape2D" parent="DetectionArea2D"]
+shape = SubResource("CapsuleShape2D_n6mpg")

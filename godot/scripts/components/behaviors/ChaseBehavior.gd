@@ -7,15 +7,17 @@ class_name ChaseBehavior
 @export var jump_velocity = -200.0
 @export var min_chase_distance = 0
 
+func reset_behavior():
+	return
+	
 func apply_behavior(entity: Entity, delta: float):
 	# Add the gravity.
 	if entity.has_gravity && not entity.is_on_floor():
 		entity.velocity.y += entity.gravity * delta
 		entity.velocity.y = minf(entity.velocity.y, entity.MAX_FALL_SPEED)
 	
-	# var displacement_to_player = entity._targeted_player.global_position - entity.global_position
 	if !_is_facing_player(entity):
-		scale.x = -1
+		entity.scale.x = -1
 		entity._is_facing_right = !entity._is_facing_right
 	
 	if min_chase_distance <= 0 || entity.global_position.distance_to(entity._targeted_player.global_position) > min_chase_distance:
