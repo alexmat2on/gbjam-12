@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=3 uid="uid://d0g6fskqdumt8"]
+
+[ext_resource type="Texture2D" uid="uid://dqx58jumlkrah" path="res://art/ui/main-menu.png" id="1_1vnp6"]
+[ext_resource type="Script" path="res://scripts/ui/MainMenu.gd" id="1_22obb"]
+[ext_resource type="Script" path="res://scripts/utils/BGM.gd" id="3_2lnje"]
+[ext_resource type="AudioStream" uid="uid://bl5b36eew1jb3" path="res://audio/music/spooky-sample1.wav" id="4_l2eb3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gqj6"]
+atlas = ExtResource("1_1vnp6")
+region = Rect2(0, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7mm8"]
+atlas = ExtResource("1_1vnp6")
+region = Rect2(160, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_108ip"]
+atlas = ExtResource("1_1vnp6")
+region = Rect2(320, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgnrx"]
+atlas = ExtResource("1_1vnp6")
+region = Rect2(480, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfyul"]
+atlas = ExtResource("1_1vnp6")
+region = Rect2(640, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjuv3"]
+atlas = ExtResource("1_1vnp6")
+region = Rect2(800, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2km2"]
+atlas = ExtResource("1_1vnp6")
+region = Rect2(960, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfx51"]
+atlas = ExtResource("1_1vnp6")
+region = Rect2(1120, 0, 160, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w7hjv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gqj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7mm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_108ip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgnrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfyul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjuv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2km2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfx51")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_22obb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(80, 72)
+sprite_frames = SubResource("SpriteFrames_w7hjv")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 115.0
+offset_right = 152.0
+offset_bottom = 125.0
+text = "press start"
+horizontal_alignment = 1
+
+[node name="BGM" type="Node" parent="."]
+script = ExtResource("3_2lnje")
+stream = ExtResource("4_l2eb3")
+autoplay = true
