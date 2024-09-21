@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8hh183w1bxpa"]
+
+[ext_resource type="Script" path="res://scripts/entities/Projectile.gd" id="1_78yxe"]
+[ext_resource type="Texture2D" uid="uid://cjx3ssml1orh3" path="res://art/entities/projectiles/cleaver.png" id="2_ot2f3"]
+[ext_resource type="Script" path="res://scripts/components/Hitbox2D.gd" id="3_c0e22"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcgwi"]
+size = Vector2(11, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayq41"]
+size = Vector2(9, 20)
+
+[node name="CleaverProjectile" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_78yxe")
+rotational_speed = 10.0
+lifetime = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+texture = ExtResource("2_ot2f3")
+
+[node name="Hitbox2D" type="Area2D" parent="."]
+script = ExtResource("3_c0e22")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D"]
+position = Vector2(0.5, -10)
+shape = SubResource("RectangleShape2D_wcgwi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -10)
+shape = SubResource("RectangleShape2D_ayq41")

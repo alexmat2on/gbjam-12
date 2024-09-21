@@ -2,6 +2,7 @@ extends RigidBody2D
 class_name Projectile
 
 @onready var hitbox: Hitbox2D = get_node_or_null("Hitbox2D")
+@onready var _animated_sprite2d: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
 
 @export var has_gravity = false
 @export var rotational_speed = 0.0
@@ -10,6 +11,8 @@ class_name Projectile
 
 
 func _ready():
+	if is_instance_valid(_animated_sprite2d):
+		_animated_sprite2d.play("default")
 	body_entered.connect(self._on_collided_with_object)
 	if is_instance_valid(hitbox):
 		hitbox.hit_something.connect(self._on_collided_with_object)
