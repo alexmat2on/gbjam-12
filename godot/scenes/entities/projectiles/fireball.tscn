@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ba2nblrs4ny0m"]
+[gd_scene load_steps=10 format=3 uid="uid://cxab4g5uyjvwb"]
 
 [ext_resource type="Script" path="res://scripts/entities/Projectile.gd" id="1_32el3"]
 [ext_resource type="Texture2D" uid="uid://d252khhrhhwao" path="res://art/entities/projectiles/fireball.png" id="2_wx65p"]
@@ -44,21 +44,25 @@ animations = [{
 size = Vector2(19, 11)
 
 [node name="Fireball" type="RigidBody2D"]
+collision_layer = 0
 gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
 script = ExtResource("1_32el3")
-lifetime = 5.0
+lifetime = 0.2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_s1u5w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, -4.5)
 shape = SubResource("RectangleShape2D_xixan")
 
 [node name="Hitbox2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("3_3nchl")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox2D"]
-position = Vector2(1.5, -4.5)
 shape = SubResource("RectangleShape2D_xixan")

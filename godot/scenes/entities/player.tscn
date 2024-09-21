@@ -1,12 +1,12 @@
-[gd_scene load_steps=49 format=3 uid="uid://75n2j6mgpexf"]
+[gd_scene load_steps=46 format=3 uid="uid://75n2j6mgpexf"]
 
 [ext_resource type="Script" path="res://scripts/entities/Player.gd" id="1_0ke4j"]
 [ext_resource type="Texture2D" uid="uid://c00hm435rt6bc" path="res://art/entities/player/lechef.png" id="2_e1o3v"]
 [ext_resource type="Script" path="res://scripts/components/Health.gd" id="2_loqi2"]
-[ext_resource type="Script" path="res://scripts/components/Hurtbox2D.gd" id="4_tewki"]
 [ext_resource type="Script" path="res://scripts/entities/Spawner.gd" id="4_b4t1n"]
-[ext_resource type="PackedScene" uid="uid://b8hh183w1bxpa" path="res://scenes/entities/projectiles/cleaver_projectile.tscn" id="5_e6val"]
-[ext_resource type="PackedScene" uid="uid://ba2nblrs4ny0m" path="res://scenes/entities/projectiles/fireball.tscn" id="6_dwdv3"]
+[ext_resource type="Script" path="res://scripts/components/Hurtbox2D.gd" id="4_tewki"]
+[ext_resource type="PackedScene" uid="uid://uwf634yd7txp" path="res://scenes/entities/projectiles/cleaver_projectile.tscn" id="5_e6val"]
+[ext_resource type="PackedScene" uid="uid://cxab4g5uyjvwb" path="res://scenes/entities/projectiles/fireball.tscn" id="6_dwdv3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qvcwe"]
 atlas = ExtResource("2_e1o3v")
@@ -24,6 +24,14 @@ region = Rect2(96, 96, 48, 32)
 atlas = ExtResource("2_e1o3v")
 region = Rect2(144, 96, 48, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xoxko"]
+atlas = ExtResource("2_e1o3v")
+region = Rect2(0, 96, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6np8"]
+atlas = ExtResource("2_e1o3v")
+region = Rect2(48, 96, 48, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_enj3e"]
 atlas = ExtResource("2_e1o3v")
 region = Rect2(0, 160, 48, 32)
@@ -39,6 +47,14 @@ region = Rect2(96, 160, 48, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4b5h"]
 atlas = ExtResource("2_e1o3v")
 region = Rect2(144, 160, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2jow"]
+atlas = ExtResource("2_e1o3v")
+region = Rect2(48, 128, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hldel"]
+atlas = ExtResource("2_e1o3v")
+region = Rect2(0, 128, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_20v3f"]
 atlas = ExtResource("2_e1o3v")
@@ -71,6 +87,30 @@ region = Rect2(96, 64, 48, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4fyrg"]
 atlas = ExtResource("2_e1o3v")
 region = Rect2(144, 64, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dki80"]
+atlas = ExtResource("2_e1o3v")
+region = Rect2(0, 64, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk2rk"]
+atlas = ExtResource("2_e1o3v")
+region = Rect2(96, 64, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qxyp"]
+atlas = ExtResource("2_e1o3v")
+region = Rect2(144, 64, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sydjw"]
+atlas = ExtResource("2_e1o3v")
+region = Rect2(96, 64, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eilwt"]
+atlas = ExtResource("2_e1o3v")
+region = Rect2(48, 64, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwoax"]
+atlas = ExtResource("2_e1o3v")
+region = Rect2(0, 64, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ftmi"]
 atlas = ExtResource("2_e1o3v")
@@ -125,6 +165,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_xoxko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6np8")
+}],
+"loop": false,
+"name": &"atk_cleaver_start",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_enj3e")
 }, {
 "duration": 1.0,
@@ -137,8 +188,19 @@ animations = [{
 "texture": SubResource("AtlasTexture_g4b5h")
 }],
 "loop": true,
-"name": &"atk_ft_loop",
+"name": &"atk_ft_channel",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2jow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hldel")
+}],
+"loop": false,
+"name": &"atk_ft_end",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -154,8 +216,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_rrjdf")
 }],
 "loop": false,
-"name": &"atk_ft_ramp",
-"speed": 12.0
+"name": &"atk_ft_start",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -173,6 +235,39 @@ animations = [{
 "loop": false,
 "name": &"atk_mallet",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dki80")
+}],
+"loop": true,
+"name": &"atk_mallet_channel",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk2rk")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_3qxyp")
+}],
+"loop": false,
+"name": &"atk_mallet_end",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sydjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eilwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwoax")
+}],
+"loop": false,
+"name": &"atk_mallet_start",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -231,7 +326,7 @@ script = ExtResource("2_loqi2")
 z_index = 99
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_u0yn2")
-animation = &"atk_ft_loop"
+animation = &"atk_mallet_end"
 offset = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -253,20 +348,25 @@ script = ExtResource("4_tewki")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
 position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_853p6")
+
 [node name="CleaverSpawner" type="Node2D" parent="."]
-position = Vector2(17, -12)
+position = Vector2(0, -16)
 script = ExtResource("4_b4t1n")
 spawn_object = ExtResource("5_e6val")
-speed = 100.0
-direction = Vector2(1, 0)
-minCooldown = 2.0
-maxCooldown = 2.0
+speed = 300.0
+direction = Vector2(0.316, -0.948)
+minCooldown = 0.5
+maxCooldown = 0.5
 auto_spawn = false
 
 [node name="FireballSpawner" type="Node2D" parent="."]
-position = Vector2(20, -8)
+position = Vector2(0, -13)
 script = ExtResource("4_b4t1n")
 spawn_object = ExtResource("6_dwdv3")
-speed = 60.0
+speed = 200.0
 direction = Vector2(1, 0)
+degrees_of_error = 30.0
+offset = Vector2(20, 0)
+minCooldown = 0.05
+maxCooldown = 0.05
 auto_spawn = false

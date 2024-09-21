@@ -1,6 +1,8 @@
 extends RigidBody2D
 class_name Projectile
 
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 @onready var hitbox: Hitbox2D = get_node_or_null("Hitbox2D")
 @onready var _animated_sprite2d: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
 
