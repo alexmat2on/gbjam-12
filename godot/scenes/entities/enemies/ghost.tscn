@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqhymk434xpmh"]
+[gd_scene load_steps=12 format=3 uid="uid://dqhymk434xpmh"]
 
 [ext_resource type="Texture2D" uid="uid://b1f321jv54b0y" path="res://art/entities/enemies/ghost/ghost.png" id="1_bjw6m"]
 [ext_resource type="Script" path="res://scripts/entities/Entity.gd" id="1_hncny"]
 [ext_resource type="Script" path="res://scripts/components/behaviors/PatrolBehavior.gd" id="2_hyf4b"]
 [ext_resource type="Script" path="res://scripts/components/behaviors/GhostBehavior.gd" id="4_q64ju"]
 [ext_resource type="Script" path="res://scripts/components/Health.gd" id="5_s0vu2"]
+[ext_resource type="Script" path="res://scripts/components/Hitbox2D.gd" id="6_ojx0i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ma0nn"]
 atlas = ExtResource("1_bjw6m")
@@ -28,6 +29,9 @@ height = 32.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6mpg"]
 radius = 50.0
 height = 250.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1nmox"]
+radius = 6.0
 
 [node name="ghost" type="CharacterBody2D" node_paths=PackedStringArray("health", "idle_behavior", "aggro_behavior", "detection_area")]
 collision_layer = 4
@@ -73,3 +77,13 @@ shape = SubResource("CapsuleShape2D_n6mpg")
 [node name="Health" type="Node" parent="."]
 script = ExtResource("5_s0vu2")
 damage_tag = 1
+
+[node name="Hitbox2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("6_ojx0i")
+damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D"]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_1nmox")

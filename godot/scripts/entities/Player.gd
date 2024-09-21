@@ -3,7 +3,7 @@ class_name Player
 
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _interactor = $Interactor
-@onready var health = $Health
+@onready var health: Health = $Health
 
 const playerSpeed := 60
 const jumpSpeed := 250
@@ -71,7 +71,7 @@ func _physics_process(_delta):
 
 func _on_interaction_area_entered(interactable: Area2D):
 	print("interaction entered!")
-	if interactable.get_parent() is Interactable2D:
+	if _current_interactable == null && interactable.get_parent() is Interactable2D:
 		_current_interactable = interactable.get_parent()
 		_current_interactable.on_interact_enter(self)
 
@@ -88,3 +88,7 @@ func _on_animation_finished():
 
 func _on_health_updated(new_health):
 	SignalBus.player_health_updated.emit(new_health)
+
+func take_damage(hitbox: Hitbox2D):
+	# TODO: also include damage type (light, heavy, fire)
+	health.remove_health(hitbox.damage)
