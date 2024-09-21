@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dnd7u5ra2uoci" path="res://scenes/tools/cleaver_tool.tscn" id="10_k5f85"]
 [ext_resource type="PackedScene" uid="uid://cdyf3om11ummy" path="res://scenes/tools/flamethrower_tool.tscn" id="11_fo00j"]
 [ext_resource type="PackedScene" uid="uid://bnohdpspx1h3r" path="res://scenes/tools/mallet_tool.tscn" id="12_nwcby"]
+[ext_resource type="PackedScene" uid="uid://d27y573aox5wo" path="res://scenes/ui/recipe_menu.tscn" id="10_kxk1k"]
 
 [node name="Game2" type="Node2D"]
 
@@ -20,6 +21,9 @@
 [node name="Sky" parent="CanvasLayer" instance=ExtResource("3_fhts1")]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("4_et2ur")]
+
+[node name="RecipeMenu" parent="CanvasLayer" instance=ExtResource("10_kxk1k")]
+visible = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(1, -18)

@@ -10,6 +10,8 @@ extends Interactable2D
 @export var glow_texture: Texture2D
 
 @onready var _sprite: Sprite2D = $Area2D/CollisionShape2D/Sprite2D
+@onready var _recipe_menu: Control = $"../CanvasLayer/RecipeMenu"
+
 
 var _state: Array
 signal dish_pickup(recipe: Enums.Recipe)
@@ -25,9 +27,10 @@ func on_interact_enter(player):
 func on_interact_exit(player):
 	super.on_interact_exit(player)
 	self._sprite.texture = self.texture
+	_recipe_menu.visible = false
 
 func interact(_player):
-	print("available recipes for appliance: " + str(self.get_recipes()))
+	_recipe_menu.visible = true
 
 # Attempts to cook the recipe on the appliance.
 # Returns true if cooking began successfully, false otherwise.
