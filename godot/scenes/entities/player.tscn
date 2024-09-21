@@ -326,7 +326,7 @@ script = ExtResource("2_loqi2")
 z_index = 99
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_u0yn2")
-animation = &"atk_mallet_end"
+animation = &"atk_cleaver"
 offset = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

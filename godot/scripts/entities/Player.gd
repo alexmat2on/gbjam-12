@@ -33,13 +33,37 @@ var _current_state = State.IDLE
 
 var _seconds_since_started_falling = 0
 
-var _a_state = State.CLEAVER
-var _b_state = State.MALLET
+var _wield_slots = {
+	'a': {
+		spawner = null,
+		current_tool = null,
+		is_ready_to_spawn = true
+	},
+	'b': {
+		spawner = null,
+		current_tool = null,
+		is_ready_to_spawn = true
+	}
+}
+
+var _a_state = null
+var _b_state = null
 var _is_a_ready_to_spawn = true
 var _is_b_ready_to_spawn = true
 
-# { State: Spawner }
+# { Enums.Tool: Spawner }
 var _spawner_map: Dictionary
+
+func set_tool(slot: Enums.ToolSlot, tool: Enums.Tool):
+	match slot:
+		Enums.ToolSlot.SLOT_A:
+			if _b_state != tool:
+				_a_state = tool
+				_spawner_map[_a_state].ready_to_spawn.connect(func(): _is_a_ready_to_spawn = true)
+		Enums.ToolSlot.SLOT_B:
+			if _a_state != tool:
+				_b_state = tool
+				_spawner_map[_b_state].ready_to_spawn.connect(func(): _is_b_ready_to_spawn = true)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,14 +75,10 @@ func _ready():
 	SignalBus.player_health_updated.emit(health.get_health())
 	
 	_spawner_map = {
-		State.CLEAVER: cleaver_spawner,
-		State.MALLET: cleaver_spawner, # TODO: actual mallet projectile spawner
-		State.FLAMETHROWER: fireball_spawner
+		Enums.Tool.CLEAVER: cleaver_spawner,
+		Enums.Tool.MALLET: cleaver_spawner, # TODO: actual mallet projectile spawner
+		Enums.Tool.FLAMETHROWER: fireball_spawner
 	}
-	
-	# TODO: set these when you select your weapons
-	_spawner_map[_a_state].ready_to_spawn.connect(func(): _is_a_ready_to_spawn = true)
-	_spawner_map[_b_state].ready_to_spawn.connect(func(): _is_b_ready_to_spawn = true)
 
 func _physics_process(_delta):
 	if is_instance_valid(_current_interactable) && Input.is_action_just_pressed("start"):
@@ -76,7 +96,7 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 
-func _base_movement(delta, do_gravity = true, flip_on_back = true, movement = movement_type.ANY, speed_multiplier = 1):
+func _base_movement(delta, do_gravity = true, flip_on_back = true, movement = movement_type.ANY, speed_multiplier = 1.0):
 	if is_on_floor():
 		_seconds_since_started_falling = 0
 	else:
@@ -100,7 +120,6 @@ func _base_movement(delta, do_gravity = true, flip_on_back = true, movement = mo
 
 	return direction
 
-
 func _physics_process_idle(delta):
 	var direction = _base_movement(delta)
 	if not is_on_floor() && velocity.y > 0:
@@ -113,27 +132,31 @@ func _physics_process_idle(delta):
 	# Handle jump
 	if Input.is_action_just_pressed("up") and _seconds_since_started_falling <= COYOTE_TIME:
 		velocity.y = jumpSpeed
-		_animated_sprite.play("jump")
+		_animated_sprite.play("walk") # TODO: Jump animation
 		SoundManager.play(Enums.SoundEffect.JUMP)
 	
 	# Handle tools
-	if _is_a_ready_to_spawn && Input.is_action_pressed("button_a"):
+	if _a_state != null && _is_a_ready_to_spawn && Input.is_action_pressed("button_a"):
 		_start_tool(_a_state)
 		
-	elif _is_b_ready_to_spawn && Input.is_action_pressed("button_b"):
+	elif _b_state != null && _is_b_ready_to_spawn && Input.is_action_pressed("button_b"):
 		_start_tool(_b_state)
 
-func _start_tool(state: State):
-	match state:
-		State.CLEAVER:
+func _start_tool(tool: Enums.Tool):
+	if tool == null:
+		return
+		
+	match tool:
+		Enums.Tool.CLEAVER:
 			_start_cleaver()
-		State.MALLET:
+			_current_state = State.CLEAVER
+		Enums.Tool.MALLET:
 			_start_mallet()
-		State.FLAMETHROWER:
+			_current_state = State.MALLET
+		Enums.Tool.FLAMETHROWER:
 			_start_flamethrower()
+			_current_state = State.FLAMETHROWER
 	
-	_current_state = state
-
 func _activate_tool():
 	match _current_state:
 		State.CLEAVER:

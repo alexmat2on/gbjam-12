@@ -11,6 +11,17 @@ enum Item {
 	SHROOMS
 }
 
+enum Tool {
+	MALLET,
+	FLAMETHROWER,
+	CLEAVER
+}
+
+enum ToolSlot {
+	SLOT_A,
+	SLOT_B
+}
+
 enum Recipe {
 	ZOMBIE_STEW,
 	ZOMBIE_STEAK,
