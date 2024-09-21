@@ -185,11 +185,12 @@ func _physics_process_cleaver(delta):
 		velocity.y = jumpSpeed
 
 func _activate_cleaver():
-	cleaver_spawner.spawn(cleaver_spawner.direction if is_facing_right() else Vector2(-cleaver_spawner.direction.x, cleaver_spawner.direction.y))
-	if _equip_state[BUTTON_A].current_tool == Enums.Tool.CLEAVER:
-		_equip_state[BUTTON_A].is_ready_to_spawn = false
-	else:
-		_equip_state[BUTTON_B].is_ready_to_spawn = false
+	var es = _equip_state[get_tool_button(Enums.Tool.CLEAVER)]
+	var s = es.spawner
+	
+	s.spawn(s.direction if is_facing_right() else Vector2(-s.direction.x, s.direction.y))
+	es.is_ready_to_spawn = false
+	
 	_current_state = State.IDLE
 	
 func _start_mallet():
@@ -219,15 +220,20 @@ func _physics_process_flamethrower(delta):
 	if !_animated_sprite.animation.ends_with("_channel") && Input.is_action_just_pressed("up") and _seconds_since_started_falling <= COYOTE_TIME:
 		velocity.y = jumpSpeed
 	
-	if Input.is_action_just_released(get_tool_button(Enums.Tool.FLAMETHROWER)):
-		fireball_spawner.disable_auto_spawn()
+	var flamethrower_button = get_tool_button(Enums.Tool.FLAMETHROWER)
+	
+	if Input.is_action_just_released(flamethrower_button):
+		_equip_state[flamethrower_button].spawner.disable_auto_spawn()
 		print("action released")
 		_animated_sprite.play("atk_ft_end")
 
 func _activate_flamethrower():
-	fireball_spawner.offset = Vector2(20 if is_facing_right() else -20, 0)
-	fireball_spawner.direction = Vector2.RIGHT if is_facing_right() else Vector2.LEFT
-	fireball_spawner.enable_auto_spawn()
+	var es = _equip_state[get_tool_button(Enums.Tool.FLAMETHROWER)]
+
+	es.spawner.offset = Vector2(20 if is_facing_right() else -20, 0)
+	es.spawner.direction = Vector2.RIGHT if is_facing_right() else Vector2.LEFT
+	es.spawner.enable_auto_spawn()
+	
 	_animated_sprite.play("atk_ft_channel")
 
 func _on_interaction_area_entered(interactable: Area2D):
