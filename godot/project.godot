@@ -19,6 +19,8 @@ boot_splash/image="res://art/splash.png"
 
 Inventory="*res://scripts/utils/Inventory.gd"
 RecipeUtils="*res://scripts/utils/RecipeUtils.gd"
+Kitchen="*res://components/cooking/Kitchen.gd"
+PlayerVariables="*res://components/player/PlayerVariables.gd"
 InputHandler="*res://scripts/utils/InputHandler.gd"
 SoundManager="*res://scripts/utils/SoundManager.gd"
 SignalBus="*res://scripts/utils/SignalBus.gd"
