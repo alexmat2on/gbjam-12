@@ -39,12 +39,12 @@ const BUTTON_B = 'button_b'
 var _equip_state = {
 	BUTTON_A: {
 		spawner = null,
-		current_tool = null,
+		tool = null,
 		is_ready_to_spawn = true
 	},
 	BUTTON_B: {
 		spawner = null,
-		current_tool = null,
+		tool = null,
 		is_ready_to_spawn = true
 	}
 }
@@ -53,22 +53,22 @@ var _equip_state = {
 var _spawner_map: Dictionary
 
 func get_tool_button(tool: Enums.Tool):
-	if _equip_state[BUTTON_A].current_tool == tool:
+	if _equip_state[BUTTON_A].tool == tool:
 		return BUTTON_A
-	if _equip_state[BUTTON_B].current_tool == tool:
+	if _equip_state[BUTTON_B].tool == tool:
 		return BUTTON_B
 	return null
 
 func equip_tool(button: String, tool: Enums.Tool):
 	match button:
 		BUTTON_A:
-			if _equip_state[BUTTON_B].current_tool != tool:
-				_equip_state[BUTTON_A].current_tool = tool
+			if _equip_state[BUTTON_B].tool != tool:
+				_equip_state[BUTTON_A].tool = tool
 				_equip_state[BUTTON_A].spawner = _spawner_map[tool]
 				_equip_state[BUTTON_A].spawner.ready_to_spawn.connect(func(): _equip_state[BUTTON_A].is_ready_to_spawn = true)
 		BUTTON_B:
-			if _equip_state[BUTTON_A].current_tool != tool:
-				_equip_state[BUTTON_B].current_tool = tool
+			if _equip_state[BUTTON_A].tool != tool:
+				_equip_state[BUTTON_B].tool = tool
 				_equip_state[BUTTON_B].spawner = _spawner_map[tool]
 				_equip_state[BUTTON_B].spawner.ready_to_spawn.connect(func(): _equip_state[BUTTON_B].is_ready_to_spawn = true)
 		_:
@@ -143,12 +143,12 @@ func _physics_process_idle(delta):
 		velocity.y = jumpSpeed
 		_animated_sprite.play("walk") # TODO: Jump animationndle tools
 	if Input.is_action_pressed(BUTTON_A):
-		if _equip_state[BUTTON_A].current_tool != null && _equip_state[BUTTON_A].is_ready_to_spawn:
-			_start_tool(_equip_state[BUTTON_A].current_tool)
+		if _equip_state[BUTTON_A].tool != null && _equip_state[BUTTON_A].is_ready_to_spawn:
+			_start_tool(_equip_state[BUTTON_A].tool)
 
 	if Input.is_action_pressed(BUTTON_B):
-		if _equip_state[BUTTON_B].current_tool != null && _equip_state[BUTTON_B].is_ready_to_spawn:
-			_start_tool(_equip_state[BUTTON_B].current_tool)
+		if _equip_state[BUTTON_B].tool != null && _equip_state[BUTTON_B].is_ready_to_spawn:
+			_start_tool(_equip_state[BUTTON_B].tool)
 
 func _start_tool(tool: Enums.Tool):
 	if tool == null:
