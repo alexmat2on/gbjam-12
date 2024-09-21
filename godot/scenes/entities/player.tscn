@@ -1,8 +1,9 @@
-[gd_scene load_steps=47 format=3 uid="uid://75n2j6mgpexf"]
+[gd_scene load_steps=49 format=3 uid="uid://75n2j6mgpexf"]
 
 [ext_resource type="Script" path="res://scripts/entities/Player.gd" id="1_0ke4j"]
 [ext_resource type="Texture2D" uid="uid://c00hm435rt6bc" path="res://art/entities/player/lechef.png" id="2_e1o3v"]
 [ext_resource type="Script" path="res://scripts/components/Health.gd" id="2_loqi2"]
+[ext_resource type="Script" path="res://scripts/components/Hurtbox2D.gd" id="4_tewki"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3ajg"]
 atlas = ExtResource("2_e1o3v")
@@ -319,6 +320,10 @@ height = 32.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fw7ub"]
 size = Vector2(12, 32)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_853p6"]
+radius = 5.0
+height = 28.0
+
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_0ke4j")
@@ -333,7 +338,7 @@ sprite_frames = SubResource("SpriteFrames_u0yn2")
 animation = &"attack_cleaver"
 offset = Vector2(0, -16)
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_uca6y")
 
@@ -343,3 +348,12 @@ shape = SubResource("CapsuleShape2D_uca6y")
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_fw7ub")
 debug_color = Color(0.637653, 0.509923, 0.365063, 0.42)
+
+[node name="Hurtbox2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("4_tewki")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_853p6")
