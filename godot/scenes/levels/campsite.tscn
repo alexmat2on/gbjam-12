@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bn0efw4v83pyv" path="res://scenes/appliances/fryer.tscn" id="7_f2v7y"]
 [ext_resource type="Script" path="res://scripts/utils/BGM.gd" id="8_bygvf"]
 [ext_resource type="AudioStream" uid="uid://bnusoor4jfcw6" path="res://audio/music/campfire.wav" id="9_f4l8i"]
-[ext_resource type="PackedScene" uid="uid://dnd7u5ra2uoci" path="res://scenes/tools/cleaver_tool.tscn" id="10_5vw0u"]
-[ext_resource type="PackedScene" uid="uid://cdyf3om11ummy" path="res://scenes/tools/flamethrower_tool.tscn" id="11_7320f"]
-[ext_resource type="PackedScene" uid="uid://bnohdpspx1h3r" path="res://scenes/tools/mallet_tool.tscn" id="12_hdb3y"]
+[ext_resource type="PackedScene" uid="uid://dnd7u5ra2uoci" path="res://scenes/tools/cleaver_tool.tscn" id="10_k5f85"]
+[ext_resource type="PackedScene" uid="uid://cdyf3om11ummy" path="res://scenes/tools/flamethrower_tool.tscn" id="11_fo00j"]
+[ext_resource type="PackedScene" uid="uid://bnohdpspx1h3r" path="res://scenes/tools/mallet_tool.tscn" id="12_nwcby"]
 
 [node name="Game2" type="Node2D"]
 
@@ -47,11 +47,10 @@ script = ExtResource("8_bygvf")
 stream = ExtResource("9_f4l8i")
 autoplay = true
 
-[node name="Cleaver" parent="." instance=ExtResource("10_5vw0u")]
-position = Vector2(45, 11)
+[node name="Cleaver" parent="." instance=ExtResource("10_k5f85")]
 
-[node name="FlamethrowerTool" parent="." instance=ExtResource("11_7320f")]
-position = Vector2(22, 11)
+[node name="FlamethrowerTool" parent="." instance=ExtResource("11_fo00j")]
+position = Vector2(20, 0)
 
-[node name="MalletTool" parent="." instance=ExtResource("12_hdb3y")]
-position = Vector2(-1, 11)
+[node name="MalletTool" parent="." instance=ExtResource("12_nwcby")]
+position = Vector2(40, 0)
