@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://l6oxmy7wh4gu"]
 
-[ext_resource type="TileSet" uid="uid://cuxlyeolus3n" path="res://tilesets/graveyard_tileset.tres" id="1_rkwbu"]
+[ext_resource type="TileSet" uid="uid://cuxlyeolus3n" path="res://tilesets/tiles.tres" id="1_rkwbu"]
 [ext_resource type="PackedScene" uid="uid://75n2j6mgpexf" path="res://scenes/entities/player.tscn" id="2_86k7r"]
 [ext_resource type="PackedScene" uid="uid://d1cbw1acmg7nt" path="res://scenes/entities/enemies/skeleton.tscn" id="3_h4mde"]
 [ext_resource type="PackedScene" uid="uid://dqhymk434xpmh" path="res://scenes/entities/enemies/ghost.tscn" id="4_o1cjo"]
