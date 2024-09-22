@@ -8,6 +8,7 @@ var _stay_paused_on_select: bool = false
 
 func _ready():
 	SignalBus.opened_option_menu.connect(_on_menu_opened)
+	process_mode = ProcessMode.PROCESS_MODE_WHEN_PAUSED
 
 
 func _on_menu_opened(option_menu: OptionMenu, stay_paused_on_select: bool):

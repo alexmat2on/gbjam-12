@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbth4mwyr2lix"]
+
+[ext_resource type="PackedScene" uid="uid://brngsv47cg41w" path="res://scenes/customers/customer.tscn" id="1_pxx26"]
+
+[node name="ZombieSteakCustomer" type="Node2D"]
+
+[node name="Customer" parent="." instance=ExtResource("1_pxx26")]
+recipe_order = 1

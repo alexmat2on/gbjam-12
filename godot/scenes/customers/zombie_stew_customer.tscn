@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwt4ncn1a6641"]
+
+[ext_resource type="PackedScene" uid="uid://brngsv47cg41w" path="res://scenes/customers/customer.tscn" id="1_bkn51"]
+
+[node name="ZombieStewCustomer" type="Node2D"]
+
+[node name="Customer" parent="." instance=ExtResource("1_bkn51")]

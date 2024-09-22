@@ -7,6 +7,7 @@ class_name Player
 @onready var cleaver_spawner: Spawner = $CleaverSpawner
 @onready var fireball_spawner: Spawner = $FireballSpawner
 @onready var mallet_spawner: Spawner = $MalletSpawner
+@onready var _dish_sprite: Sprite2D = $Dish
 
 const PLAYER_SPEED := 60
 const JUMP_SPEED := -300
@@ -30,6 +31,7 @@ enum movement_type {
 	UNCONTROLLED
 }
 
+var _dish = null
 var _current_interactable = null
 var _current_state = State.IDLE
 
@@ -94,6 +96,8 @@ func _ready():
 func _physics_process(_delta):
 	if is_instance_valid(_current_interactable) && Input.is_action_just_pressed("start"):
 		_current_interactable.interact(self)
+
+	_dish_sprite.visible = self.is_carrying_dish()
 		
 	match _current_state:
 		State.MENU:
@@ -291,3 +295,16 @@ func prevent_movement() -> void:
 
 func enable_movement() -> void:
 	self._current_state = State.IDLE
+
+func get_dish() -> Enums.Recipe:
+	return self._dish
+
+func pick_up_dish(dish: Enums.Recipe) -> void:
+	self._dish = dish
+	self._dish_sprite.texture = RecipeUtils.get_recipe_texture(dish)
+
+func is_carrying_dish() -> bool:
+	return self._dish != null
+
+func drop_dish() -> void:
+	self._dish = null
