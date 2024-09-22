@@ -106,3 +106,4 @@ shape = SubResource("CapsuleShape2D_q24sx")
 [node name="DropSpawner" type="Node2D" parent="."]
 script = ExtResource("8_xsuc3")
 spawn_object = ExtResource("9_tnmkb")
+auto_spawn = false
