@@ -71,3 +71,8 @@ func activate_spawner():
 
 func _initialize_spawn_point():
 	_initial_spawn_point = global_position
+
+func take_damage(hitbox: Hitbox2D):
+	# TODO: also include damage type (light, heavy, fire)
+	Logger.log(["enemy health: ", str(health.get_health())])
+	health.remove_health(hitbox.damage)
