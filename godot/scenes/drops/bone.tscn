@@ -6,6 +6,7 @@
 size = Vector2(11, 10)
 
 [node name="Bone" type="RigidBody2D"]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
