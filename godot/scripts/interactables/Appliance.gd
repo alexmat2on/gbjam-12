@@ -14,6 +14,7 @@ extends Interactable2D
 @onready var _cook_progress: AnimatedSprite2D = $CookProgress
 @onready var _burn_progress: AnimatedSprite2D = $BurnProgress
 @onready var _active_recipe: Sprite2D = $ActiveRecipe
+@onready var _animation_player: AnimationPlayer = $AnimationPlayer
 
 var _player_ref: Player
 var _state: Array
@@ -136,6 +137,7 @@ func pickup(slot: int = 0) -> bool:
 		print("Dish is not ready to be collected!")
 		return false
 
+	self._animation_player.stop()
 	dish_pickup.emit(dish["recipe"])
 	for timer in [dish["cook_timer"], dish["burn_timer"]]:
 		if timer != null:
@@ -151,6 +153,7 @@ func clear(slot: int = 0) -> void:
 	if self._state[slot] == null:
 		return
 
+	self._animation_player.stop()
 	var dish = self._state[slot]
 	for timer in [dish["cook_timer"], dish["burn_timer"]]:
 		if timer != null:
@@ -171,12 +174,14 @@ func get_recipes() -> Array:
 
 # Runs whenever a dish is finished cooking on an appliance slot.
 func _on_cooking_complete(slot: int) -> void:
+	self._animation_player.play("bounce")
 	var dish = self._state[slot]
 	dish["ready"] = true
 	dish["burn_timer"].start()
 
 # Runs whenever a dish is burned on an appliance slot.
 func _on_burned(slot: int) -> void:
+	self._animation_player.stop()
 	var dish = self._state[slot]
 	dish["ready"] = false
 	dish["burned"] = true
