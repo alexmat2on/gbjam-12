@@ -88,8 +88,16 @@ func activate_spawner():
 func _initialize_spawn_point():
 	_initial_spawn_point = global_position
 
-func take_damage(hitbox: Hitbox2D):
-	# TODO: also include damage type (light, heavy, fire)
-	Logger.log(["enemy health: ", str(health.get_health())])
-	health.remove_health(hitbox.damage)
-		
+func take_damage(hitbox: Hitbox2D, hurt_mod: Array[Enums.HurtModifier]):
+	var damage_amt: int = hitbox.damage
+	
+	if hitbox.hit_mod.has(Enums.HitModifier.LIGHT) && hurt_mod.has(Enums.HurtModifier.TOUGH):
+		damage_amt = 0 * hitbox.damage
+	if hitbox.hit_mod.has(Enums.HitModifier.HEAVY) && hurt_mod.has(Enums.HurtModifier.FLYING):
+		damage_amt = 0 * hitbox.damage
+	if hitbox.hit_mod.has(Enums.HitModifier.HEAVY) && hurt_mod.has(Enums.HurtModifier.FLYING):
+		damage_amt = 2 * hitbox.damage
+	
+	var destroy_items_if_killed = hitbox.hit_mod.has(Enums.HitModifier.FIRE) && hurt_mod.has(Enums.HurtModifier.FRAGILE)
+	
+	health.remove_health(damage_amt, !destroy_items_if_killed)

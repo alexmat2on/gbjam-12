@@ -6,7 +6,7 @@ class_name Player
 @onready var health: Health = $Health
 @onready var cleaver_spawner: Spawner = $CleaverSpawner
 @onready var fireball_spawner: Spawner = $FireballSpawner
-#@onready var mallet_spawner: Spawner = $MalletSpawner
+@onready var mallet_spawner: Spawner = $MalletSpawner
 
 const PLAYER_SPEED := 60
 const JUMP_SPEED := -300
@@ -87,7 +87,7 @@ func _ready():
 	
 	_spawner_map = {
 		Enums.Tool.CLEAVER: cleaver_spawner,
-		Enums.Tool.MALLET: cleaver_spawner,
+		Enums.Tool.MALLET: mallet_spawner,
 		Enums.Tool.FLAMETHROWER: fireball_spawner
 	}
 
@@ -279,7 +279,7 @@ func _on_animation_finished():
 func _on_health_updated(new_health):
 	SignalBus.player_health_updated.emit(new_health)
 
-func take_damage(hitbox: Hitbox2D):
+func take_damage(hitbox: Hitbox2D, hurt_mod: Array[Enums.HurtModifier]):
 	# TODO: also include damage type (light, heavy, fire)
 	health.remove_health(hitbox.damage)
 

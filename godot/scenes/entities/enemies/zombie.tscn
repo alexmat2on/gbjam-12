@@ -41,6 +41,7 @@ height = 28.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_58rqn"]
 height = 36.0
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l1ru2"]
 
 [node name="zombie" type="CharacterBody2D" node_paths=PackedStringArray("health", "idle_behavior", "aggro_behavior", "detection_area", "undetection_area")]
@@ -108,6 +109,7 @@ script = ExtResource("7_hp28p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
 position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_58rqn")
+
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = -8.0
 offset_top = -48.0
