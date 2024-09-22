@@ -17,6 +17,18 @@ enum Tool {
 	CLEAVER
 }
 
+enum HurtModifier {
+	FRAGILE,
+	FLYING,
+	TOUGH
+}
+
+enum HitModifier {
+	LIGHT,
+	HEAVY,
+	FIRE
+}
+
 enum Recipe {
 	ZOMBIE_STEW,
 	ZOMBIE_STEAK,

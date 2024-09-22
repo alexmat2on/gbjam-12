@@ -8,10 +8,12 @@ extends Interactable2D
 @export var capacity: int = 1
 @export var texture: Texture2D
 @export var glow_texture: Texture2D
+@export var recipe_menu: Control
 
 @onready var _sprite: Sprite2D = $Area2D/CollisionShape2D/Sprite2D
-@onready var _recipe_menu: Control = $"../CanvasLayer/RecipeMenu"
-
+@onready var _cook_progress: AnimatedSprite2D = $CookProgress
+@onready var _burn_progress: AnimatedSprite2D = $BurnProgress
+@onready var _active_recipe: Sprite2D = $ActiveRecipe
 
 var _state: Array
 signal dish_pickup(recipe: Enums.Recipe)
@@ -19,6 +21,32 @@ signal dish_pickup(recipe: Enums.Recipe)
 func _ready() -> void:
 	self._state = [null, null, null, null]
 	self._sprite.texture = self.texture
+	self._cook_progress.visible = false
+	self._burn_progress.visible = false
+	self._active_recipe.visible = false
+
+func _process(delta) -> void:
+	var dish_in_progress = self._get_dish_in_progress()
+	var dish_exists = dish_in_progress != null
+	if not dish_exists:
+		self._cook_progress.visible = false
+		self._burn_progress.visible = false
+		self._active_recipe.visible = false
+		return
+
+	self._active_recipe.visible = true
+	self._active_recipe.texture = RecipeUtils.get_recipe_texture(dish_in_progress["recipe"])
+
+	var burn_timer: Timer = dish_in_progress["burn_timer"]
+	if burn_timer != null and not burn_timer.is_stopped():
+		self._cook_progress.visible = false
+		self._burn_progress.visible = true
+		self._burn_progress.frame = self._get_progress_frame(burn_timer, self._burn_progress)
+		return
+
+	var timer: Timer = dish_in_progress["cook_timer"]
+	self._cook_progress.visible = true
+	self._cook_progress.frame = self._get_progress_frame(timer, self._cook_progress)
 
 func on_interact_enter(player):
 	super.on_interact_enter(player)
@@ -27,11 +55,20 @@ func on_interact_enter(player):
 func on_interact_exit(player):
 	super.on_interact_exit(player)
 	self._sprite.texture = self.texture
-	_recipe_menu.visible = false
+	self.recipe_menu.hide_menu()
 
 func interact(_player):
-	_recipe_menu.set_recipes(self.get_recipes())
-	_recipe_menu.visible = true
+	var dish_in_progress = self._get_dish_in_progress()
+	if dish_in_progress != null:
+		if dish_in_progress["ready"]:
+			self.pickup()
+			return
+		elif dish_in_progress["burned"]:
+			self.clear()
+			return
+		return
+	self.recipe_menu.set_recipes(self.get_recipes(), self)
+	self.recipe_menu.show_menu()
 
 # Attempts to cook the recipe on the appliance.
 # Returns true if cooking began successfully, false otherwise.
@@ -101,6 +138,7 @@ func pickup(slot: int = 0) -> bool:
 			timer.stop()
 			timer.queue_free()
 	self._state[slot] = null
+	print("dish picked up!", dish["recipe"])
 	return true
 
 # Clears the dish at the given slot.
@@ -130,8 +168,6 @@ func get_recipes() -> Array:
 func _on_cooking_complete(slot: int) -> void:
 	var dish = self._state[slot]
 	dish["ready"] = true
-	dish["cook_timer"].queue_free()
-	dish["cook_timer"] = null
 	dish["burn_timer"].start()
 
 # Runs whenever a dish is burned on an appliance slot.
@@ -139,12 +175,20 @@ func _on_burned(slot: int) -> void:
 	var dish = self._state[slot]
 	dish["ready"] = false
 	dish["burned"] = true
-	dish["burn_timer"].queue_free()
-	dish["burn_timer"] = null
 
 func _create_timer(time: float) -> Timer:
 	var timer = Timer.new()
 	timer.wait_time = time
 	timer.one_shot = true
-	timer.timer_process_callback = Timer.TIMER_PROCESS_PHYSICS
+	timer.process_callback = Timer.TIMER_PROCESS_PHYSICS
 	return timer
+
+func _get_dish_in_progress():
+	return self._state[0]
+
+func _get_progress_frame(timer: Timer, anim: AnimatedSprite2D) -> int:
+	var progress_percentage: float = 1.0 - (timer.time_left / timer.wait_time)
+	return floor(progress_percentage * self._get_frame_count(anim))
+
+func _get_frame_count(anim: AnimatedSprite2D) -> int:
+	return anim.sprite_frames.get_frame_count("default")

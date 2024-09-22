@@ -4,6 +4,9 @@ var RecipeChoice = preload("res://scenes/ui/recipe_choice.tscn")
 
 var _recipes: Array = []
 var _index: int = 0
+var _current_appliance
+
+@export var player: Player
 
 @onready var _recipe_choices_container: HBoxContainer = $RecipesMargin/RecipeChoicesContainer
 @onready var _recipe_info: MarginContainer = $RecipeInfoMargin
@@ -20,11 +23,16 @@ func _process(delta):
 	if not self.visible:
 		return
 	if Input.is_action_pressed("left"):
-		_cursor_left()
+		self._cursor_left()
 	elif Input.is_action_pressed("right"):
-		_cursor_right()
+		self._cursor_right()
+	elif Input.is_action_pressed("button_a"):
+		self.confirm_recipe()
+	elif Input.is_action_pressed("button_b"):
+		self.hide_menu()
 
-func set_recipes(new_recipes: Array) -> void:
+func set_recipes(new_recipes: Array, appliance) -> void:
+	self._current_appliance = appliance
 	self._index = 0
 	for recipe in self._recipes:
 		recipe["node"].queue_free()
@@ -72,3 +80,17 @@ func _update_selection() -> void:
 	for item_type in recipe_costs:
 		var item_amount = recipe_costs[item_type]
 		self._recipe_cost.add_ingredient_cost(item_type, item_amount)
+
+func show_menu() -> void:
+	self.visible = true
+	self.player.prevent_movement()
+
+func hide_menu() -> void:
+	self.visible = false
+	self.player.enable_movement()
+
+func confirm_recipe() -> void:
+	var selected_choice = self._recipes[self._index]
+	var recipe_type = selected_choice["type"]
+	self._current_appliance.cook(recipe_type)
+	self.hide_menu()

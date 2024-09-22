@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtqhot2ycu2rh"]
+
+[ext_resource type="Texture2D" uid="uid://dmwggp87xg4ws" path="res://art/cooking/ingredients/zombie-flesh-ing.png" id="1_3me81"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltq7t"]
+size = Vector2(10, 10)
+
+[node name="Zombie-flesh" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_ltq7t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D/CollisionShape2D"]
+texture = ExtResource("1_3me81")

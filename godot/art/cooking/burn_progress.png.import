@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvirj06qwk5yr"
-path="res://.godot/imported/bone-ing.png-8bdcc5289ba3cd630a7fabee4064906a.ctex"
+uid="uid://bgenekd8v8bem"
+path="res://.godot/imported/burn_progress.png-9445975ed1edcffd8ba51be7a7056e02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cooking/ingredients/bone-ing.png"
-dest_files=["res://.godot/imported/bone-ing.png-8bdcc5289ba3cd630a7fabee4064906a.ctex"]
+source_file="res://art/cooking/burn_progress.png"
+dest_files=["res://.godot/imported/burn_progress.png-9445975ed1edcffd8ba51be7a7056e02.ctex"]
 
 [params]
 
