@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d27y573aox5wo"]
+[gd_scene load_steps=6 format=3 uid="uid://d27y573aox5wo"]
 
 [ext_resource type="Script" path="res://scripts/ui/RecipeMenu.gd" id="1_yvjyl"]
 [ext_resource type="Texture2D" uid="uid://dmhnjgv3koty7" path="res://art/ui/menu.png" id="2_prmch"]
 [ext_resource type="Theme" uid="uid://rvxbkrh4n8wn" path="res://tilesets/menu_theme.tres" id="3_l3fxd"]
 [ext_resource type="PackedScene" uid="uid://bxnrnly36cnd6" path="res://scenes/ui/recipe_choice.tscn" id="4_m0own"]
+[ext_resource type="PackedScene" uid="uid://bxgcda3rhjkay" path="res://scenes/ui/recipe_cost.tscn" id="5_xh1k1"]
 
 [node name="RecipeMenu" type="Control"]
 layout_mode = 3
@@ -14,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yvjyl")
 
-[node name="TitleContainer" type="MarginContainer" parent="."]
+[node name="MenuTitleMargin" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,7 +27,7 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 120
 
-[node name="Title" type="NinePatchRect" parent="TitleContainer"]
+[node name="MenuTitle" type="NinePatchRect" parent="MenuTitleMargin"]
 layout_mode = 2
 texture = ExtResource("2_prmch")
 patch_margin_left = 4
@@ -34,7 +35,7 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="LabelContainer" type="MarginContainer" parent="TitleContainer/Title"]
+[node name="MenuTitleTextMargin" type="MarginContainer" parent="MenuTitleMargin/MenuTitle"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,13 +47,13 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="Label" type="Label" parent="TitleContainer/Title/LabelContainer"]
+[node name="MenuTitleText" type="Label" parent="MenuTitleMargin/MenuTitle/MenuTitleTextMargin"]
 layout_mode = 2
 theme = ExtResource("3_l3fxd")
 text = "select recipe"
 horizontal_alignment = 1
 
-[node name="RecipesContainer" type="MarginContainer" parent="."]
+[node name="RecipesMargin" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,16 +63,89 @@ grow_vertical = 2
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_bottom = 90
 
-[node name="RecipeChoicesContainer" type="HBoxContainer" parent="RecipesContainer"]
+[node name="RecipeChoicesContainer" type="HBoxContainer" parent="RecipesMargin"]
 layout_mode = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="RecipeChoice1" parent="RecipesContainer/RecipeChoicesContainer" instance=ExtResource("4_m0own")]
+[node name="RecipeChoice1" parent="RecipesMargin/RecipeChoicesContainer" instance=ExtResource("4_m0own")]
 layout_mode = 2
 
-[node name="RecipeChoice2" parent="RecipesContainer/RecipeChoicesContainer" instance=ExtResource("4_m0own")]
+[node name="RecipeChoice2" parent="RecipesMargin/RecipeChoicesContainer" instance=ExtResource("4_m0own")]
 layout_mode = 2
 
-[node name="RecipeChoice3" parent="RecipesContainer/RecipeChoicesContainer" instance=ExtResource("4_m0own")]
+[node name="RecipeChoice3" parent="RecipesMargin/RecipeChoicesContainer" instance=ExtResource("4_m0own")]
+layout_mode = 2
+
+[node name="RecipeInfoMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 68
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 48
+
+[node name="RecipeInfo" type="NinePatchRect" parent="RecipeInfoMargin"]
+layout_mode = 2
+texture = ExtResource("2_prmch")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="RecipeTitleMargin" type="MarginContainer" parent="RecipeInfoMargin/RecipeInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 14
+
+[node name="RecipeTitle" type="Label" parent="RecipeInfoMargin/RecipeInfo/RecipeTitleMargin"]
+layout_mode = 2
+theme = ExtResource("3_l3fxd")
+text = "zombie steak"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RecipeCostTitleMargin" type="MarginContainer" parent="RecipeInfoMargin/RecipeInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 72
+theme_override_constants/margin_bottom = 2
+
+[node name="RecipeCostTitle" type="Label" parent="RecipeInfoMargin/RecipeInfo/RecipeCostTitleMargin"]
+layout_mode = 2
+theme = ExtResource("3_l3fxd")
+text = "cost:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RecipeCostMargin" type="MarginContainer" parent="RecipeInfoMargin/RecipeInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 58
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="RecipeCost" parent="RecipeInfoMargin/RecipeInfo/RecipeCostMargin" instance=ExtResource("5_xh1k1")]
 layout_mode = 2

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxgcda3rhjkay"]
+
+[ext_resource type="Script" path="res://scripts/ui/RecipeCost.gd" id="1_ph5vc"]
+[ext_resource type="PackedScene" uid="uid://cm66xge4irtly" path="res://scenes/ui/ingredient_cost.tscn" id="2_gt531"]
+
+[node name="RecipeCost" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ph5vc")
+
+[node name="IngredientCosts" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 10.0
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="IngredientCost" parent="IngredientCosts" instance=ExtResource("2_gt531")]
+layout_mode = 2
+
+[node name="IngredientCost2" parent="IngredientCosts" instance=ExtResource("2_gt531")]
+layout_mode = 2

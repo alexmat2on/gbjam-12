@@ -13,7 +13,7 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 script = ExtResource("2_0b6c2")
 
-[node name="IconMargin" type="MarginContainer" parent="."]
+[node name="RecipeIconMargin" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +25,7 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="Placeholder" type="TextureRect" parent="IconMargin"]
+[node name="RecipeIcon" type="TextureRect" parent="RecipeIconMargin"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 texture = ExtResource("2_g3bej")
