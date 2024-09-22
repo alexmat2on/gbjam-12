@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ipeq1yuy8ssp"]
+[gd_scene load_steps=9 format=3 uid="uid://ipeq1yuy8ssp"]
 
 [ext_resource type="Script" path="res://scripts/interactables/ToolRack.gd" id="1_5ffll"]
 [ext_resource type="Texture2D" uid="uid://c4y77mr8vy2s0" path="res://art/tools/tool-rack-inactive.png" id="2_qndpp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dxw6l876257q5" path="res://art/tools/cleaver.png" id="4_87ah6"]
 [ext_resource type="Texture2D" uid="uid://c8ye058asm4ct" path="res://art/tools/meatmallet.png" id="5_nknhb"]
 [ext_resource type="Texture2D" uid="uid://bra8ei7jle07f" path="res://art/tools/flamethrower.png" id="6_vkt4b"]
+[ext_resource type="Script" path="res://scripts/components/OptionMenuHandler.gd" id="8_713uy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3okeo"]
 size = Vector2(40, 48)
@@ -36,3 +37,6 @@ texture = ExtResource("5_nknhb")
 [node name="FlamethrowerIcon" type="Sprite2D" parent="."]
 position = Vector2(15, -3)
 texture = ExtResource("6_vkt4b")
+
+[node name="OptionMenuHandler" type="Node" parent="."]
+script = ExtResource("8_713uy")

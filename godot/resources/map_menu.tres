@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="OptionMenu" load_steps=5 format=3 uid="uid://bkjpbr67wgq3s"]
+
+[ext_resource type="Script" path="res://scripts/resources/OptionMenuOption.gd" id="1_pikdr"]
+[ext_resource type="Script" path="res://scripts/resources/OptionMenu.gd" id="2_jpr4u"]
+
+[sub_resource type="Resource" id="Resource_iwbvp"]
+script = ExtResource("1_pikdr")
+id = "campsite"
+text = "Campsite"
+tooltip = "Change Tools and restore health"
+
+[sub_resource type="Resource" id="Resource_r628w"]
+script = ExtResource("1_pikdr")
+id = "graveyard"
+text = "Graveyard"
+tooltip = "Fight Zombies, Ghosts, and Skeletons"
+
+[resource]
+script = ExtResource("2_jpr4u")
+dialogue = "Select a location to go to"
+options = Array[ExtResource("1_pikdr")]([SubResource("Resource_iwbvp"), SubResource("Resource_r628w")])
