@@ -30,6 +30,7 @@ func on_interact_exit(player):
 	_recipe_menu.visible = false
 
 func interact(_player):
+	_recipe_menu.set_recipes(self.get_recipes())
 	_recipe_menu.visible = true
 
 # Attempts to cook the recipe on the appliance.

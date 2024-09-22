@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/RecipeMenu.gd" id="1_yvjyl"]
 [ext_resource type="Texture2D" uid="uid://dmhnjgv3koty7" path="res://art/ui/menu.png" id="2_prmch"]
 [ext_resource type="Theme" uid="uid://rvxbkrh4n8wn" path="res://tilesets/menu_theme.tres" id="3_l3fxd"]
-[ext_resource type="Texture2D" uid="uid://q851rau5vixt" path="res://art/recipes/recipe-placeholder.png" id="4_solbf"]
+[ext_resource type="PackedScene" uid="uid://bxnrnly36cnd6" path="res://scenes/ui/recipe_choice.tscn" id="4_m0own"]
 
 [node name="RecipeMenu" type="Control"]
 layout_mode = 3
@@ -62,85 +62,16 @@ grow_vertical = 2
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_bottom = 90
 
-[node name="HBoxContainer" type="HBoxContainer" parent="RecipesContainer"]
+[node name="RecipeChoicesContainer" type="HBoxContainer" parent="RecipesContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="Recipe1" type="NinePatchRect" parent="RecipesContainer/HBoxContainer"]
-custom_minimum_size = Vector2(24, 24)
+[node name="RecipeChoice1" parent="RecipesContainer/RecipeChoicesContainer" instance=ExtResource("4_m0own")]
 layout_mode = 2
-texture = ExtResource("2_prmch")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
 
-[node name="IconMargin" type="MarginContainer" parent="RecipesContainer/HBoxContainer/Recipe1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="Placeholder" type="TextureRect" parent="RecipesContainer/HBoxContainer/Recipe1/IconMargin"]
-custom_minimum_size = Vector2(16, 16)
+[node name="RecipeChoice2" parent="RecipesContainer/RecipeChoicesContainer" instance=ExtResource("4_m0own")]
 layout_mode = 2
-texture = ExtResource("4_solbf")
 
-[node name="Recipe2" type="NinePatchRect" parent="RecipesContainer/HBoxContainer"]
-custom_minimum_size = Vector2(24, 24)
+[node name="RecipeChoice3" parent="RecipesContainer/RecipeChoicesContainer" instance=ExtResource("4_m0own")]
 layout_mode = 2
-texture = ExtResource("2_prmch")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
-
-[node name="IconMargin" type="MarginContainer" parent="RecipesContainer/HBoxContainer/Recipe2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="Placeholder" type="TextureRect" parent="RecipesContainer/HBoxContainer/Recipe2/IconMargin"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-texture = ExtResource("4_solbf")
-
-[node name="Recipe3" type="NinePatchRect" parent="RecipesContainer/HBoxContainer"]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-texture = ExtResource("2_prmch")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
-
-[node name="IconMargin" type="MarginContainer" parent="RecipesContainer/HBoxContainer/Recipe3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="Placeholder" type="TextureRect" parent="RecipesContainer/HBoxContainer/Recipe3/IconMargin"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-texture = ExtResource("4_solbf")

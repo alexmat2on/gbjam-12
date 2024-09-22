@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxnrnly36cnd6"]
+
+[ext_resource type="Texture2D" uid="uid://dmhnjgv3koty7" path="res://art/ui/menu.png" id="1_hvl8a"]
+[ext_resource type="Script" path="res://scripts/ui/RecipeChoice.gd" id="2_0b6c2"]
+[ext_resource type="Texture2D" uid="uid://vp130k12alpq" path="res://art/cooking/zombie-steak.png" id="2_g3bej"]
+
+[node name="RecipeChoice" type="NinePatchRect"]
+custom_minimum_size = Vector2(24, 24)
+texture = ExtResource("1_hvl8a")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+script = ExtResource("2_0b6c2")
+
+[node name="IconMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Placeholder" type="TextureRect" parent="IconMargin"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("2_g3bej")
+
+[node name="Selector" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 7.0
+offset_top = 33.0
+offset_right = 15.0
+offset_bottom = 43.0
+rotation = -1.5708
+text = "~"
+horizontal_alignment = 2
