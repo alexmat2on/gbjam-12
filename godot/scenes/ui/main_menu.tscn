@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0g6fskqdumt8"]
+[gd_scene load_steps=15 format=3 uid="uid://d0g6fskqdumt8"]
 
 [ext_resource type="Texture2D" uid="uid://dqx58jumlkrah" path="res://art/ui/main-menu.png" id="1_1vnp6"]
 [ext_resource type="Script" path="res://scripts/ui/MainMenu.gd" id="1_22obb"]
 [ext_resource type="Script" path="res://scripts/utils/BGM.gd" id="3_2lnje"]
+[ext_resource type="Theme" uid="uid://cfvdac3ddgpwi" path="res://tilesets/theme.tres" id="3_xyfnf"]
 [ext_resource type="AudioStream" uid="uid://bl5b36eew1jb3" path="res://audio/music/spooky-sample1.wav" id="4_l2eb3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7gqj6"]
@@ -81,6 +82,7 @@ offset_left = 8.0
 offset_top = 115.0
 offset_right = 152.0
 offset_bottom = 125.0
+theme = ExtResource("3_xyfnf")
 text = "press start"
 horizontal_alignment = 1
 

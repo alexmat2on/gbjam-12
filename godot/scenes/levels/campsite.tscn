@@ -22,8 +22,9 @@
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("4_et2ur")]
 
-[node name="RecipeMenu" parent="CanvasLayer" instance=ExtResource("10_kxk1k")]
+[node name="RecipeMenu" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("10_kxk1k")]
 visible = false
+player = NodePath("../../Player")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(1, -18)
@@ -37,14 +38,17 @@ position = Vector2(397, 46)
 offset = Vector2(0, -46)
 process_callback = 0
 
-[node name="Stockpot" parent="." instance=ExtResource("5_bwvqj")]
+[node name="Stockpot" parent="." node_paths=PackedStringArray("recipe_menu") instance=ExtResource("5_bwvqj")]
 position = Vector2(507, 46)
+recipe_menu = NodePath("../CanvasLayer/RecipeMenu")
 
-[node name="Griller" parent="." instance=ExtResource("6_6aqfy")]
+[node name="Griller" parent="." node_paths=PackedStringArray("recipe_menu") instance=ExtResource("6_6aqfy")]
 position = Vector2(478, 46)
+recipe_menu = NodePath("../CanvasLayer/RecipeMenu")
 
-[node name="Fryer" parent="." instance=ExtResource("7_f2v7y")]
+[node name="Fryer" parent="." node_paths=PackedStringArray("recipe_menu") instance=ExtResource("7_f2v7y")]
 position = Vector2(536, 46)
+recipe_menu = NodePath("../CanvasLayer/RecipeMenu")
 
 [node name="BGM" type="Node" parent="."]
 script = ExtResource("8_bygvf")
