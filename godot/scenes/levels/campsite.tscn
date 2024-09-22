@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b6eqe082ieh3j" path="res://scenes/customers/bone_chips_customer.tscn" id="14_kxeof"]
 [ext_resource type="PackedScene" uid="uid://dbth4mwyr2lix" path="res://scenes/customers/zombie_steak_customer.tscn" id="15_rhndt"]
 [ext_resource type="PackedScene" uid="uid://dwt4ncn1a6641" path="res://scenes/customers/zombie_stew_customer.tscn" id="16_ebpbd"]
+[ext_resource type="PackedScene" uid="uid://ipeq1yuy8ssp" path="res://scenes/tools/tool_rack.tscn" id="14_7er4o"]
 
 [node name="Game2" type="Node2D"]
 
@@ -76,3 +77,5 @@ position = Vector2(344, 46)
 
 [node name="ZombieStewCustomer" parent="Customers" groups=["Customers"] instance=ExtResource("16_ebpbd")]
 position = Vector2(278, 46)
+[node name="ToolRack" parent="." instance=ExtResource("14_7er4o")]
+position = Vector2(306, 22)

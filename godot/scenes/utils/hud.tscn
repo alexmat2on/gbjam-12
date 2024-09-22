@@ -1,15 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpsja80kfbip7"]
 
-[ext_resource type="Script" path="res://scripts/ui/HealthDisplay.gd" id="1_afltq"]
-[ext_resource type="Script" path="res://scripts/ui/InventoryDisplay.gd" id="2_f0qp4"]
-[ext_resource type="Script" path="res://scripts/ui/RightOrderIndicator.gd" id="3_mh2xg"]
-[ext_resource type="Script" path="res://scripts/ui/LeftOrderIndicator.gd" id="4_11fxb"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sf1wa"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2fw6"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+[ext_resource type="Script" path="res://scripts/ui/ToolDisplay.gd" id="3_c4pi8"]
+[ext_resource type="Texture2D" uid="uid://dpmdr0dk3xnrq" path="res://art/tools/tool-container.png" id="4_ch68k"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -58,3 +49,38 @@ offset_bottom = 63.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_e2fw6")
 text = "~"
 script = ExtResource("3_mh2xg")
+[node name="ToolDisplay" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_c4pi8")
+
+[node name="BgA" type="TextureRect" parent="ToolDisplay"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 132.0
+offset_right = 46.0
+offset_bottom = 144.0
+texture = ExtResource("4_ch68k")
+
+[node name="SlotA" type="TextureRect" parent="ToolDisplay/BgA"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 11.0
+
+[node name="BgB" type="TextureRect" parent="ToolDisplay"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 132.0
+offset_right = 59.0
+offset_bottom = 144.0
+texture = ExtResource("4_ch68k")
+
+[node name="SlotB" type="TextureRect" parent="ToolDisplay/BgB"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 11.0
