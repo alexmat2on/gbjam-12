@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/interactables/Appliance.gd" id="2_58ntr"]
 [ext_resource type="Texture2D" uid="uid://be0vklh2rafgm" path="res://art/appliances/fryer-glow.png" id="3_010pc"]
 [ext_resource type="Texture2D" uid="uid://mou4h1e3m27c" path="res://art/cooking/cooking-progress.png" id="4_vfd6h"]
-[ext_resource type="Texture2D" uid="uid://bbrakb7rsd31j" path="res://art/cooking/zombie-stew.png" id="5_f5c1x"]
+[ext_resource type="Texture2D" uid="uid://dmehw60qh0beh" path="res://art/cooking/zombie-stew.png" id="5_f5c1x"]
 [ext_resource type="Texture2D" uid="uid://bgenekd8v8bem" path="res://art/cooking/burn_progress.png" id="5_og2e5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lnnv"]

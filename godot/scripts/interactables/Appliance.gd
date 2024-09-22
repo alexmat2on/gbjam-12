@@ -15,6 +15,7 @@ extends Interactable2D
 @onready var _burn_progress: AnimatedSprite2D = $BurnProgress
 @onready var _active_recipe: Sprite2D = $ActiveRecipe
 
+var _player_ref: Player
 var _state: Array
 signal dish_pickup(recipe: Enums.Recipe)
 
@@ -58,6 +59,7 @@ func on_interact_exit(player):
 	self.recipe_menu.hide_menu()
 
 func interact(_player):
+	self._player_ref = _player
 	var dish_in_progress = self._get_dish_in_progress()
 	if dish_in_progress != null:
 		if dish_in_progress["ready"]:
@@ -125,7 +127,9 @@ func pickup(slot: int = 0) -> bool:
 	if self._state[slot] == null:
 		return false
 
-	# TODO: Handle hands full
+	if self._player_ref.is_carrying_dish():
+		print("Player has their hands full!")
+		return false
 
 	var dish = self._state[slot]
 	if not dish["ready"]:
@@ -137,8 +141,9 @@ func pickup(slot: int = 0) -> bool:
 		if timer != null:
 			timer.stop()
 			timer.queue_free()
+	self._player_ref.pick_up_dish(dish["recipe"])
 	self._state[slot] = null
-	print("dish picked up!", dish["recipe"])
+
 	return true
 
 # Clears the dish at the given slot.
