@@ -36,6 +36,7 @@ radius = 6.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q24sx"]
 height = 34.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8mwxq"]
 
 [node name="ghost" type="CharacterBody2D" node_paths=PackedStringArray("health", "idle_behavior", "aggro_behavior", "detection_area")]
 collision_layer = 4
@@ -100,3 +101,9 @@ script = ExtResource("7_d8r3a")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
 position = Vector2(-14, -30)
 shape = SubResource("CapsuleShape2D_q24sx")
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = -8.0
+offset_top = -48.0
+offset_right = 7.0
+offset_bottom = -38.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8mwxq")

@@ -6,13 +6,14 @@ class_name Player
 @onready var health: Health = $Health
 @onready var cleaver_spawner: Spawner = $CleaverSpawner
 @onready var fireball_spawner: Spawner = $FireballSpawner
+#@onready var mallet_spawner: Spawner = $MalletSpawner
 
-const playerSpeed := 60
-const jumpSpeed := -300
+const PLAYER_SPEED := 60
+const JUMP_SPEED := -300
 const MAX_FALL_SPEED = 400.0
 const COYOTE_TIME = 0.08
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 enum State {
 	IDLE,
@@ -86,7 +87,7 @@ func _ready():
 	
 	_spawner_map = {
 		Enums.Tool.CLEAVER: cleaver_spawner,
-		Enums.Tool.MALLET: cleaver_spawner, # TODO: actual mallet projectile spawner
+		Enums.Tool.MALLET: cleaver_spawner,
 		Enums.Tool.FLAMETHROWER: fireball_spawner
 	}
 
@@ -122,13 +123,13 @@ func _base_movement(delta, do_gravity = true, flip_on_back = true, movement = mo
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("left", "right")
 	if direction && (movement == movement_type.ANY || (movement == movement_type.AERIAL && not is_on_floor())):
-		velocity.x = (1 if direction > 0 else -1) * playerSpeed * speed_multiplier
+		velocity.x = (1 if direction > 0 else -1) * PLAYER_SPEED * speed_multiplier
 		
 		if flip_on_back && ((is_facing_right() && direction < 0) || (!is_facing_right() && direction > 0)):
 			scale.x = -1
 
 	elif movement != movement_type.UNCONTROLLED:
-		velocity.x = move_toward(velocity.x, 0, playerSpeed * speed_multiplier)
+		velocity.x = move_toward(velocity.x, 0, PLAYER_SPEED * speed_multiplier)
 
 	return direction
 
@@ -157,8 +158,9 @@ func _physics_process_idle(delta):
 		
 	# Handle jump
 	if Input.is_action_just_pressed("up") and _seconds_since_started_falling <= COYOTE_TIME:
-		velocity.y = jumpSpeed
-		_animated_sprite.play("walk") # TODO: Jump animationndle tools
+		velocity.y = JUMP_SPEED
+		_animated_sprite.play("walk") # TODO: Jump animation
+	
 	if Input.is_action_pressed(BUTTON_A):
 		if _equip_state[BUTTON_A].tool != null && _equip_state[BUTTON_A].is_ready_to_spawn:
 			_start_tool(_equip_state[BUTTON_A].tool)
@@ -199,7 +201,7 @@ func _physics_process_cleaver(delta):
 	
 	# Handle jump
 	if Input.is_action_just_pressed("up") and _seconds_since_started_falling <= COYOTE_TIME:
-		velocity.y = jumpSpeed
+		velocity.y = JUMP_SPEED
 
 func _activate_cleaver():
 	var es = _equip_state[get_tool_button(Enums.Tool.CLEAVER)]
@@ -218,10 +220,12 @@ func _physics_process_mallet(delta):
 	
 	# Handle jump
 	if Input.is_action_just_pressed("up") and _seconds_since_started_falling <= COYOTE_TIME:
-		velocity.y = jumpSpeed * 0.6
+		velocity.y = JUMP_SPEED * 0.6
 	
-	if _animated_sprite.animation.ends_with("_channel") && !Input.is_action_pressed(get_tool_button(Enums.Tool.MALLET) ):
+	var mallet_button = get_tool_button(Enums.Tool.MALLET)
+	if _animated_sprite.animation.ends_with("_channel") && !Input.is_action_pressed(mallet_button):
 		# TODO: spawn mallet projectile here
+		_equip_state[mallet_button].spawner.spawn()
 		_animated_sprite.play("atk_mallet_end")
 	
 func _activate_mallet():
@@ -235,7 +239,7 @@ func _physics_process_flamethrower(delta):
 	
 	# Handle jump
 	if !_animated_sprite.animation.ends_with("_channel") && Input.is_action_just_pressed("up") and _seconds_since_started_falling <= COYOTE_TIME:
-		velocity.y = jumpSpeed
+		velocity.y = JUMP_SPEED
 	
 	var flamethrower_button = get_tool_button(Enums.Tool.FLAMETHROWER)
 	
