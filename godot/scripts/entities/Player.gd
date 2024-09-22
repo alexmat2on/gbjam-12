@@ -262,13 +262,11 @@ func _activate_flamethrower():
 	_animated_sprite.play("atk_ft_channel")
 
 func _on_interaction_area_entered(interactable: Area2D):
-	print("interaction entered!")
 	if _current_interactable == null && interactable.get_parent() is Interactable2D:
 		_current_interactable = interactable.get_parent()
 		_current_interactable.on_interact_enter(self)
 
 func _on_interaction_area_exited(interactable: Area2D):
-	print("interaction exit!")
 	if _current_interactable == interactable.get_parent():
 		_current_interactable.on_interact_exit(self)
 		_current_interactable = null

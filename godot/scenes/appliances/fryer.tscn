@@ -282,13 +282,11 @@ texture = ExtResource("1_iwkkg")
 
 [node name="CookProgress" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -37.5)
-scale = Vector2(0.963, 1)
 sprite_frames = SubResource("SpriteFrames_5naun")
 
 [node name="BurnProgress" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(0, -37.5)
-scale = Vector2(0.963, 1)
 sprite_frames = SubResource("SpriteFrames_pmrxr")
 
 [node name="ActiveRecipe" type="Sprite2D" parent="."]
