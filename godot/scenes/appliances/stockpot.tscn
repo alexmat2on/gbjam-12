@@ -8,19 +8,17 @@
 size = Vector2(12, 20)
 
 [node name="Stockpot" type="Node2D"]
-
-[node name="Appliance" type="Node2D" parent="."]
 script = ExtResource("2_d7pn4")
 recipes = Array[int]([0])
 texture = ExtResource("1_tw1hg")
 glow_texture = ExtResource("3_v7u0p")
 
-[node name="Area2D" type="Area2D" parent="Appliance"]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Appliance/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_orfx1")
 
-[node name="Sprite2D" type="Sprite2D" parent="Appliance/Area2D/CollisionShape2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Area2D/CollisionShape2D"]
 position = Vector2(0, 2)
 texture = ExtResource("1_tw1hg")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm66xge4irtly"]
+
+[ext_resource type="Script" path="res://scripts/ui/IngredientCost.gd" id="1_54l5p"]
+[ext_resource type="Theme" uid="uid://rvxbkrh4n8wn" path="res://tilesets/menu_theme.tres" id="1_k42p5"]
+[ext_resource type="Texture2D" uid="uid://1lo137n2dpgg" path="res://art/cooking/ingredients/bone-ing.png" id="2_fdyx2"]
+
+[node name="IngredientCost" type="HBoxContainer"]
+theme_override_constants/separation = 2
+alignment = 1
+script = ExtResource("1_54l5p")
+
+[node name="IngredientAmount" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_k42p5")
+text = "1x"
+vertical_alignment = 1
+
+[node name="IngredientTexture" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_fdyx2")
+stretch_mode = 2
