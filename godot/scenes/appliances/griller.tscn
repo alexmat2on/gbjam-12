@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://y4kpf6rmy7bi"]
+[gd_scene load_steps=47 format=3 uid="uid://y4kpf6rmy7bi"]
 
 [ext_resource type="Texture2D" uid="uid://c3nw8icuqodi7" path="res://art/appliances/griller.png" id="1_2d1dg"]
 [ext_resource type="Script" path="res://scripts/interactables/Appliance.gd" id="2_jimd8"]
@@ -264,6 +264,67 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_d4ksc"]
+resource_name = "bounce"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BurnProgress:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -37.5), Vector2(0, -40), Vector2(0, -37.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ActiveRecipe:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -37), Vector2(0, -40), Vector2(0, -37)]
+}
+
+[sub_resource type="Animation" id="Animation_cvjoa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BurnProgress:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -37.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ActiveRecipe:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -37)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x0gae"]
+_data = {
+"RESET": SubResource("Animation_cvjoa"),
+"bounce": SubResource("Animation_d4ksc")
+}
+
 [node name="Griller" type="Node2D"]
 script = ExtResource("2_jimd8")
 recipes = Array[int]([1])
@@ -282,15 +343,17 @@ texture = ExtResource("1_2d1dg")
 
 [node name="CookProgress" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -37.5)
-scale = Vector2(0.963, 1)
 sprite_frames = SubResource("SpriteFrames_ktv72")
 
 [node name="BurnProgress" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(0, -37.5)
-scale = Vector2(0.963, 1)
 sprite_frames = SubResource("SpriteFrames_gciuw")
 
 [node name="ActiveRecipe" type="Sprite2D" parent="."]
 position = Vector2(0, -37)
 texture = ExtResource("5_hx2gn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x0gae")
+}

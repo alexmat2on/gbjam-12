@@ -24,6 +24,7 @@ SoundManager="*res://scripts/utils/SoundManager.gd"
 SignalBus="*res://scripts/utils/SignalBus.gd"
 Constants="*res://scripts/utils/Constants.gd"
 OptionMenuDisplay="*res://scripts/ui/OptionMenuDisplay.gd"
+GlobalState="*res://scripts/utils/GlobalState.gd"
 
 [display]
 

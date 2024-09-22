@@ -45,6 +45,7 @@ func _process(delta: float) -> void:
 func _complete_order() -> void:
 	_player_ref.drop_dish()
 	print("satiation.")
+	GlobalState.decrement_orders()
 	self.get_parent().remove_from_group("Customers")
 	self.queue_free()
 
@@ -65,5 +66,7 @@ func _get_frame_count(anim: AnimatedSprite2D) -> int:
 # Invokes the wrath of the Ancients from deep within the Darkest Glade.
 func _invoke_wrath() -> void:
 	print("taste death.")
+	GlobalState.decrement_orders()
 	_player_ref.health.remove_health()
+	self.get_parent().remove_from_group("Customers")
 	self.queue_free()

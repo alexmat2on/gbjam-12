@@ -6,11 +6,15 @@
 [ext_resource type="Script" path="res://scripts/ui/RightOrderIndicator.gd" id="3_mh2xg"]
 [ext_resource type="Script" path="res://scripts/ui/LeftOrderIndicator.gd" id="4_11fxb"]
 [ext_resource type="Texture2D" uid="uid://dpmdr0dk3xnrq" path="res://art/tools/tool-container.png" id="4_ch68k"]
+[ext_resource type="Script" path="res://scripts/ui/OrdersLeft.gd" id="5_mpeqh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sf1wa"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2fw6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2lj7"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="HUD" type="Control"]
@@ -31,13 +35,13 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 96.0
-offset_top = 137.0
-offset_right = 161.0
-offset_bottom = 160.0
+offset_left = 73.0
+offset_top = 132.0
+offset_right = 160.0
+offset_bottom = 144.0
 grow_vertical = 0
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 8
 script = ExtResource("2_f0qp4")
 
 [node name="LeftOrderIndicator" type="Label" parent="."]
@@ -96,3 +100,12 @@ offset_left = 1.0
 offset_top = 1.0
 offset_right = 11.0
 offset_bottom = 11.0
+
+[node name="OrdersLeft" type="Label" parent="."]
+layout_mode = 0
+offset_left = 84.0
+offset_right = 160.0
+offset_bottom = 11.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_n2lj7")
+text = " orders:"
+script = ExtResource("5_mpeqh")
