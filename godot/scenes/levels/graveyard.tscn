@@ -43,6 +43,7 @@ position = Vector2(350, -34)
 position = Vector2(369, -37)
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("8_tfp5g")
 autoplay = true
 
