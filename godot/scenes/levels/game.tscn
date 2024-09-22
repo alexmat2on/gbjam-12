@@ -23,7 +23,7 @@ texture = ExtResource("1_ymk4a")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_60vbj")
 
-[node name="Game" type="Node2D"]
+[node name="game" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(1, -18)
