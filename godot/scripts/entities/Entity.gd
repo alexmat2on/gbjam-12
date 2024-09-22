@@ -88,12 +88,12 @@ func _initialize_spawn_point():
 
 func take_damage(hitbox: Hitbox2D, hurt_mod: Array[Enums.HurtModifier]):
 	var damage_amt: int = hitbox.damage
-	
+		
 	if hitbox.hit_mod.has(Enums.HitModifier.LIGHT) && hurt_mod.has(Enums.HurtModifier.TOUGH):
 		damage_amt = 0 * hitbox.damage
 	if hitbox.hit_mod.has(Enums.HitModifier.HEAVY) && hurt_mod.has(Enums.HurtModifier.FLYING):
 		damage_amt = 0 * hitbox.damage
-	if hitbox.hit_mod.has(Enums.HitModifier.HEAVY) && hurt_mod.has(Enums.HurtModifier.FLYING):
+	if hitbox.hit_mod.has(Enums.HitModifier.HEAVY) && !hurt_mod.has(Enums.HurtModifier.FLYING):
 		damage_amt = 2 * hitbox.damage
 	
 	var destroy_items_if_killed = hitbox.hit_mod.has(Enums.HitModifier.FIRE) && hurt_mod.has(Enums.HurtModifier.FRAGILE)

@@ -18,7 +18,6 @@ enum Tool {
 }
 
 enum HurtModifier {
-	NONE,
 	FRAGILE,
 	FLYING,
 	TOUGH

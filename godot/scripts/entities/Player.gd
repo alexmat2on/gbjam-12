@@ -224,8 +224,7 @@ func _physics_process_mallet(delta):
 	
 	var mallet_button = get_tool_button(Enums.Tool.MALLET)
 	if _animated_sprite.animation.ends_with("_channel") && !Input.is_action_pressed(mallet_button):
-		# TODO: spawn mallet projectile here
-		_equip_state[mallet_button].spawner.spawn()
+		_equip_state[mallet_button].spawner.spawn(_equip_state[mallet_button].spawner.direction, Vector2(24, 12))
 		_animated_sprite.play("atk_mallet_end")
 	
 func _activate_mallet():
