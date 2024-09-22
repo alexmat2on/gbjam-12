@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://c4rjl55g67wg"
-=======
-uid="uid://bbrakb7rsd31j"
->>>>>>> b82cae5 (Add recipe menu (#41))
-path="res://.godot/imported/zombie-stew.png-15a276a34a706da1eb3cbd3cb3c2f76d.ctex"
+uid="uid://q851rau5vixt"
+path="res://.godot/imported/recipe-placeholder.png-2101e41b9338b1a77258b164d5dc1fdf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cooking/zombie-stew.png"
-dest_files=["res://.godot/imported/zombie-stew.png-15a276a34a706da1eb3cbd3cb3c2f76d.ctex"]
+source_file="res://art/recipes/recipe-placeholder.png"
+dest_files=["res://.godot/imported/recipe-placeholder.png-2101e41b9338b1a77258b164d5dc1fdf.ctex"]
 
 [params]
 

@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://c50hnluiiq0x7"
+=======
+uid="uid://vp130k12alpq"
+>>>>>>> b82cae5 (Add recipe menu (#41))
 path="res://.godot/imported/zombie-steak.png-5491e8cc3eb94a801d21f5b7bb680586.ctex"
 metadata={
 "vram_texture": false

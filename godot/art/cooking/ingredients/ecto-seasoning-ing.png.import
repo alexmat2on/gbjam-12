@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://d5ohper8tudh"
+=======
+uid="uid://nmhfillgq20j"
+>>>>>>> b82cae5 (Add recipe menu (#41))
 path="res://.godot/imported/ecto-seasoning-ing.png-cee7e066293f7f7e040b9439c632dc3d.ctex"
 metadata={
 "vram_texture": false

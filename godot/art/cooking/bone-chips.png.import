@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://cgopi464cohi1"
+=======
+uid="uid://bqcjpyn358aas"
+>>>>>>> b82cae5 (Add recipe menu (#41))
 path="res://.godot/imported/bone-chips.png-ee6638ea73a9198915150ccfc4095dfa.ctex"
 metadata={
 "vram_texture": false
