@@ -370,3 +370,7 @@ offset = Vector2(20, 0)
 minCooldown = 0.05
 maxCooldown = 0.05
 auto_spawn = false
+
+[node name="MalletSpawner" type="Node2D" parent="."]
+script = ExtResource("4_b4t1n")
+auto_spawn = false

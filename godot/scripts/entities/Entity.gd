@@ -10,6 +10,7 @@ const MAX_FALL_SPEED = 800.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var spawner: Spawner = get_node_or_null("Spawner")
+@onready var healthLabel: Label = get_node_or_null("HealthLabel")
 @onready var drop_spawner: Spawner = get_node_or_null("DropSpawner")
 
 @export var health: Health
@@ -38,6 +39,9 @@ func _ready():
 		spawner.ready_to_spawn.connect(self.activate_spawner)
 	health.health_zero.connect(self._on_death)
 	
+	health.connect("health_updated", self._on_health_updated)
+	if is_instance_valid(healthLabel):
+		healthLabel.text = str(health.get_health())
 	get_tree().create_timer(0.01).timeout.connect(_initialize_spawn_point)
 
 func _on_death():
@@ -46,6 +50,10 @@ func _on_death():
 	queue_free()
 	# TODO: Drop item
 	
+func _on_health_updated(new_health):
+	if is_instance_valid(healthLabel):
+		healthLabel.text = str(health.get_health())
+
 func _physics_process(delta):
 	if aggro_behavior != null && _current_state == State.AGGRO:
 		aggro_behavior.apply_behavior(self, delta)
