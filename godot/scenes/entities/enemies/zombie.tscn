@@ -99,6 +99,7 @@ position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_bgdow")
 
 [node name="Hurtbox2D" type="Area2D" parent="."]
+collision_mask = 2
 script = ExtResource("7_hp28p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]

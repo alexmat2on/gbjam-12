@@ -35,9 +35,15 @@ func _ready():
 		undetection_area.body_exited.connect(self._on_player_undetected)
 	if is_instance_valid(spawner):
 		spawner.ready_to_spawn.connect(self.activate_spawner)
+	health.health_zero.connect(self._on_death)
 	
 	get_tree().create_timer(0.01).timeout.connect(_initialize_spawn_point)
 
+func _on_death():
+	# TODO: Play death animation
+	queue_free()
+	# TODO: Drop item
+	
 func _physics_process(delta):
 	if aggro_behavior != null && _current_state == State.AGGRO:
 		aggro_behavior.apply_behavior(self, delta)
@@ -76,3 +82,4 @@ func take_damage(hitbox: Hitbox2D):
 	# TODO: also include damage type (light, heavy, fire)
 	Logger.log(["enemy health: ", str(health.get_health())])
 	health.remove_health(hitbox.damage)
+		
