@@ -34,6 +34,10 @@ window/stretch/mode="viewport"
 
 import/blender/enabled=false
 
+[global_group]
+
+Customers=""
+
 [gui]
 
 theme/custom="res://tilesets/theme.tres"

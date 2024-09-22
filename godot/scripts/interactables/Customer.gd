@@ -1,12 +1,13 @@
 extends Interactable2D
 
-const _TIME_LIMIT: float = 30.0
+const _TIME_LIMIT: float = 50.0
 
 @export var recipe_order: Enums.Recipe
 
+@onready var _animation_player: AnimationPlayer = $AnimationPlayer
 @onready var _order_sprite: Sprite2D = $RecipeOrder
 @onready var _fail_progress: AnimatedSprite2D = $FailProgress
-@onready var _player: Player = $"../Player"
+@onready var _player: Player = $"../../Player"
 
 var _fail_timer: Timer
 
@@ -29,6 +30,7 @@ func interact(_player):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_animation_player.play("bounce")
 	_order_sprite.texture = RecipeUtils.get_recipe_texture(recipe_order)
 	_fail_progress.frame = 0
 	_fail_timer = _create_timer(_TIME_LIMIT)
