@@ -10,6 +10,7 @@ const MAX_FALL_SPEED = 800.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var spawner: Spawner = get_node_or_null("Spawner")
+@onready var healthLabel: Label = get_node_or_null("HealthLabel")
 
 @export var health: Health
 @export var idle_behavior: EntityBehavior
@@ -37,6 +38,9 @@ func _ready():
 		spawner.ready_to_spawn.connect(self.activate_spawner)
 	health.health_zero.connect(self._on_death)
 	
+	health.connect("health_updated", self._on_health_updated)
+	if is_instance_valid(healthLabel):
+		healthLabel.text = str(health.get_health())
 	get_tree().create_timer(0.01).timeout.connect(_initialize_spawn_point)
 
 func _on_death():
@@ -44,6 +48,10 @@ func _on_death():
 	queue_free()
 	# TODO: Drop item
 	
+func _on_health_updated(new_health):
+	if is_instance_valid(healthLabel):
+		healthLabel.text = str(health.get_health())
+
 func _physics_process(delta):
 	if aggro_behavior != null && _current_state == State.AGGRO:
 		aggro_behavior.apply_behavior(self, delta)
@@ -78,8 +86,16 @@ func activate_spawner():
 func _initialize_spawn_point():
 	_initial_spawn_point = global_position
 
-func take_damage(hitbox: Hitbox2D):
-	# TODO: also include damage type (light, heavy, fire)
-	Logger.log(["enemy health: ", str(health.get_health())])
-	health.remove_health(hitbox.damage)
+func take_damage(hitbox: Hitbox2D, hurt_mod: Array[Enums.HurtModifier]):
+	var damage_amt: int = hitbox.damage
 		
+	if hitbox.hit_mod.has(Enums.HitModifier.LIGHT) && hurt_mod.has(Enums.HurtModifier.TOUGH):
+		damage_amt = 0 * hitbox.damage
+	if hitbox.hit_mod.has(Enums.HitModifier.HEAVY) && hurt_mod.has(Enums.HurtModifier.FLYING):
+		damage_amt = 0 * hitbox.damage
+	if hitbox.hit_mod.has(Enums.HitModifier.HEAVY) && !hurt_mod.has(Enums.HurtModifier.FLYING):
+		damage_amt = 2 * hitbox.damage
+	
+	var destroy_items_if_killed = hitbox.hit_mod.has(Enums.HitModifier.FIRE) && hurt_mod.has(Enums.HurtModifier.FRAGILE)
+	
+	health.remove_health(damage_amt, !destroy_items_if_killed)

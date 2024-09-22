@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqhymk434xpmh"]
+[gd_scene load_steps=15 format=3 uid="uid://dqhymk434xpmh"]
 
 [ext_resource type="Texture2D" uid="uid://b1f321jv54b0y" path="res://art/entities/enemies/ghost/ghost.png" id="1_bjw6m"]
 [ext_resource type="Script" path="res://scripts/entities/Entity.gd" id="1_hncny"]
@@ -36,6 +36,8 @@ radius = 6.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q24sx"]
 height = 34.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8mwxq"]
 
 [node name="ghost" type="CharacterBody2D" node_paths=PackedStringArray("health", "idle_behavior", "aggro_behavior", "detection_area")]
 collision_layer = 4
@@ -80,7 +82,6 @@ shape = SubResource("CapsuleShape2D_n6mpg")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("5_s0vu2")
-damage_tag = 1
 
 [node name="Hitbox2D" type="Area2D" parent="."]
 collision_layer = 4
@@ -96,7 +97,15 @@ shape = SubResource("CircleShape2D_1nmox")
 position = Vector2(14, 14)
 collision_mask = 2
 script = ExtResource("7_d8r3a")
+hurt_mod = Array[int]([2, 1])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
 position = Vector2(-14, -30)
 shape = SubResource("CapsuleShape2D_q24sx")
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = -8.0
+offset_top = -48.0
+offset_right = 7.0
+offset_bottom = -38.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8mwxq")

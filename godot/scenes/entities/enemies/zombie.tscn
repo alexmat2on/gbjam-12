@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://58x3fo260fua"]
+[gd_scene load_steps=16 format=3 uid="uid://58x3fo260fua"]
 
 [ext_resource type="Script" path="res://scripts/entities/Entity.gd" id="1_c078v"]
 [ext_resource type="Script" path="res://scripts/components/behaviors/PatrolBehavior.gd" id="1_pa6th"]
@@ -39,6 +39,8 @@ height = 28.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_58rqn"]
 height = 36.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l1ru2"]
 
 [node name="zombie" type="CharacterBody2D" node_paths=PackedStringArray("health", "idle_behavior", "aggro_behavior", "detection_area", "undetection_area")]
 collision_layer = 4
@@ -105,3 +107,10 @@ script = ExtResource("7_hp28p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
 position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_58rqn")
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = -8.0
+offset_top = -48.0
+offset_right = 7.0
+offset_bottom = -38.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l1ru2")

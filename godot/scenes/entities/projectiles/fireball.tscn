@@ -63,6 +63,8 @@ shape = SubResource("RectangleShape2D_xixan")
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("3_3nchl")
+hit_mod = Array[int]([2])
+damage = 1
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox2D"]
 shape = SubResource("RectangleShape2D_xixan")
