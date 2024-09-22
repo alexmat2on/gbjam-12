@@ -23,11 +23,9 @@ rotational_speed = 40.0
 lifetime = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -10)
 texture = ExtResource("2_ot2f3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -10)
 shape = SubResource("RectangleShape2D_ayq41")
 
 [node name="Hitbox2D" type="Area2D" parent="."]
@@ -38,5 +36,4 @@ hit_mod = Array[int]([0])
 damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D"]
-position = Vector2(0.5, -10)
 shape = SubResource("RectangleShape2D_wcgwi")
