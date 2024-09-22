@@ -7,7 +7,7 @@ const _TIME_LIMIT: float = 50.0
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 @onready var _order_sprite: Sprite2D = $RecipeOrder
 @onready var _fail_progress: AnimatedSprite2D = $FailProgress
-@onready var _player: Player = $"../../Player"
+@onready var _player_ref: Player = $"../../../Player"
 
 var _fail_timer: Timer
 
@@ -43,8 +43,9 @@ func _process(delta: float) -> void:
 	_fail_progress.frame = _get_progress_frame(_fail_timer, _fail_progress)
 
 func _complete_order() -> void:
-	_player.drop_dish()
+	_player_ref.drop_dish()
 	print("satiation.")
+	self.get_parent().remove_from_group("Customers")
 	self.queue_free()
 
 func _create_timer(time: float) -> Timer:
@@ -64,5 +65,5 @@ func _get_frame_count(anim: AnimatedSprite2D) -> int:
 # Invokes the wrath of the Ancients from deep within the Darkest Glade.
 func _invoke_wrath() -> void:
 	print("taste death.")
-	_player.health.remove_health()
+	_player_ref.health.remove_health()
 	self.queue_free()
