@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6eqe082ieh3j"]
+
+[ext_resource type="PackedScene" uid="uid://brngsv47cg41w" path="res://scenes/customers/customer.tscn" id="1_ch76l"]
+
+[node name="BoneChipsCustomer" type="Node2D"]
+
+[node name="Customer" parent="." instance=ExtResource("1_ch76l")]
+recipe_order = 2

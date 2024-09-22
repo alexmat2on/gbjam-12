@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dyaci2ciwkxfh"]
+[gd_scene load_steps=17 format=4 uid="uid://dyaci2ciwkxfh"]
 
 [ext_resource type="PackedScene" uid="uid://75n2j6mgpexf" path="res://scenes/entities/player.tscn" id="2_fnirg"]
 [ext_resource type="TileSet" uid="uid://cnqwervwv7jpn" path="res://tilesets/tiles.tres" id="3_e15md"]
@@ -13,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://d27y573aox5wo" path="res://scenes/ui/recipe_menu.tscn" id="10_kxk1k"]
 [ext_resource type="PackedScene" uid="uid://cdyf3om11ummy" path="res://scenes/tools/flamethrower_tool.tscn" id="11_fo00j"]
 [ext_resource type="PackedScene" uid="uid://bnohdpspx1h3r" path="res://scenes/tools/mallet_tool.tscn" id="12_nwcby"]
-[ext_resource type="PackedScene" uid="uid://brngsv47cg41w" path="res://scenes/cooking/customer.tscn" id="14_nyubg"]
+[ext_resource type="PackedScene" uid="uid://b6eqe082ieh3j" path="res://scenes/customers/bone_chips_customer.tscn" id="14_kxeof"]
+[ext_resource type="PackedScene" uid="uid://dbth4mwyr2lix" path="res://scenes/customers/zombie_steak_customer.tscn" id="15_rhndt"]
+[ext_resource type="PackedScene" uid="uid://dwt4ncn1a6641" path="res://scenes/customers/zombie_stew_customer.tscn" id="16_ebpbd"]
 
 [node name="Game2" type="Node2D"]
 
@@ -64,5 +66,13 @@ position = Vector2(20, 0)
 [node name="MalletTool" parent="." instance=ExtResource("12_nwcby")]
 position = Vector2(40, 0)
 
-[node name="Customer" parent="." instance=ExtResource("14_nyubg")]
-position = Vector2(602, 46)
+[node name="Customers" type="Node2D" parent="."]
+
+[node name="BoneChipsCustomer" parent="Customers" groups=["Customers"] instance=ExtResource("14_kxeof")]
+position = Vector2(603, 46)
+
+[node name="ZombieSteakCustomer" parent="Customers" groups=["Customers"] instance=ExtResource("15_rhndt")]
+position = Vector2(344, 46)
+
+[node name="ZombieStewCustomer" parent="Customers" groups=["Customers"] instance=ExtResource("16_ebpbd")]
+position = Vector2(278, 46)

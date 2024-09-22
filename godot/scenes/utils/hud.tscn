@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpsja80kfbip7"]
+[gd_scene load_steps=7 format=3 uid="uid://cpsja80kfbip7"]
 
 [ext_resource type="Script" path="res://scripts/ui/HealthDisplay.gd" id="1_afltq"]
 [ext_resource type="Script" path="res://scripts/ui/InventoryDisplay.gd" id="2_f0qp4"]
+[ext_resource type="Script" path="res://scripts/ui/RightOrderIndicator.gd" id="3_mh2xg"]
+[ext_resource type="Script" path="res://scripts/ui/LeftOrderIndicator.gd" id="4_11fxb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sf1wa"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2fw6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -29,3 +37,24 @@ grow_vertical = 0
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 6
 script = ExtResource("2_f0qp4")
+
+[node name="LeftOrderIndicator" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 63.0
+offset_right = 16.0
+offset_bottom = 73.0
+rotation = 3.14159
+theme_override_styles/normal = SubResource("StyleBoxFlat_sf1wa")
+text = "~"
+script = ExtResource("4_11fxb")
+
+[node name="RightOrderIndicator" type="Label" parent="."]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 53.0
+offset_right = 160.0
+offset_bottom = 63.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_e2fw6")
+text = "~"
+script = ExtResource("3_mh2xg")
