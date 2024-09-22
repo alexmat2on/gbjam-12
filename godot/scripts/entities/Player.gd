@@ -228,8 +228,12 @@ func _physics_process_mallet(delta):
 		velocity.y = JUMP_SPEED * 0.6
 	
 	var mallet_button = get_tool_button(Enums.Tool.MALLET)
+	var s = _equip_state[mallet_button].spawner
+	
 	if _animated_sprite.animation.ends_with("_channel") && !Input.is_action_pressed(mallet_button):
-		_equip_state[mallet_button].spawner.spawn(_equip_state[mallet_button].spawner.direction, Vector2(24, 12))
+		var spawn_direction = s.direction if is_facing_right() else Vector2(-s.direction.x, s.direction.y)
+		var spawn_offset = Vector2(24, 12) if is_facing_right() else Vector2(-24, 12)
+		s.spawn(spawn_direction, spawn_offset)
 		_animated_sprite.play("atk_mallet_end")
 	
 func _activate_mallet():
