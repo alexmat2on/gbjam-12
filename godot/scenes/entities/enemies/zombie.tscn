@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://58x3fo260fua"]
+[gd_scene load_steps=17 format=3 uid="uid://58x3fo260fua"]
 
 [ext_resource type="Script" path="res://scripts/entities/Entity.gd" id="1_c078v"]
 [ext_resource type="Script" path="res://scripts/components/behaviors/PatrolBehavior.gd" id="1_pa6th"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://scripts/components/behaviors/ChaseBehavior.gd" id="4_40skr"]
 [ext_resource type="Script" path="res://scripts/components/Hitbox2D.gd" id="6_ih8ws"]
 [ext_resource type="Script" path="res://scripts/components/Hurtbox2D.gd" id="7_hp28p"]
+[ext_resource type="Script" path="res://scripts/entities/Spawner.gd" id="8_5hlf0"]
+[ext_resource type="PackedScene" uid="uid://dtqhot2ycu2rh" path="res://scenes/drops/zombie-flesh.tscn" id="9_emvet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l3f74"]
 atlas = ExtResource("1_vs8e5")
@@ -105,3 +107,8 @@ script = ExtResource("7_hp28p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
 position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_58rqn")
+
+[node name="DropSpawner" type="Node2D" parent="."]
+script = ExtResource("8_5hlf0")
+spawn_object = ExtResource("9_emvet")
+auto_spawn = false

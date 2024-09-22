@@ -10,6 +10,7 @@ const MAX_FALL_SPEED = 800.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var spawner: Spawner = get_node_or_null("Spawner")
+@onready var drop_spawner: Spawner = get_node_or_null("DropSpawner")
 
 @export var health: Health
 @export var idle_behavior: EntityBehavior
@@ -41,6 +42,7 @@ func _ready():
 
 func _on_death():
 	# TODO: Play death animation
+	drop_spawner.spawn()
 	queue_free()
 	# TODO: Drop item
 	

@@ -3,15 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://1lo137n2dpgg" path="res://art/cooking/ingredients/bone-ing.png" id="1_d8y8m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sscoe"]
-size = Vector2(10, 10)
+size = Vector2(11, 10)
 
-[node name="Bone" type="Node2D"]
+[node name="Bone" type="RigidBody2D"]
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_sscoe")
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D/CollisionShape2D"]
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(0.5, 0)
 texture = ExtResource("1_d8y8m")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqhymk434xpmh"]
+[gd_scene load_steps=16 format=3 uid="uid://dqhymk434xpmh"]
 
 [ext_resource type="Texture2D" uid="uid://b1f321jv54b0y" path="res://art/entities/enemies/ghost/ghost.png" id="1_bjw6m"]
 [ext_resource type="Script" path="res://scripts/entities/Entity.gd" id="1_hncny"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://scripts/components/Health.gd" id="5_s0vu2"]
 [ext_resource type="Script" path="res://scripts/components/Hitbox2D.gd" id="6_ojx0i"]
 [ext_resource type="Script" path="res://scripts/components/Hurtbox2D.gd" id="7_d8r3a"]
+[ext_resource type="Script" path="res://scripts/entities/Spawner.gd" id="8_xsuc3"]
+[ext_resource type="PackedScene" uid="uid://df0vqsgdwkrh3" path="res://scenes/drops/ecto-seasoning.tscn" id="9_tnmkb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ma0nn"]
 atlas = ExtResource("1_bjw6m")
@@ -100,3 +102,7 @@ script = ExtResource("7_d8r3a")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
 position = Vector2(-14, -30)
 shape = SubResource("CapsuleShape2D_q24sx")
+
+[node name="DropSpawner" type="Node2D" parent="."]
+script = ExtResource("8_xsuc3")
+spawn_object = ExtResource("9_tnmkb")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://d1cbw1acmg7nt"]
+[gd_scene load_steps=34 format=3 uid="uid://d1cbw1acmg7nt"]
 
 [ext_resource type="Texture2D" uid="uid://dgjyb6i7kr4ui" path="res://art/entities/enemies/skeleton/skeleton.png" id="1_di0av"]
 [ext_resource type="Script" path="res://scripts/entities/Entity.gd" id="1_ylskn"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c20t0qxnwpf0p" path="res://scenes/entities/projectiles/bone_projectile.tscn" id="8_yrmil"]
 [ext_resource type="Script" path="res://scripts/components/Health.gd" id="9_a1qwm"]
 [ext_resource type="Script" path="res://scripts/components/Hurtbox2D.gd" id="10_lakpf"]
+[ext_resource type="PackedScene" uid="uid://bincs5sqqv8kb" path="res://scenes/drops/bone.tscn" id="11_vssa8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tsmua"]
 atlas = ExtResource("2_00321")
@@ -224,3 +225,7 @@ script = ExtResource("10_lakpf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
 position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_4p84m")
+
+[node name="DropSpawner" type="Node2D" parent="."]
+script = ExtResource("7_yuklc")
+spawn_object = ExtResource("11_vssa8")
