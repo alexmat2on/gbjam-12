@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dtoprfmprweqg"]
+[gd_scene load_steps=11 format=4 uid="uid://dtoprfmprweqg"]
 
 [ext_resource type="TileSet" uid="uid://cnqwervwv7jpn" path="res://tilesets/tiles.tres" id="1_rkwbu"]
 [ext_resource type="PackedScene" uid="uid://75n2j6mgpexf" path="res://scenes/entities/player.tscn" id="2_86k7r"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dnd7u5ra2uoci" path="res://scenes/tools/cleaver_tool.tscn" id="8_eo7rg"]
 [ext_resource type="PackedScene" uid="uid://cdyf3om11ummy" path="res://scenes/tools/flamethrower_tool.tscn" id="8_or0f0"]
 [ext_resource type="AudioStream" uid="uid://tipsy8dvfbew" path="res://audio/music/battle-theme.wav" id="8_tfp5g"]
+[ext_resource type="PackedScene" uid="uid://d1cbw1acmg7nt" path="res://scenes/entities/enemies/skeleton.tscn" id="9_ep278"]
+[ext_resource type="PackedScene" uid="uid://dqhymk434xpmh" path="res://scenes/entities/enemies/ghost.tscn" id="10_jlwvn"]
 
 [node name="Game" type="Node2D"]
 
@@ -44,3 +46,9 @@ position = Vector2(35, 14)
 
 [node name="FlamethrowerTool" parent="." instance=ExtResource("8_or0f0")]
 position = Vector2(60, 15)
+
+[node name="skeleton" parent="." instance=ExtResource("9_ep278")]
+position = Vector2(343, -4)
+
+[node name="ghost" parent="." instance=ExtResource("10_jlwvn")]
+position = Vector2(297, -80)

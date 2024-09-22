@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dqhymk434xpmh"]
+[gd_scene load_steps=17 format=3 uid="uid://dqhymk434xpmh"]
 
 [ext_resource type="Texture2D" uid="uid://b1f321jv54b0y" path="res://art/entities/enemies/ghost/ghost.png" id="1_bjw6m"]
 [ext_resource type="Script" path="res://scripts/entities/Entity.gd" id="1_hncny"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://scripts/components/Health.gd" id="5_s0vu2"]
 [ext_resource type="Script" path="res://scripts/components/Hitbox2D.gd" id="6_ojx0i"]
 [ext_resource type="Script" path="res://scripts/components/Hurtbox2D.gd" id="7_d8r3a"]
+[ext_resource type="Script" path="res://scripts/entities/Spawner.gd" id="8_luf5s"]
+[ext_resource type="PackedScene" uid="uid://df0vqsgdwkrh3" path="res://scenes/drops/ecto-seasoning.tscn" id="9_rc7ho"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ma0nn"]
 atlas = ExtResource("1_bjw6m")
@@ -109,3 +111,8 @@ offset_top = -48.0
 offset_right = 7.0
 offset_bottom = -38.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_8mwxq")
+
+[node name="DropSpawner" type="Node2D" parent="."]
+script = ExtResource("8_luf5s")
+spawn_object = ExtResource("9_rc7ho")
+auto_spawn = false
