@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ui/RecipeMenu.gd" id="1_yvjyl"]
 [ext_resource type="Texture2D" uid="uid://dmhnjgv3koty7" path="res://art/ui/menu.png" id="2_prmch"]
-[ext_resource type="Theme" uid="uid://b6t3jn55aci4o" path="res://tilesets/menu_theme.tres" id="3_l3fxd"]
+[ext_resource type="Theme" uid="uid://rvxbkrh4n8wn" path="res://tilesets/menu_theme.tres" id="3_l3fxd"]
 [ext_resource type="PackedScene" uid="uid://bxnrnly36cnd6" path="res://scenes/ui/recipe_choice.tscn" id="4_m0own"]
 [ext_resource type="PackedScene" uid="uid://bpk6xuis613su" path="res://scenes/ui/recipe_cost.tscn" id="5_xh1k1"]
 

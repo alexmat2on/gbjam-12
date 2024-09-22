@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="OptionMenu" load_steps=6 format=3 uid="uid://b3tfl204nxksd"]
+
+[ext_resource type="Script" path="res://scripts/resources/OptionMenuOption.gd" id="1_tnomm"]
+[ext_resource type="Script" path="res://scripts/resources/OptionMenu.gd" id="2_dt53y"]
+
+[sub_resource type="Resource" id="Resource_d820n"]
+script = ExtResource("1_tnomm")
+id = "cleaver"
+text = "Cleaver"
+tooltip = "Throwable tool that damages soft enemies"
+
+[sub_resource type="Resource" id="Resource_d4qvq"]
+script = ExtResource("1_tnomm")
+id = "mallet"
+text = "Mallet"
+tooltip = "Chargable tool that damages all nearby enemies"
+
+[sub_resource type="Resource" id="Resource_2150g"]
+script = ExtResource("1_tnomm")
+id = "flamethrower"
+text = "Flamethrower"
+tooltip = "Midrange tool that damages all enemies, but burns ingredients from fragile enemies"
+
+[resource]
+script = ExtResource("2_dt53y")
+dialogue = "Select a tool to assign to {button}"
+options = Array[ExtResource("1_tnomm")]([SubResource("Resource_d820n"), SubResource("Resource_d4qvq"), SubResource("Resource_2150g")])
