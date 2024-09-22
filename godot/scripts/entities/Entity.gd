@@ -10,6 +10,7 @@ const MAX_FALL_SPEED = 800.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var spawner: Spawner = get_node_or_null("Spawner")
+@onready var drop_spawner: Spawner = get_node_or_null("DropSpawner")
 @onready var healthLabel: Label = get_node_or_null("HealthLabel")
 
 @export var health: Health
@@ -43,10 +44,11 @@ func _ready():
 		healthLabel.text = str(health.get_health())
 	get_tree().create_timer(0.01).timeout.connect(_initialize_spawn_point)
 
-func _on_death():
+func _on_death(drop_items):
 	# TODO: Play death animation
+	if drop_items:
+		drop_spawner.spawn()
 	queue_free()
-	# TODO: Drop item
 	
 func _on_health_updated(new_health):
 	if is_instance_valid(healthLabel):
