@@ -18,7 +18,8 @@ enum State {
 	IDLE,
 	MALLET,
 	CLEAVER,
-	FLAMETHROWER
+	FLAMETHROWER,
+	MENU
 }
 
 enum movement_type {
@@ -94,6 +95,8 @@ func _physics_process(_delta):
 		_current_interactable.interact(self)
 		
 	match _current_state:
+		State.MENU:
+			_physics_process_menu(_delta)
 		State.IDLE:
 			_physics_process_idle(_delta)
 		State.MALLET:
@@ -128,6 +131,20 @@ func _base_movement(delta, do_gravity = true, flip_on_back = true, movement = mo
 		velocity.x = move_toward(velocity.x, 0, playerSpeed * speed_multiplier)
 
 	return direction
+
+func _physics_process_menu(delta):
+	if is_on_floor():
+		_seconds_since_started_falling = 0
+	else:
+		_seconds_since_started_falling += delta
+
+	# Add the gravity
+	if not is_on_floor():
+		velocity.y += gravity * delta
+		velocity.y = minf(velocity.y, MAX_FALL_SPEED)
+
+	velocity.x = 0
+	_animated_sprite.play("idle")
 
 func _physics_process_idle(delta):
 	var direction = _base_movement(delta)
@@ -265,3 +282,9 @@ func take_damage(hitbox: Hitbox2D):
 func is_facing_right():
 	# godot is stupid
 	return scale.y == 1
+
+func prevent_movement() -> void:
+	self._current_state = State.MENU
+
+func enable_movement() -> void:
+	self._current_state = State.IDLE
