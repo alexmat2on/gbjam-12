@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://vp130k12alpq"
+=======
+uid="uid://1mm4e0gg6eg1"
+>>>>>>> 56ae786 (imports)
 path="res://.godot/imported/zombie-steak.png-5491e8cc3eb94a801d21f5b7bb680586.ctex"
 metadata={
 "vram_texture": false
