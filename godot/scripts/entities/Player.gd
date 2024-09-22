@@ -33,13 +33,46 @@ var _current_state = State.IDLE
 
 var _seconds_since_started_falling = 0
 
-var _a_state = State.CLEAVER
-var _b_state = State.MALLET
-var _is_a_ready_to_spawn = true
-var _is_b_ready_to_spawn = true
+const BUTTON_A = 'button_a'
+const BUTTON_B = 'button_b'
 
-# { State: Spawner }
+var _equip_state = {
+	BUTTON_A: {
+		spawner = null,
+		tool = null,
+		is_ready_to_spawn = true
+	},
+	BUTTON_B: {
+		spawner = null,
+		tool = null,
+		is_ready_to_spawn = true
+	}
+}
+
+# { Enums.Tool: Spawner }
 var _spawner_map: Dictionary
+
+func get_tool_button(tool: Enums.Tool):
+	if _equip_state[BUTTON_A].tool == tool:
+		return BUTTON_A
+	if _equip_state[BUTTON_B].tool == tool:
+		return BUTTON_B
+	return null
+
+func equip_tool(button: String, tool: Enums.Tool):
+	match button:
+		BUTTON_A:
+			if _equip_state[BUTTON_B].tool != tool:
+				_equip_state[BUTTON_A].tool = tool
+				_equip_state[BUTTON_A].spawner = _spawner_map[tool]
+				_equip_state[BUTTON_A].spawner.ready_to_spawn.connect(func(): _equip_state[BUTTON_A].is_ready_to_spawn = true)
+		BUTTON_B:
+			if _equip_state[BUTTON_A].tool != tool:
+				_equip_state[BUTTON_B].tool = tool
+				_equip_state[BUTTON_B].spawner = _spawner_map[tool]
+				_equip_state[BUTTON_B].spawner.ready_to_spawn.connect(func(): _equip_state[BUTTON_B].is_ready_to_spawn = true)
+		_:
+			print("ERROR: unsupported button: " + button)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,14 +84,10 @@ func _ready():
 	SignalBus.player_health_updated.emit(health.get_health())
 	
 	_spawner_map = {
-		State.CLEAVER: cleaver_spawner,
-		State.MALLET: cleaver_spawner, # TODO: actual mallet projectile spawner
-		State.FLAMETHROWER: fireball_spawner
+		Enums.Tool.CLEAVER: cleaver_spawner,
+		Enums.Tool.MALLET: cleaver_spawner, # TODO: actual mallet projectile spawner
+		Enums.Tool.FLAMETHROWER: fireball_spawner
 	}
-	
-	# TODO: set these when you select your weapons
-	_spawner_map[_a_state].ready_to_spawn.connect(func(): _is_a_ready_to_spawn = true)
-	_spawner_map[_b_state].ready_to_spawn.connect(func(): _is_b_ready_to_spawn = true)
 
 func _physics_process(_delta):
 	if is_instance_valid(_current_interactable) && Input.is_action_just_pressed("start"):
@@ -76,7 +105,7 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 
-func _base_movement(delta, do_gravity = true, flip_on_back = true, movement = movement_type.ANY, speed_multiplier = 1):
+func _base_movement(delta, do_gravity = true, flip_on_back = true, movement = movement_type.ANY, speed_multiplier = 1.0):
 	if is_on_floor():
 		_seconds_since_started_falling = 0
 	else:
@@ -100,7 +129,6 @@ func _base_movement(delta, do_gravity = true, flip_on_back = true, movement = mo
 
 	return direction
 
-
 func _physics_process_idle(delta):
 	var direction = _base_movement(delta)
 	if not is_on_floor() && velocity.y > 0:
@@ -113,27 +141,30 @@ func _physics_process_idle(delta):
 	# Handle jump
 	if Input.is_action_just_pressed("up") and _seconds_since_started_falling <= COYOTE_TIME:
 		velocity.y = jumpSpeed
-		_animated_sprite.play("jump")
-		SoundManager.play(Enums.SoundEffect.JUMP)
-	
-	# Handle tools
-	if _is_a_ready_to_spawn && Input.is_action_pressed("button_a"):
-		_start_tool(_a_state)
+		_animated_sprite.play("walk") # TODO: Jump animationndle tools
+	if Input.is_action_pressed(BUTTON_A):
+		if _equip_state[BUTTON_A].tool != null && _equip_state[BUTTON_A].is_ready_to_spawn:
+			_start_tool(_equip_state[BUTTON_A].tool)
+
+	if Input.is_action_pressed(BUTTON_B):
+		if _equip_state[BUTTON_B].tool != null && _equip_state[BUTTON_B].is_ready_to_spawn:
+			_start_tool(_equip_state[BUTTON_B].tool)
+
+func _start_tool(tool: Enums.Tool):
+	if tool == null:
+		return
 		
-	elif _is_b_ready_to_spawn && Input.is_action_pressed("button_b"):
-		_start_tool(_b_state)
-
-func _start_tool(state: State):
-	match state:
-		State.CLEAVER:
+	match tool:
+		Enums.Tool.CLEAVER:
 			_start_cleaver()
-		State.MALLET:
+			_current_state = State.CLEAVER
+		Enums.Tool.MALLET:
 			_start_mallet()
-		State.FLAMETHROWER:
+			_current_state = State.MALLET
+		Enums.Tool.FLAMETHROWER:
 			_start_flamethrower()
+			_current_state = State.FLAMETHROWER
 	
-	_current_state = state
-
 func _activate_tool():
 	match _current_state:
 		State.CLEAVER:
@@ -154,11 +185,12 @@ func _physics_process_cleaver(delta):
 		velocity.y = jumpSpeed
 
 func _activate_cleaver():
-	cleaver_spawner.spawn(cleaver_spawner.direction if is_facing_right() else Vector2(-cleaver_spawner.direction.x, cleaver_spawner.direction.y))
-	if _a_state == State.CLEAVER:
-		_is_a_ready_to_spawn = false
-	else:
-		_is_b_ready_to_spawn = false
+	var es = _equip_state[get_tool_button(Enums.Tool.CLEAVER)]
+	var s = es.spawner
+	
+	s.spawn(s.direction if is_facing_right() else Vector2(-s.direction.x, s.direction.y))
+	es.is_ready_to_spawn = false
+	
 	_current_state = State.IDLE
 	
 func _start_mallet():
@@ -171,7 +203,7 @@ func _physics_process_mallet(delta):
 	if Input.is_action_just_pressed("up") and _seconds_since_started_falling <= COYOTE_TIME:
 		velocity.y = jumpSpeed * 0.6
 	
-	if _animated_sprite.animation.ends_with("_channel") && !Input.is_action_pressed("button_a" if _a_state == State.MALLET else "button_b"):
+	if _animated_sprite.animation.ends_with("_channel") && !Input.is_action_pressed(get_tool_button(Enums.Tool.MALLET) ):
 		# TODO: spawn mallet projectile here
 		_animated_sprite.play("atk_mallet_end")
 	
@@ -188,14 +220,20 @@ func _physics_process_flamethrower(delta):
 	if !_animated_sprite.animation.ends_with("_channel") && Input.is_action_just_pressed("up") and _seconds_since_started_falling <= COYOTE_TIME:
 		velocity.y = jumpSpeed
 	
-	if Input.is_action_just_released("button_a" if _a_state == State.FLAMETHROWER else "button_b"):
-		fireball_spawner.disable_auto_spawn()
+	var flamethrower_button = get_tool_button(Enums.Tool.FLAMETHROWER)
+	
+	if Input.is_action_just_released(flamethrower_button):
+		_equip_state[flamethrower_button].spawner.disable_auto_spawn()
+		print("action released")
 		_animated_sprite.play("atk_ft_end")
 
 func _activate_flamethrower():
-	fireball_spawner.offset = Vector2(20 if is_facing_right() else -20, 0)
-	fireball_spawner.direction = Vector2.RIGHT if is_facing_right() else Vector2.LEFT
-	fireball_spawner.enable_auto_spawn()
+	var es = _equip_state[get_tool_button(Enums.Tool.FLAMETHROWER)]
+
+	es.spawner.offset = Vector2(20 if is_facing_right() else -20, 0)
+	es.spawner.direction = Vector2.RIGHT if is_facing_right() else Vector2.LEFT
+	es.spawner.enable_auto_spawn()
+	
 	_animated_sprite.play("atk_ft_channel")
 
 func _on_interaction_area_entered(interactable: Area2D):
