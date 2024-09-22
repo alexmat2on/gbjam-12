@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://58x3fo260fua"]
+[gd_scene load_steps=18 format=3 uid="uid://58x3fo260fua"]
 
 [ext_resource type="Script" path="res://scripts/entities/Entity.gd" id="1_c078v"]
 [ext_resource type="Script" path="res://scripts/components/behaviors/PatrolBehavior.gd" id="1_pa6th"]

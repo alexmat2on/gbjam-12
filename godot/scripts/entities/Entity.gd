@@ -44,11 +44,11 @@ func _ready():
 		healthLabel.text = str(health.get_health())
 	get_tree().create_timer(0.01).timeout.connect(_initialize_spawn_point)
 
-func _on_death():
+func _on_death(drop_items):
 	# TODO: Play death animation
-	drop_spawner.spawn()
+	if drop_items:
+		drop_spawner.spawn()
 	queue_free()
-	# TODO: Drop item
 	
 func _on_health_updated(new_health):
 	if is_instance_valid(healthLabel):

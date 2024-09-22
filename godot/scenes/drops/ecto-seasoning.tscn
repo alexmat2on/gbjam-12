@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://df0vqsgdwkrh3"]
 
 [ext_resource type="Script" path="res://scripts/interactables/Drops.gd" id="1_8ldrl"]
-[ext_resource type="Texture2D" uid="uid://nmhfillgq20j" path="res://art/cooking/ingredients/ecto-seasoning-ing.png" id="1_8w1uu"]
+[ext_resource type="Texture2D" uid="uid://do5jt6250k0pe" path="res://art/cooking/ingredients/ecto-seasoning-ing.png" id="1_8w1uu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jiirc"]
 size = Vector2(8, 10)
