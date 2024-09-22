@@ -1,16 +1,14 @@
-[gd_scene load_steps=16 format=4 uid="uid://dyaci2ciwkxfh"]
+[gd_scene load_steps=14 format=4 uid="uid://dyaci2ciwkxfh"]
 
 [ext_resource type="PackedScene" uid="uid://75n2j6mgpexf" path="res://scenes/entities/player.tscn" id="2_fnirg"]
 [ext_resource type="TileSet" uid="uid://cnqwervwv7jpn" path="res://tilesets/tiles.tres" id="3_e15md"]
 [ext_resource type="PackedScene" uid="uid://d1yom6ggeaemk" path="res://scenes/utils/sky.tscn" id="3_fhts1"]
 [ext_resource type="PackedScene" uid="uid://cpsja80kfbip7" path="res://scenes/utils/hud.tscn" id="4_et2ur"]
-[ext_resource type="PackedScene" uid="uid://chsbdtdd08otb" path="res://scenes/appliances/appliance.tscn" id="5_bwvqj"]
-[ext_resource type="Texture2D" uid="uid://c3nw8icuqodi7" path="res://art/appliances/griller.png" id="7_xre2i"]
-[ext_resource type="Texture2D" uid="uid://cm5kp75peb2cj" path="res://art/appliances/griller-glow.png" id="8_0l411"]
+[ext_resource type="PackedScene" uid="uid://chsbdtdd08otb" path="res://scenes/appliances/stockpot.tscn" id="5_bwvqj"]
+[ext_resource type="PackedScene" uid="uid://y4kpf6rmy7bi" path="res://scenes/appliances/griller.tscn" id="6_6aqfy"]
+[ext_resource type="PackedScene" uid="uid://bn0efw4v83pyv" path="res://scenes/appliances/fryer.tscn" id="7_f2v7y"]
 [ext_resource type="Script" path="res://scripts/utils/BGM.gd" id="8_bygvf"]
-[ext_resource type="Texture2D" uid="uid://ops4ri46wjtv" path="res://art/appliances/fryer.png" id="9_52w1m"]
 [ext_resource type="AudioStream" uid="uid://bnusoor4jfcw6" path="res://audio/music/campfire.wav" id="9_f4l8i"]
-[ext_resource type="Texture2D" uid="uid://be0vklh2rafgm" path="res://art/appliances/fryer-glow.png" id="10_h71x8"]
 [ext_resource type="PackedScene" uid="uid://dnd7u5ra2uoci" path="res://scenes/tools/cleaver_tool.tscn" id="10_k5f85"]
 [ext_resource type="PackedScene" uid="uid://d27y573aox5wo" path="res://scenes/ui/recipe_menu.tscn" id="10_kxk1k"]
 [ext_resource type="PackedScene" uid="uid://cdyf3om11ummy" path="res://scenes/tools/flamethrower_tool.tscn" id="11_fo00j"]
@@ -42,30 +40,15 @@ process_callback = 0
 
 [node name="Stockpot" parent="." node_paths=PackedStringArray("recipe_menu") instance=ExtResource("5_bwvqj")]
 position = Vector2(507, 46)
-appliance_name = "stockpot"
 recipe_menu = NodePath("../CanvasLayer/RecipeMenu")
 
-[node name="Grill" parent="." node_paths=PackedStringArray("recipe_menu") instance=ExtResource("5_bwvqj")]
+[node name="Griller" parent="." node_paths=PackedStringArray("recipe_menu") instance=ExtResource("6_6aqfy")]
 position = Vector2(478, 46)
-appliance_name = "grill"
-recipes = Array[int]([1])
-texture = ExtResource("7_xre2i")
-glow_texture = ExtResource("8_0l411")
 recipe_menu = NodePath("../CanvasLayer/RecipeMenu")
 
-[node name="Sprite2D" parent="Grill/Area2D/CollisionShape2D" index="0"]
-texture = ExtResource("7_xre2i")
-
-[node name="Fryer" parent="." node_paths=PackedStringArray("recipe_menu") instance=ExtResource("5_bwvqj")]
+[node name="Fryer" parent="." node_paths=PackedStringArray("recipe_menu") instance=ExtResource("7_f2v7y")]
 position = Vector2(536, 46)
-appliance_name = "fryer"
-recipes = Array[int]([2])
-texture = ExtResource("9_52w1m")
-glow_texture = ExtResource("10_h71x8")
 recipe_menu = NodePath("../CanvasLayer/RecipeMenu")
-
-[node name="Sprite2D" parent="Fryer/Area2D/CollisionShape2D" index="0"]
-texture = ExtResource("9_52w1m")
 
 [node name="BGM" type="Node" parent="."]
 script = ExtResource("8_bygvf")
@@ -79,6 +62,3 @@ position = Vector2(20, 0)
 
 [node name="MalletTool" parent="." instance=ExtResource("12_nwcby")]
 position = Vector2(40, 0)
-
-[editable path="Grill"]
-[editable path="Fryer"]
