@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dq2be6f0fduo3"]
+[gd_scene load_steps=9 format=4 uid="uid://dq2be6f0fduo3"]
 
 [ext_resource type="PackedScene" uid="uid://d1yom6ggeaemk" path="res://scenes/utils/sky.tscn" id="1_o32uy"]
 [ext_resource type="PackedScene" uid="uid://cpsja80kfbip7" path="res://scenes/utils/hud.tscn" id="2_w5myv"]
@@ -6,10 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://75n2j6mgpexf" path="res://scenes/entities/player.tscn" id="4_dxvl2"]
 [ext_resource type="PackedScene" uid="uid://d1cbw1acmg7nt" path="res://scenes/entities/enemies/skeleton.tscn" id="5_eh4hy"]
 [ext_resource type="PackedScene" uid="uid://58x3fo260fua" path="res://scenes/entities/enemies/zombie.tscn" id="7_caka1"]
+[ext_resource type="PackedScene" uid="uid://ipeq1yuy8ssp" path="res://scenes/tools/tool_rack.tscn" id="8_6nf3m"]
 [ext_resource type="AudioStream" uid="uid://tipsy8dvfbew" path="res://audio/music/battle-theme.wav" id="8_7sra5"]
-[ext_resource type="PackedScene" uid="uid://dnd7u5ra2uoci" path="res://scenes/tools/cleaver_tool.tscn" id="9_ugyoa"]
-[ext_resource type="PackedScene" uid="uid://cdyf3om11ummy" path="res://scenes/tools/flamethrower_tool.tscn" id="10_qi7yo"]
-[ext_resource type="PackedScene" uid="uid://bnohdpspx1h3r" path="res://scenes/tools/mallet_tool.tscn" id="11_rvbs7"]
 
 [node name="Game" type="Node2D"]
 
@@ -44,11 +42,5 @@ position = Vector2(369, -37)
 stream = ExtResource("8_7sra5")
 autoplay = true
 
-[node name="Cleaver" parent="." instance=ExtResource("9_ugyoa")]
-position = Vector2(1, 25)
-
-[node name="FlamethrowerTool" parent="." instance=ExtResource("10_qi7yo")]
-position = Vector2(33, 25)
-
-[node name="MalletTool" parent="." instance=ExtResource("11_rvbs7")]
-position = Vector2(63, 25)
+[node name="ToolRack" parent="." instance=ExtResource("8_6nf3m")]
+position = Vector2(48, 8)

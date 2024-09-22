@@ -63,7 +63,8 @@ func get_tool_button(tool: Enums.Tool):
 		return BUTTON_B
 	return null
 
-func equip_tool(button: String, tool: Enums.Tool):
+func equip_tool(tool: Enums.Tool, button: String):
+	SignalBus.player_tool_equipped.emit(tool, button)
 	match button:
 		BUTTON_A:
 			if _equip_state[BUTTON_B].tool != tool:
@@ -290,10 +291,10 @@ func is_facing_right():
 	# godot is stupid
 	return scale.y == 1
 
-func prevent_movement() -> void:
+func menu_opened() -> void:
 	self._current_state = State.MENU
 
-func enable_movement() -> void:
+func menu_quitted() -> void:
 	self._current_state = State.IDLE
 
 func get_dish() -> Enums.Recipe:

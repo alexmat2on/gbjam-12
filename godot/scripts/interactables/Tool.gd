@@ -4,4 +4,4 @@ extends Interactable2D
 
 func interact(player: Player):
 	# Hey player, user selected X slot for Y tool
-	player.equip_tool("button_a", tool)
+	player.equip_tool(tool, "button_a")

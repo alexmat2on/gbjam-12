@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxgcda3rhjkay"]
+[gd_scene load_steps=3 format=3 uid="uid://bpk6xuis613su"]
 
 [ext_resource type="Script" path="res://scripts/ui/RecipeCost.gd" id="1_ph5vc"]
-[ext_resource type="PackedScene" uid="uid://cm66xge4irtly" path="res://scenes/ui/ingredient_cost.tscn" id="2_gt531"]
+[ext_resource type="PackedScene" uid="uid://bkjbb72kdma47" path="res://scenes/ui/ingredient_cost.tscn" id="2_gt531"]
 
 [node name="RecipeCost" type="Control"]
 layout_mode = 3

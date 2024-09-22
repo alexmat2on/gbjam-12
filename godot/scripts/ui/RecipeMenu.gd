@@ -83,11 +83,11 @@ func _update_selection() -> void:
 
 func show_menu() -> void:
 	self.visible = true
-	self.player.prevent_movement()
+	self.player.menu_opened()
 
 func hide_menu() -> void:
 	self.visible = false
-	self.player.enable_movement()
+	self.player.menu_quitted()
 
 func confirm_recipe() -> void:
 	var selected_choice = self._recipes[self._index]

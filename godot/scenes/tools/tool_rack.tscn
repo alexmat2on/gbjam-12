@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://ipeq1yuy8ssp"]
+
+[ext_resource type="Script" path="res://scripts/interactables/ToolRack.gd" id="1_5ffll"]
+[ext_resource type="Texture2D" uid="uid://c4y77mr8vy2s0" path="res://art/tools/tool-rack-inactive.png" id="2_qndpp"]
+[ext_resource type="Texture2D" uid="uid://7an27o3antwk" path="res://art/tools/tool-rack-active.png" id="3_5yda8"]
+[ext_resource type="Texture2D" uid="uid://dxw6l876257q5" path="res://art/tools/cleaver.png" id="4_87ah6"]
+[ext_resource type="Texture2D" uid="uid://c8ye058asm4ct" path="res://art/tools/meatmallet.png" id="5_nknhb"]
+[ext_resource type="Texture2D" uid="uid://bra8ei7jle07f" path="res://art/tools/flamethrower.png" id="6_vkt4b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3okeo"]
+size = Vector2(40, 48)
+
+[node name="ToolRack" type="Node2D"]
+script = ExtResource("1_5ffll")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qndpp")
+
+[node name="Popup" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_5yda8")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_3okeo")
+
+[node name="CleaverIcon" type="Sprite2D" parent="."]
+position = Vector2(-15, -3)
+texture = ExtResource("4_87ah6")
+
+[node name="MalletIcon" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = ExtResource("5_nknhb")
+
+[node name="FlamethrowerIcon" type="Sprite2D" parent="."]
+position = Vector2(15, -3)
+texture = ExtResource("6_vkt4b")
