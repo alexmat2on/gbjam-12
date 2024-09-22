@@ -12,6 +12,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var customers = self.get_tree().get_nodes_in_group("Customers")
+	if len(customers) == 0:
+		self.visible = false
+		return
+
 	var customer_out_of_range = false
 	for customer in customers:
 		if _customer_exists_out_of_range(customer):
