@@ -1,9 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://brngsv47cg41w"]
+[gd_scene load_steps=29 format=3 uid="uid://brngsv47cg41w"]
 
 [ext_resource type="Texture2D" uid="uid://6hron8tdb17b" path="res://art/cooking/customer.png" id="1_7a630"]
 [ext_resource type="Script" path="res://scripts/interactables/Customer.gd" id="1_xlejw"]
 [ext_resource type="Texture2D" uid="uid://dmehw60qh0beh" path="res://art/cooking/zombie-stew.png" id="3_4x7tq"]
 [ext_resource type="Texture2D" uid="uid://bgenekd8v8bem" path="res://art/cooking/burn_progress.png" id="3_dnyij"]
+[ext_resource type="AudioStream" uid="uid://bhkl5r53mvork" path="res://audio/sfx/heavy-hit.wav" id="5_wrhxf"]
+[ext_resource type="AudioStream" uid="uid://miav7sfirnob" path="res://audio/sfx/light-hit.wav" id="6_a8f7i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcucf"]
 size = Vector2(16, 25)
@@ -198,3 +200,9 @@ texture = ExtResource("3_4x7tq")
 libraries = {
 "": SubResource("AnimationLibrary_h801v")
 }
+
+[node name="FailSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wrhxf")
+
+[node name="SuccessSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_a8f7i")

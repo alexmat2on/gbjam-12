@@ -5,6 +5,8 @@ const _TIME_LIMIT: float = 50.0
 @export var recipe_order: Enums.Recipe
 
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
+@onready var _fail_sound: AudioStreamPlayer = $FailSound
+@onready var _success_sound: AudioStreamPlayer = $SuccessSound
 @onready var _order_sprite: Sprite2D = $RecipeOrder
 @onready var _fail_progress: AnimatedSprite2D = $FailProgress
 @onready var _player_ref: Player = $"../../../Player"
@@ -45,9 +47,10 @@ func _process(delta: float) -> void:
 func _complete_order() -> void:
 	_player_ref.drop_dish()
 	print("satiation.")
+	self._success_sound.play()
+	self._success_sound.finished.connect(self.queue_free)
 	GlobalState.decrement_orders()
 	self.get_parent().remove_from_group("Customers")
-	self.queue_free()
 
 func _create_timer(time: float) -> Timer:
 	var timer = Timer.new()
@@ -66,7 +69,8 @@ func _get_frame_count(anim: AnimatedSprite2D) -> int:
 # Invokes the wrath of the Ancients from deep within the Darkest Glade.
 func _invoke_wrath() -> void:
 	print("taste death.")
+	self._fail_sound.play()
+	self._fail_sound.finished.connect(self.queue_free)
 	GlobalState.decrement_orders()
 	_player_ref.health.remove_health()
 	self.get_parent().remove_from_group("Customers")
-	self.queue_free()
