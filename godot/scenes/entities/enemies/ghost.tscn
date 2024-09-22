@@ -94,6 +94,7 @@ shape = SubResource("CircleShape2D_1nmox")
 
 [node name="Hurtbox2D" type="Area2D" parent="."]
 position = Vector2(14, 14)
+collision_mask = 2
 script = ExtResource("7_d8r3a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
