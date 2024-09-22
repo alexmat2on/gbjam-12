@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://75n2j6mgpexf"]
+[gd_scene load_steps=48 format=3 uid="uid://75n2j6mgpexf"]
 
 [ext_resource type="Script" path="res://scripts/entities/Player.gd" id="1_0ke4j"]
 [ext_resource type="Texture2D" uid="uid://c00hm435rt6bc" path="res://art/entities/player/lechef.png" id="2_e1o3v"]
@@ -7,7 +7,8 @@
 [ext_resource type="Script" path="res://scripts/components/Hurtbox2D.gd" id="4_tewki"]
 [ext_resource type="PackedScene" uid="uid://uwf634yd7txp" path="res://scenes/entities/projectiles/cleaver_projectile.tscn" id="5_e6val"]
 [ext_resource type="PackedScene" uid="uid://cxab4g5uyjvwb" path="res://scenes/entities/projectiles/fireball.tscn" id="6_dwdv3"]
-[ext_resource type="PackedScene" uid="uid://b50oigvb5804i" path="res://scenes/entities/projectiles/mallet_projectile.tscn" id="8_lsrfr"]
+[ext_resource type="PackedScene" path="res://scenes/entities/projectiles/mallet_projectile.tscn" id="8_lsrfr"]
+[ext_resource type="Texture2D" uid="uid://dat0m52xxlryl" path="res://art/cooking/bone-chips.png" id="9_7s6ig"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qvcwe"]
 atlas = ExtResource("2_e1o3v")
@@ -377,3 +378,8 @@ position = Vector2(0, -14)
 script = ExtResource("4_b4t1n")
 spawn_object = ExtResource("8_lsrfr")
 auto_spawn = false
+
+[node name="Dish" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -45)
+texture = ExtResource("9_7s6ig")
