@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dmhnjgv3koty7" path="res://art/ui/menu.png" id="1_hvl8a"]
 [ext_resource type="Script" path="res://scripts/ui/RecipeChoice.gd" id="2_0b6c2"]
-[ext_resource type="Texture2D" uid="uid://vp130k12alpq" path="res://art/cooking/zombie-steak.png" id="2_g3bej"]
+[ext_resource type="Texture2D" uid="uid://liby34d2rico" path="res://art/cooking/zombie-steak.png" id="2_g3bej"]
 
 [node name="RecipeChoice" type="NinePatchRect"]
 custom_minimum_size = Vector2(24, 24)
