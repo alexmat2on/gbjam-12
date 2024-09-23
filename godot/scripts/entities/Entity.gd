@@ -11,7 +11,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var spawner: Spawner = get_node_or_null("Spawner")
 @onready var drop_spawner: Spawner = get_node_or_null("DropSpawner")
-@onready var healthLabel: Label = get_node_or_null("HealthLabel")
 @onready var animated_sprite: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
 
 @export var health: Health
@@ -44,8 +43,6 @@ func _ready():
 		animated_sprite.play("idle")
 	
 	health.connect("health_updated", self._on_health_updated)
-	if is_instance_valid(healthLabel):
-		healthLabel.text = str(health.get_health())
 	get_tree().create_timer(0.01).timeout.connect(_initialize_spawn_point)
 
 func _on_death(drop_items):
@@ -54,9 +51,6 @@ func _on_death(drop_items):
 		drop_spawner.spawn()
 	queue_free()
 	
-func _on_health_updated(new_health):
-	if is_instance_valid(healthLabel):
-		healthLabel.text = str(health.get_health())
 
 func _physics_process(delta):
 	if aggro_behavior != null && _current_state == State.AGGRO:
