@@ -107,7 +107,7 @@ func _physics_process(_delta):
 	if health.get_health() == 0:
 		return
 
-	if is_instance_valid(_current_interactable) && Input.is_action_just_pressed("start"):
+	if is_instance_valid(_current_interactable) && Input.is_action_just_pressed("select"):
 		_current_interactable.interact(self)
 
 	_dish_sprite.visible = self.is_carrying_dish()
@@ -323,7 +323,7 @@ func menu_opened() -> void:
 	self._current_state = State.MENU
 
 func menu_quitted() -> void:
-	self._current_state = State.IDLE
+	get_tree().create_timer(0.5).timeout.connect(func(): self._current_state = State.IDLE)
 
 func get_dish() -> Enums.Recipe:
 	return self._dish
