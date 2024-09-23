@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cpsja80kfbip7"]
+[gd_scene load_steps=20 format=3 uid="uid://cpsja80kfbip7"]
 
 [ext_resource type="Script" path="res://scripts/ui/HealthDisplay.gd" id="1_afltq"]
 [ext_resource type="Script" path="res://scripts/ui/InventoryDisplay.gd" id="2_f0qp4"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://dvirj06qwk5yr" path="res://art/cooking/ingredients/bone-ing.png" id="7_wp1bm"]
 [ext_resource type="Texture2D" uid="uid://dh5etc8q5a8bm" path="res://art/cooking/ingredients/zombie-flesh-ing.png" id="8_etrx5"]
 [ext_resource type="Texture2D" uid="uid://do5jt6250k0pe" path="res://art/cooking/ingredients/ecto-seasoning-ing.png" id="9_g6ns6"]
+[ext_resource type="Texture2D" uid="uid://ukix01g0820f" path="res://art/cooking/small-eye.png" id="11_d1w4p"]
+[ext_resource type="Script" path="res://scripts/ui/DayDisplay.gd" id="12_gm6mc"]
+[ext_resource type="Texture2D" uid="uid://bo1mepkm22gua" path="res://art/ui/day.png" id="12_ymall"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sf1wa"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -20,10 +23,13 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3se64"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6418"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2lj7"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6418"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtach"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="HUD" type="Control"]
@@ -126,15 +132,6 @@ offset_bottom = 1.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_3se64")
 text = "b"
 
-[node name="OrdersLeft" type="Label" parent="."]
-layout_mode = 0
-offset_left = 84.0
-offset_right = 160.0
-offset_bottom = 11.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_n2lj7")
-text = " orders:"
-script = ExtResource("5_mpeqh")
-
 [node name="InventoryDisplay" type="Control" parent="."]
 anchors_preset = 0
 offset_top = 58.0
@@ -192,3 +189,54 @@ offset_right = 30.0
 offset_bottom = 34.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_h6418")
 text = "1"
+
+[node name="OrdersLeft" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 132.0
+offset_top = 15.0
+offset_right = 158.0
+offset_bottom = 29.0
+script = ExtResource("5_mpeqh")
+
+[node name="OrdersLeftIcon" type="TextureRect" parent="OrdersLeft"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 13.0
+offset_bottom = 12.0
+texture = ExtResource("11_d1w4p")
+
+[node name="OrdersLeftLabel" type="Label" parent="OrdersLeft"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 2.0
+offset_right = 25.0
+offset_bottom = 13.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_n2lj7")
+text = "2
+"
+
+[node name="DayDisplay" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 133.0
+offset_top = 1.0
+offset_right = 157.0
+offset_bottom = 17.0
+script = ExtResource("12_gm6mc")
+
+[node name="DayLabel" type="Label" parent="DayDisplay"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 3.0
+offset_right = 25.0
+offset_bottom = 13.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_gtach")
+text = "1"
+
+[node name="DayIcon" type="TextureRect" parent="DayDisplay"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 12.0
+offset_bottom = 13.0
+texture = ExtResource("12_ymall")
