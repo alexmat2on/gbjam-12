@@ -29,16 +29,16 @@ var enter_serve_mode_menu: OptionMenu = load("res://resources/enter_serve_mode_m
 
 
 func clear():
-	get_tree().node_added.connect(on_node_added)
 	_game_state = GameState.SETUP
 	Inventory.clear()
 	carried_health = 5
 	_first_foray = true
-	pause_tick = false
+	pause_tick = true
 	_day = 0
 	_orders = 0
 	player_tool_a = Enums.Tool.NONE
 	player_tool_b = Enums.Tool.NONE
+	get_tree().node_added.connect(on_node_added)
 	
 	_time_left = ROUND_TIME
 	SignalBus.time_updated.emit(_time_left)

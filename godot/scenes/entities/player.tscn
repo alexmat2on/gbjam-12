@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/components/Hurtbox2D.gd" id="4_tewki"]
 [ext_resource type="PackedScene" uid="uid://uwf634yd7txp" path="res://scenes/entities/projectiles/cleaver_projectile.tscn" id="5_e6val"]
 [ext_resource type="PackedScene" uid="uid://cxab4g5uyjvwb" path="res://scenes/entities/projectiles/fireball.tscn" id="6_dwdv3"]
-[ext_resource type="PackedScene" uid="uid://0kj3rafmxqta" path="res://scenes/entities/projectiles/mallet_projectile.tscn" id="8_lsrfr"]
+[ext_resource type="PackedScene" path="res://scenes/entities/projectiles/mallet_projectile.tscn" id="8_lsrfr"]
 [ext_resource type="Texture2D" uid="uid://dat0m52xxlryl" path="res://art/cooking/bone-chips.png" id="9_7s6ig"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qvcwe"]
