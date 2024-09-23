@@ -12,6 +12,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var spawner: Spawner = get_node_or_null("Spawner")
 @onready var drop_spawner: Spawner = get_node_or_null("DropSpawner")
 @onready var healthLabel: Label = get_node_or_null("HealthLabel")
+@onready var animated_sprite: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
 
 @export var health: Health
 @export var idle_behavior: EntityBehavior
@@ -38,6 +39,9 @@ func _ready():
 	if is_instance_valid(spawner):
 		spawner.ready_to_spawn.connect(self.activate_spawner)
 	health.health_zero.connect(self._on_death)
+	
+	if is_instance_valid(animated_sprite):
+		animated_sprite.play("idle")
 	
 	health.connect("health_updated", self._on_health_updated)
 	if is_instance_valid(healthLabel):
