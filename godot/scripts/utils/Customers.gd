@@ -66,6 +66,10 @@ func _ready() -> void:
 	for child in self.get_children():
 		child.queue_free()
 
+	if not GlobalState.is_serve_mode():
+		GlobalState.set_orders(0)
+		return
+
 	var order_interval: float = 1.0
 	var spawn_positions = _get_spawn_positions()
 	for spawn_position in spawn_positions:

@@ -1,6 +1,4 @@
 extends CanvasLayer
-class_name OptionMenuDisplay
-
 @onready var dialogue_label = $DialogueRect/DialogueLabel
 @onready var options_container = $OptionsContainer
 

@@ -6,68 +6,68 @@
 [ext_resource type="Theme" uid="uid://cfvdac3ddgpwi" path="res://tilesets/theme.tres" id="3_xyfnf"]
 [ext_resource type="AudioStream" uid="uid://bl5b36eew1jb3" path="res://audio/music/spooky-sample1.wav" id="4_l2eb3"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7gqj6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5sif"]
 atlas = ExtResource("1_1vnp6")
 region = Rect2(0, 0, 160, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n7mm8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr6xb"]
 atlas = ExtResource("1_1vnp6")
 region = Rect2(160, 0, 160, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_108ip"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4lkk"]
 atlas = ExtResource("1_1vnp6")
 region = Rect2(320, 0, 160, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fgnrx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji5fb"]
 atlas = ExtResource("1_1vnp6")
 region = Rect2(480, 0, 160, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cfyul"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1scxp"]
 atlas = ExtResource("1_1vnp6")
 region = Rect2(640, 0, 160, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rjuv3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb7kg"]
 atlas = ExtResource("1_1vnp6")
 region = Rect2(800, 0, 160, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o2km2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxxil"]
 atlas = ExtResource("1_1vnp6")
 region = Rect2(960, 0, 160, 144)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qfx51"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3e3i"]
 atlas = ExtResource("1_1vnp6")
 region = Rect2(1120, 0, 160, 144)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_w7hjv"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ngkxn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7gqj6")
+"texture": SubResource("AtlasTexture_p5sif")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n7mm8")
+"texture": SubResource("AtlasTexture_jr6xb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_108ip")
+"texture": SubResource("AtlasTexture_r4lkk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fgnrx")
+"texture": SubResource("AtlasTexture_ji5fb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cfyul")
+"texture": SubResource("AtlasTexture_1scxp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rjuv3")
+"texture": SubResource("AtlasTexture_bb7kg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o2km2")
+"texture": SubResource("AtlasTexture_pxxil")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qfx51")
+"texture": SubResource("AtlasTexture_f3e3i")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [node name="MainMenu" type="Node2D"]
@@ -75,13 +75,13 @@ script = ExtResource("1_22obb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(80, 72)
-sprite_frames = SubResource("SpriteFrames_w7hjv")
+sprite_frames = SubResource("SpriteFrames_ngkxn")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 8.0
-offset_top = 115.0
-offset_right = 152.0
-offset_bottom = 125.0
+offset_left = 42.0
+offset_top = 112.0
+offset_right = 127.0
+offset_bottom = 122.0
 theme = ExtResource("3_xyfnf")
 text = "press start"
 horizontal_alignment = 1

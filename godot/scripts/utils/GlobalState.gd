@@ -1,7 +1,13 @@
 extends Node
 
-var _day: int = 2
+enum GameState {
+	GATHER,
+	SERVE
+}
+
+var _day: int = 0
 var _orders: int = 0
+var _game_state: GameState = GameState.GATHER
 
 var player_tool_a: Enums.Tool = Enums.Tool.NONE
 var player_tool_b: Enums.Tool = Enums.Tool.NONE
@@ -28,3 +34,15 @@ func decrement_orders() -> void:
 
 func get_orders() -> int:
 	return _orders
+
+func enable_serve_mode() -> void:
+	_game_state = GameState.SERVE
+
+func enable_gather_mode() -> void:
+	_game_state = GameState.GATHER
+
+func is_gather_mode() -> bool:
+	return _game_state == GameState.GATHER
+
+func is_serve_mode() -> bool:
+	return _game_state == GameState.SERVE
