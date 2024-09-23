@@ -87,6 +87,7 @@ func _ready():
 	_interactor.connect("area_exited", self._on_interaction_area_exited)
 	_animated_sprite.animation_finished.connect(self._on_animation_finished)
 	
+	health.set_health(GlobalState.carried_health)
 	health.connect("health_updated", self._on_health_updated)
 	print(health.health_zero)
 	health.health_zero.connect(self._death)

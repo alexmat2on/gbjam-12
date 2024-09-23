@@ -14,6 +14,9 @@ func _ready():
 func get_health():
 	return _health;
 
+func set_health(health: int):
+	_health = health
+
 func add_health(amount: int = 1):
 	_health = min(max_health, _health + amount)
 	health_updated.emit(_health)
