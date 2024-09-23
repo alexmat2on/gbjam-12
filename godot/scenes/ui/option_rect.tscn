@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvvkojp3x2krr"]
+[gd_scene load_steps=4 format=3 uid="uid://cvvkojp3x2krr"]
 
 [ext_resource type="Texture2D" uid="uid://dmhnjgv3koty7" path="res://art/ui/menu.png" id="1_jyhhv"]
+[ext_resource type="Texture2D" uid="uid://bosnprgtuxnu0" path="res://art/ui/select_arrow.png" id="2_lb5vc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fc3ws"]
 
@@ -21,22 +22,17 @@ layout_mode = 0
 offset_left = 3.0
 offset_right = 111.0
 offset_bottom = 10.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.0666667, 0.0117647, 0.172549, 1)
 theme_override_constants/line_spacing = -2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fc3ws")
 text = "Flamethrower"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="SelectedIndicator" type="Label" parent="."]
-self_modulate = Color(0.894118, 1, 1, 1)
+[node name="SelectedIndicator" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -9.0
-offset_right = 2.0
-offset_bottom = 10.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = -2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_fc3ws")
-text = "~"
-horizontal_alignment = 2
-autowrap_mode = 2
+offset_left = -7.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 9.0
+texture = ExtResource("2_lb5vc")

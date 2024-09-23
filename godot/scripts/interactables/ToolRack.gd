@@ -23,7 +23,8 @@ func _ready():
 func interact(player: Player):
 	# show all tools
 	for tool in Enums.Tool.values():
-		_tool_icons[tool].show()
+		if _tool_icons.has(tool):
+			_tool_icons[tool].show()
 		
 	_current_player = player
 	_current_menu = "a"
