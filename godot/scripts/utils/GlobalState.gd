@@ -103,9 +103,10 @@ func decrement_orders() -> void:
 		get_tree().create_timer(1).timeout.connect(finish_serve_phase)
 
 func finish_serve_phase():
-	SignalBus.selected_option.connect(on_option_selected)
-	SignalBus.opened_option_menu.emit(finish_serve_mode_menu, false)
-	# TODO: switch global state to a scene and use the option menu handler
+	if carried_health > 0:
+		SignalBus.selected_option.connect(on_option_selected)
+		SignalBus.opened_option_menu.emit(finish_serve_mode_menu, false)
+		# TODO: switch global state to a scene and use the option menu handler
 
 func get_orders() -> int:
 	return _orders
