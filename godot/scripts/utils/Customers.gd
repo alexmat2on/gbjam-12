@@ -44,6 +44,9 @@ func _get_insane_spawns() -> Array:
 
 func _get_spawn_positions() -> Array:
 	var positions: Array = []
+	var day_number = GlobalState.get_day()
+	if day_number > 3:
+		day_number = 3
 	var spawn_data = _spawns_for_day[GlobalState.get_day()]
 	for difficulty in spawn_data:
 		var spawns: Array

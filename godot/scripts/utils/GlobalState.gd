@@ -68,6 +68,7 @@ func _serve_physics_process(delta):
 	pass
 
 func on_option_selected(id):
+	SoundManager.stop(Enums.SoundEffect.FLAMETHROWER)
 	SignalBus.selected_option.disconnect(on_option_selected)
 	match _game_state:
 		GameState.GATHER:
