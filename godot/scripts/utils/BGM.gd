@@ -10,6 +10,7 @@ var _asp: AudioStreamPlayer
 
 func _ready():
 	_asp = AudioStreamPlayer.new()
+	_asp.volume_db = -3.0
 	_asp.stream = stream
 	self.add_child(_asp)
 
