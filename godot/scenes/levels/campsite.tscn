@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://dyaci2ciwkxfh"]
+[gd_scene load_steps=43 format=4 uid="uid://dyaci2ciwkxfh"]
 
 [ext_resource type="PackedScene" uid="uid://75n2j6mgpexf" path="res://scenes/entities/player.tscn" id="2_fnirg"]
 [ext_resource type="TileSet" uid="uid://cnqwervwv7jpn" path="res://tilesets/tiles.tres" id="3_e15md"]
@@ -13,15 +13,17 @@
 [ext_resource type="PackedScene" uid="uid://d27y573aox5wo" path="res://scenes/ui/recipe_menu.tscn" id="10_kxk1k"]
 [ext_resource type="PackedScene" uid="uid://cdyf3om11ummy" path="res://scenes/tools/flamethrower_tool.tscn" id="11_fo00j"]
 [ext_resource type="PackedScene" uid="uid://bnohdpspx1h3r" path="res://scenes/tools/mallet_tool.tscn" id="12_nwcby"]
-[ext_resource type="PackedScene" uid="uid://ipeq1yuy8ssp" path="res://scenes/tools/tool_rack.tscn" id="14_7er4o"]
+[ext_resource type="PackedScene" path="res://scenes/tools/tool_rack.tscn" id="14_7er4o"]
 [ext_resource type="PackedScene" uid="uid://b6eqe082ieh3j" path="res://scenes/customers/bone_chips_customer.tscn" id="14_kxeof"]
 [ext_resource type="Script" path="res://scripts/utils/Customers.gd" id="14_qfe0o"]
 [ext_resource type="PackedScene" uid="uid://dbth4mwyr2lix" path="res://scenes/customers/zombie_steak_customer.tscn" id="15_rhndt"]
 [ext_resource type="PackedScene" uid="uid://dwt4ncn1a6641" path="res://scenes/customers/zombie_stew_customer.tscn" id="16_ebpbd"]
-[ext_resource type="PackedScene" uid="uid://76jfkh7qf0a6" path="res://scenes/map.tscn" id="19_m0bhs"]
+[ext_resource type="PackedScene" path="res://scenes/map.tscn" id="19_m0bhs"]
 [ext_resource type="Texture2D" uid="uid://csyafrxvilk13" path="res://art/levels/general/sign.png" id="20_6k7q1"]
 [ext_resource type="Texture2D" uid="uid://bh7pls1g23r35" path="res://art/levels/general/dogge.png" id="21_vc38d"]
 [ext_resource type="Script" path="res://scripts/entities/Doggo.gd" id="22_ikn6s"]
+[ext_resource type="Texture2D" uid="uid://cwu2ntonpq0yc" path="res://art/levels/general/campfire.png" id="23_5sc56"]
+[ext_resource type="Script" path="res://scripts/entities/Campfire.gd" id="24_8o14i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0k4e7"]
 atlas = ExtResource("21_vc38d")
@@ -83,6 +85,70 @@ animations = [{
 "texture": SubResource("AtlasTexture_u38lu")
 }],
 "loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h57s"]
+atlas = ExtResource("23_5sc56")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhswu"]
+atlas = ExtResource("23_5sc56")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34ci3"]
+atlas = ExtResource("23_5sc56")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rlld"]
+atlas = ExtResource("23_5sc56")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymx0x"]
+atlas = ExtResource("23_5sc56")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t77nf"]
+atlas = ExtResource("23_5sc56")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6b0c"]
+atlas = ExtResource("23_5sc56")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0omrt"]
+atlas = ExtResource("23_5sc56")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4vi5d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0h57s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhswu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34ci3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rlld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymx0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t77nf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6b0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0omrt")
+}],
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
@@ -188,3 +254,8 @@ texture = ExtResource("20_6k7q1")
 position = Vector2(430, 30)
 sprite_frames = SubResource("SpriteFrames_onq32")
 script = ExtResource("22_ikn6s")
+
+[node name="Campfire" type="AnimatedSprite2D" parent="."]
+position = Vector2(311, 30)
+sprite_frames = SubResource("SpriteFrames_4vi5d")
+script = ExtResource("24_8o14i")
