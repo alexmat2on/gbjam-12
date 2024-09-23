@@ -7,7 +7,6 @@ const LEVEL_PATH_TEMPLATE = "res://scenes/levels/{id}.tscn"
 
 var map_menu: OptionMenu = load("res://resources/map_menu.tres")
 
-
 func interact(player: Player):
 	_menu_handler.open_menu(map_menu)
 	
@@ -19,3 +18,9 @@ func on_option_selected(id: String):
 		get_tree().change_scene_to_file(LEVEL_PATH_TEMPLATE.format({
 			"id": id
 		}))
+	if GlobalState.is_first_foray():
+		GlobalState.enable_day_increment()
+	else:
+		GlobalState.next_day()
+	GlobalState.pause_tick = false
+	GlobalState.carried_health = 5

@@ -1,0 +1,135 @@
+[gd_scene load_steps=17 format=3 uid="uid://0w0l4afwek6r"]
+
+[ext_resource type="Script" path="res://scripts/interactables/Dog.gd" id="1_ddib7"]
+[ext_resource type="Texture2D" uid="uid://bh7pls1g23r35" path="res://art/levels/general/dogge.png" id="1_ojxug"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ar877"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k4e7"]
+atlas = ExtResource("1_ojxug")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v78pq"]
+atlas = ExtResource("1_ojxug")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsjs2"]
+atlas = ExtResource("1_ojxug")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8eld"]
+atlas = ExtResource("1_ojxug")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfmoo"]
+atlas = ExtResource("1_ojxug")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfthh"]
+atlas = ExtResource("1_ojxug")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qllmt"]
+atlas = ExtResource("1_ojxug")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u38lu"]
+atlas = ExtResource("1_ojxug")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_onq32"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0k4e7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v78pq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsjs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8eld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfmoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfthh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qllmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u38lu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6e1n"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Animation" id="Animation_cxu0j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-9, -30)]
+}
+
+[sub_resource type="Animation" id="Animation_6bs60"]
+resource_name = "heart"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.217638, 0.466516),
+"update": 0,
+"values": [Vector2(-9, -28), Vector2(-9, -33)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f372c"]
+_data = {
+"RESET": SubResource("Animation_cxu0j"),
+"heart": SubResource("Animation_6bs60")
+}
+
+[node name="Dog" type="Node2D"]
+script = ExtResource("1_ddib7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_ar877")
+
+[node name="Doggo" type="AnimatedSprite2D" parent="Area2D/CollisionShape2D"]
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_onq32")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -9.0
+offset_top = -30.0
+offset_bottom = -20.0
+theme_override_colors/font_color = Color(0.0666667, 0.0117647, 0.172549, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_p6e1n")
+text = "<"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f372c")
+}

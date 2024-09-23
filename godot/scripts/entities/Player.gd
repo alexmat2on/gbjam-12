@@ -98,10 +98,11 @@ func _ready():
 		Enums.Tool.FLAMETHROWER: fireball_spawner
 	}
 	
-	if GlobalState.player_tool_a != Enums.Tool.NONE:
-		equip_tool(GlobalState.player_tool_a, BUTTON_A)
-	if GlobalState.player_tool_b != Enums.Tool.NONE:
-		equip_tool(GlobalState.player_tool_b, BUTTON_B)
+	if GlobalState.is_gather_mode():
+		if GlobalState.player_tool_a != Enums.Tool.NONE:
+			equip_tool(GlobalState.player_tool_a, BUTTON_A)
+		if GlobalState.player_tool_b != Enums.Tool.NONE:
+			equip_tool(GlobalState.player_tool_b, BUTTON_B)
 
 func _physics_process(_delta):
 	if health.get_health() == 0:
@@ -302,6 +303,7 @@ func _on_animation_finished():
 
 func _on_health_updated(new_health):
 	SignalBus.player_health_updated.emit(new_health)
+	GlobalState.carried_health = new_health
 
 func take_damage(hitbox: Hitbox2D, hurt_mod: Array[Enums.HurtModifier]):
 	# TODO: also include damage type (light, heavy, fire)
