@@ -90,8 +90,8 @@ radius = 80.0
 radius = 192.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bgdow"]
-radius = 7.0
-height = 28.0
+radius = 4.0
+height = 12.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_58rqn"]
 height = 36.0
@@ -147,6 +147,7 @@ shape = SubResource("CircleShape2D_l1byq")
 script = ExtResource("2_0xyos")
 
 [node name="Hitbox2D" type="Area2D" parent="."]
+position = Vector2(-6, 0)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("6_ih8ws")
