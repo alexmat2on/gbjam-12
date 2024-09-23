@@ -1,0 +1,117 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvf4swh86mga0"]
+
+[ext_resource type="Script" path="res://scripts/ui/OptionMenuDisplay.gd" id="1_a1cm7"]
+[ext_resource type="Texture2D" uid="uid://dmhnjgv3koty7" path="res://art/ui/menu.png" id="2_aem34"]
+[ext_resource type="PackedScene" uid="uid://cvvkojp3x2krr" path="res://scenes/ui/option_rect.tscn" id="3_poqbj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fc3ws"]
+
+[node name="OptionMenu" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_a1cm7")
+option_rect = ExtResource("3_poqbj")
+
+[node name="DialogueRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(150, 30)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_top = 2.0
+offset_right = 78.0
+offset_bottom = 36.0
+grow_horizontal = 2
+texture = ExtResource("2_aem34")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="DialogueLabel" type="Label" parent="DialogueRect"]
+self_modulate = Color(0.894118, 1, 1, 1)
+layout_mode = 0
+offset_left = 3.0
+offset_right = 153.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fc3ws")
+text = "Test Text fosduifhgj sdoauhg dsfuhg fouhdfg fsr gsd ughd fhgduf g df"
+autowrap_mode = 2
+
+[node name="OptionsContainer" type="GridContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -35.0
+offset_right = 57.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 1
+
+[node name="Option1Rect" parent="OptionsContainer" instance=ExtResource("3_poqbj")]
+layout_mode = 2
+
+[node name="Option2Rect" type="NinePatchRect" parent="OptionsContainer"]
+custom_minimum_size = Vector2(114, 10)
+layout_mode = 2
+texture = ExtResource("2_aem34")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="OptionLabel" type="Label" parent="OptionsContainer/Option2Rect"]
+self_modulate = Color(0.894118, 1, 1, 1)
+layout_mode = 0
+offset_left = 3.0
+offset_right = 111.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fc3ws")
+text = "Flamethrower"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ControlsRect" type="NinePatchRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -20.0
+offset_right = 70.0
+offset_bottom = -2.0
+grow_vertical = 0
+texture = ExtResource("2_aem34")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="OptionLabel" type="Label" parent="ControlsRect"]
+self_modulate = Color(0.894118, 1, 1, 1)
+layout_mode = 0
+offset_left = 3.0
+offset_right = 66.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fc3ws")
+text = "X:Select
+Z:Back"
+autowrap_mode = 2

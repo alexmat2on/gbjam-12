@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvvkojp3x2krr"]
+
+[ext_resource type="Texture2D" uid="uid://dmhnjgv3koty7" path="res://art/ui/menu.png" id="1_jyhhv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fc3ws"]
+
+[node name="OptionRect" type="NinePatchRect"]
+custom_minimum_size = Vector2(114, 10)
+texture = ExtResource("1_jyhhv")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="OptionLabel" type="Label" parent="."]
+self_modulate = Color(0.894118, 1, 1, 1)
+layout_mode = 0
+offset_left = 3.0
+offset_right = 111.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fc3ws")
+text = "Flamethrower"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SelectedIndicator" type="Label" parent="."]
+self_modulate = Color(0.894118, 1, 1, 1)
+layout_mode = 0
+offset_left = -9.0
+offset_right = 2.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fc3ws")
+text = "~"
+horizontal_alignment = 2
+autowrap_mode = 2

@@ -28,7 +28,7 @@ func interact(player: Player):
 	_current_player = player
 	_current_menu = "a"
 	var option_menu_a: OptionMenu = option_menu_template.duplicate(true)
-	option_menu_a.dialogue = option_menu_a.dialogue.replace("{button}", "[a]")
+	option_menu_a.dialogue = option_menu_a.dialogue.replace("{button}", "~a")
 	_menu_handler.open_menu(option_menu_a, true)
 	
 func on_option_selected(id: String):
@@ -46,7 +46,7 @@ func on_option_selected(id: String):
 		_tool_icons[selected_tool].hide()
 		_current_menu = "b"
 		var option_menu_b: OptionMenu = option_menu_template.duplicate(true)
-		option_menu_b.dialogue = option_menu_b.dialogue.replace("{button}", "[b]")
+		option_menu_b.dialogue = option_menu_b.dialogue.replace("{button}", "~b")
 		option_menu_b.options = option_menu_b.options.filter(func(option: OptionMenuOption): return option.id != id)
 		_menu_handler.open_menu(option_menu_b)
 		
