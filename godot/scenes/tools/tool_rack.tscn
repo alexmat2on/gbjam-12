@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ipeq1yuy8ssp"]
+[gd_scene load_steps=9 format=3 uid="uid://d1ya4ohs77sy3"]
 
 [ext_resource type="Script" path="res://scripts/interactables/ToolRack.gd" id="1_5ffll"]
 [ext_resource type="Texture2D" uid="uid://c4y77mr8vy2s0" path="res://art/tools/tool-rack-inactive.png" id="2_qndpp"]
