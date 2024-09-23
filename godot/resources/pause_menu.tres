@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="OptionMenu" load_steps=5 format=3 uid="uid://bpe7fregrjkgg"]
+
+[ext_resource type="Script" path="res://scripts/resources/OptionMenuOption.gd" id="1_hwvqa"]
+[ext_resource type="Script" path="res://scripts/resources/OptionMenu.gd" id="2_6gjey"]
+
+[sub_resource type="Resource" id="Resource_dvcuq"]
+script = ExtResource("1_hwvqa")
+id = "continue"
+text = "Continue"
+tooltip = ""
+
+[sub_resource type="Resource" id="Resource_fer8c"]
+script = ExtResource("1_hwvqa")
+id = "quit"
+text = "Quit"
+tooltip = ""
+
+[resource]
+script = ExtResource("2_6gjey")
+dialogue = "Paused."
+options = Array[ExtResource("1_hwvqa")]([SubResource("Resource_dvcuq"), SubResource("Resource_fer8c")])

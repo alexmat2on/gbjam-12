@@ -39,7 +39,6 @@ offset_bottom = 34.0
 theme_override_colors/font_color = Color(0.0666667, 0.0117647, 0.172549, 1)
 theme_override_constants/line_spacing = -2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fc3ws")
-text = "Test Text fosduifhgj sdoauhg dsfuhg fouhdfg fsr gsd ughd fhgduf g df"
 autowrap_mode = 2
 
 [node name="OptionsContainer" type="GridContainer" parent="."]

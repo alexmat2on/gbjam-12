@@ -8,6 +8,7 @@ class_name Player
 @onready var fireball_spawner: Spawner = $FireballSpawner
 @onready var mallet_spawner: Spawner = $MalletSpawner
 @onready var _dish_sprite: Sprite2D = $Dish
+@onready var _menu_handler: OptionMenuHandler = $OptionMenuHandler
 
 const PLAYER_SPEED := 60
 const JUMP_SPEED := -300
@@ -15,6 +16,7 @@ const MAX_FALL_SPEED = 400.0
 const COYOTE_TIME = 0.08
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var pause_menu: OptionMenu = load("res://resources/pause_menu.tres")
 
 enum State {
 	IDLE,
@@ -103,6 +105,15 @@ func _ready():
 			equip_tool(GlobalState.player_tool_a, BUTTON_A)
 		if GlobalState.player_tool_b != Enums.Tool.NONE:
 			equip_tool(GlobalState.player_tool_b, BUTTON_B)
+
+func _process(delta):
+	if Input.is_action_just_pressed("start"):
+		_menu_handler.open_menu(pause_menu)
+		
+func on_option_selected(id):
+	if id == "quit":
+		get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+	
 
 func _physics_process(_delta):
 	if health.get_health() == 0:

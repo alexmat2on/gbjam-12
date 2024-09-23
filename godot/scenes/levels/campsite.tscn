@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://dyaci2ciwkxfh"]
+[gd_scene load_steps=30 format=4 uid="uid://dyaci2ciwkxfh"]
 
 [ext_resource type="PackedScene" uid="uid://75n2j6mgpexf" path="res://scenes/entities/player.tscn" id="2_fnirg"]
 [ext_resource type="TileSet" uid="uid://cnqwervwv7jpn" path="res://tilesets/tiles.tres" id="3_e15md"]
@@ -9,11 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bn0efw4v83pyv" path="res://scenes/appliances/fryer.tscn" id="7_f2v7y"]
 [ext_resource type="Script" path="res://scripts/utils/BGM.gd" id="8_bygvf"]
 [ext_resource type="AudioStream" uid="uid://bnusoor4jfcw6" path="res://audio/music/campfire.wav" id="9_f4l8i"]
-[ext_resource type="PackedScene" uid="uid://dnd7u5ra2uoci" path="res://scenes/tools/cleaver_tool.tscn" id="10_k5f85"]
 [ext_resource type="PackedScene" uid="uid://d27y573aox5wo" path="res://scenes/ui/recipe_menu.tscn" id="10_kxk1k"]
-[ext_resource type="PackedScene" uid="uid://cdyf3om11ummy" path="res://scenes/tools/flamethrower_tool.tscn" id="11_fo00j"]
-[ext_resource type="PackedScene" uid="uid://bnohdpspx1h3r" path="res://scenes/tools/mallet_tool.tscn" id="12_nwcby"]
-[ext_resource type="PackedScene" uid="uid://d1ya4ohs77sy3" path="res://scenes/tools/tool_rack.tscn" id="14_7er4o"]
+[ext_resource type="PackedScene" uid="uid://ipeq1yuy8ssp" path="res://scenes/tools/tool_rack.tscn" id="14_7er4o"]
 [ext_resource type="PackedScene" uid="uid://b6eqe082ieh3j" path="res://scenes/customers/bone_chips_customer.tscn" id="14_kxeof"]
 [ext_resource type="Script" path="res://scripts/utils/Customers.gd" id="14_qfe0o"]
 [ext_resource type="PackedScene" uid="uid://dbth4mwyr2lix" path="res://scenes/customers/zombie_steak_customer.tscn" id="15_rhndt"]
@@ -129,17 +126,6 @@ process_mode = 3
 script = ExtResource("8_bygvf")
 stream = ExtResource("9_f4l8i")
 autoplay = true
-
-[node name="Cleaver" parent="." instance=ExtResource("10_k5f85")]
-visible = false
-
-[node name="FlamethrowerTool" parent="." instance=ExtResource("11_fo00j")]
-visible = false
-position = Vector2(20, 0)
-
-[node name="MalletTool" parent="." instance=ExtResource("12_nwcby")]
-visible = false
-position = Vector2(40, 0)
 
 [node name="Customers" type="Node2D" parent="."]
 script = ExtResource("14_qfe0o")

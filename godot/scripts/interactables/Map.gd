@@ -18,9 +18,3 @@ func on_option_selected(id: String):
 		get_tree().change_scene_to_file(LEVEL_PATH_TEMPLATE.format({
 			"id": id
 		}))
-	if GlobalState.is_first_foray():
-		GlobalState.enable_day_increment()
-	else:
-		GlobalState.next_day()
-	GlobalState.pause_tick = false
-	GlobalState.carried_health = 5
