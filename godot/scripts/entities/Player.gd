@@ -9,6 +9,7 @@ class_name Player
 @onready var mallet_spawner: Spawner = $MalletSpawner
 @onready var _dish_sprite: Sprite2D = $Dish
 @onready var _menu_handler: OptionMenuHandler = $OptionMenuHandler
+@onready var _hurtbox: Hurtbox2D = $Hurtbox2D
 
 const PLAYER_SPEED := 60
 const JUMP_SPEED := -300
@@ -317,6 +318,8 @@ func _on_health_updated(new_health):
 
 func take_damage(hitbox: Hitbox2D, hurt_mod: Array[Enums.HurtModifier]):
 	# TODO: also include damage type (light, heavy, fire)
+	_hurtbox.can_take_damage = false
+	get_tree().create_timer(0.5).timeout.connect(func(): _hurtbox.can_take_damage = true)
 	health.remove_health(hitbox.damage)
 	SoundManager.play(Enums.SoundEffect.TAKE_DAMAGE)
 

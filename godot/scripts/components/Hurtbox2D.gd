@@ -7,12 +7,11 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if can_take_damage:
-		connect("area_entered", self._on_hitbox_entered)
+	connect("area_entered", self._on_hitbox_entered)
 
 
 func _on_hitbox_entered(hitbox):
-	if hitbox == null || !hitbox is Hitbox2D:
+	if !can_take_damage || hitbox == null || !hitbox is Hitbox2D:
 		return
 	
 	if owner.has_method("take_damage"):

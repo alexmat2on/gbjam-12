@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="OptionMenu" load_steps=4 format=3 uid="uid://btrfoufst3nh5"]
+
+[ext_resource type="Script" path="res://scripts/resources/OptionMenuOption.gd" id="1_i1ngw"]
+[ext_resource type="Script" path="res://scripts/resources/OptionMenu.gd" id="2_gg22y"]
+
+[sub_resource type="Resource" id="Resource_5a0p3"]
+script = ExtResource("1_i1ngw")
+id = "ok"
+text = "Ok"
+tooltip = ""
+
+[resource]
+script = ExtResource("2_gg22y")
+dialogue = "Use the appliances to cook the dishes, but don't let them burn!"
+options = Array[ExtResource("1_i1ngw")]([SubResource("Resource_5a0p3")])

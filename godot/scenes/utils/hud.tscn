@@ -44,7 +44,7 @@ layout_mode = 0
 offset_right = 160.0
 offset_bottom = 10.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_thqcm")
-text = "80"
+text = "60"
 horizontal_alignment = 1
 script = ExtResource("1_rifok")
 

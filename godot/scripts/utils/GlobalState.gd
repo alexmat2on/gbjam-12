@@ -30,6 +30,7 @@ func clear(full_reset: bool = false):
 	print("clearing: ", full_reset)
 	_game_state = GameState.SETUP
 	carried_health = 5
+	Inventory.clear()
 
 	_orders = 0
 	player_tool_a = Enums.Tool.NONE
@@ -40,7 +41,6 @@ func clear(full_reset: bool = false):
 	SignalBus.time_updated.emit(_time_left)
 	
 	if full_reset:
-		Inventory.clear()
 		_day = 0
 	else:
 		_day += 1
@@ -76,6 +76,7 @@ func on_option_selected(id):
 	# TODO: switch global state to a scene and use the option menu handler
 	match _game_state:
 		GameState.GATHER:
+			SignalBus.time_updated.emit(-1) # special flag for empty timer
 			_game_state = GameState.SERVE
 			get_tree().change_scene_to_file("res://scenes/levels/campsite.tscn")
 		GameState.SERVE:

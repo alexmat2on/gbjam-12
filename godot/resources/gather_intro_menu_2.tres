@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="OptionMenu" load_steps=4 format=3 uid="uid://cjlwfr6tmxy8y"]
+
+[ext_resource type="Script" path="res://scripts/resources/OptionMenuOption.gd" id="1_n11ix"]
+[ext_resource type="Script" path="res://scripts/resources/OptionMenu.gd" id="2_q4v4q"]
+
+[sub_resource type="Resource" id="Resource_x8f0r"]
+script = ExtResource("1_n11ix")
+id = "ok"
+text = "Ok"
+tooltip = ""
+
+[resource]
+script = ExtResource("2_q4v4q")
+dialogue = "Head left to choose your tools, then use the map to start your hunt."
+options = Array[ExtResource("1_n11ix")]([SubResource("Resource_x8f0r")])

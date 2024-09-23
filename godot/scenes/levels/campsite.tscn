@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=4 uid="uid://dyaci2ciwkxfh"]
+[gd_scene load_steps=32 format=4 uid="uid://dyaci2ciwkxfh"]
 
+[ext_resource type="Script" path="res://scripts/utils/Campsite.gd" id="1_xwd6e"]
 [ext_resource type="PackedScene" uid="uid://75n2j6mgpexf" path="res://scenes/entities/player.tscn" id="2_fnirg"]
 [ext_resource type="TileSet" uid="uid://cnqwervwv7jpn" path="res://tilesets/tiles.tres" id="3_e15md"]
 [ext_resource type="PackedScene" uid="uid://d1yom6ggeaemk" path="res://scenes/utils/sky.tscn" id="3_fhts1"]
@@ -17,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dwt4ncn1a6641" path="res://scenes/customers/zombie_stew_customer.tscn" id="16_ebpbd"]
 [ext_resource type="PackedScene" uid="uid://caprw45gee3sq" path="res://scenes/map.tscn" id="19_m0bhs"]
 [ext_resource type="Texture2D" uid="uid://csyafrxvilk13" path="res://art/levels/general/sign.png" id="20_6k7q1"]
+[ext_resource type="Script" path="res://scripts/components/OptionMenuHandler.gd" id="22_s324q"]
 [ext_resource type="Texture2D" uid="uid://cwu2ntonpq0yc" path="res://art/levels/general/campfire.png" id="23_5sc56"]
 [ext_resource type="PackedScene" uid="uid://0w0l4afwek6r" path="res://scenes/doggo/dog.tscn" id="23_ypvo0"]
 [ext_resource type="Script" path="res://scripts/entities/Campfire.gd" id="24_8o14i"]
@@ -86,6 +88,7 @@ animations = [{
 }]
 
 [node name="campsite" type="Node2D"]
+script = ExtResource("1_xwd6e")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -179,3 +182,6 @@ script = ExtResource("24_8o14i")
 
 [node name="Dog" parent="." instance=ExtResource("23_ypvo0")]
 position = Vector2(425, 46)
+
+[node name="OptionMenuHandler" type="Node" parent="."]
+script = ExtResource("22_s324q")
