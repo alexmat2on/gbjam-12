@@ -9,6 +9,7 @@ var _started: bool = false
 func _ready() -> void:
 	_sprite.play()
 	_wait_for_toggle_timer()
+	GlobalState.clear()
 
 func _process(delta) -> void:
 	if Input.is_action_pressed("start") and not _started:

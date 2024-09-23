@@ -12,6 +12,7 @@ enum Item {
 }
 
 enum Tool {
+	NONE,
 	MALLET,
 	FLAMETHROWER,
 	CLEAVER

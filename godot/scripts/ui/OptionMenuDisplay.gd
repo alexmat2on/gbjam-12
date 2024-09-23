@@ -58,6 +58,5 @@ func _init_display():
 		_option_rects.append(option_rect_instance)
 
 func _update_display():
-	print("index: ", _current_selection_index)
 	for i in range(_option_rects.size()):
 		_option_rects[i].get_node("SelectedIndicator").visible = _current_selection_index == i
