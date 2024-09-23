@@ -200,7 +200,7 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_13fw4")
 
 [node name="GhostSpawner3" type="Node2D" parent="Spawners"]
-position = Vector2(1570, -96)
+position = Vector2(1053, -149)
 script = ExtResource("7_wgr47")
 invert_detection = true
 
@@ -215,4 +215,22 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/GhostSpawner3/Detector2D"]
+shape = SubResource("RectangleShape2D_13fw4")
+
+[node name="GhostSpawner4" type="Node2D" parent="Spawners"]
+position = Vector2(1570, -114)
+script = ExtResource("7_wgr47")
+invert_detection = true
+
+[node name="Spawner" type="Node2D" parent="Spawners/GhostSpawner4"]
+script = ExtResource("8_epm5i")
+spawn_object = ExtResource("4_o1cjo")
+maxCooldown = 3.0
+max_spawns = 2
+
+[node name="Detector2D" type="Area2D" parent="Spawners/GhostSpawner4"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawners/GhostSpawner4/Detector2D"]
 shape = SubResource("RectangleShape2D_13fw4")
