@@ -13,12 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://d27y573aox5wo" path="res://scenes/ui/recipe_menu.tscn" id="10_kxk1k"]
 [ext_resource type="PackedScene" uid="uid://cdyf3om11ummy" path="res://scenes/tools/flamethrower_tool.tscn" id="11_fo00j"]
 [ext_resource type="PackedScene" uid="uid://bnohdpspx1h3r" path="res://scenes/tools/mallet_tool.tscn" id="12_nwcby"]
-[ext_resource type="PackedScene" path="res://scenes/tools/tool_rack.tscn" id="14_7er4o"]
+[ext_resource type="PackedScene" uid="uid://ipeq1yuy8ssp" path="res://scenes/tools/tool_rack.tscn" id="14_7er4o"]
 [ext_resource type="PackedScene" uid="uid://b6eqe082ieh3j" path="res://scenes/customers/bone_chips_customer.tscn" id="14_kxeof"]
 [ext_resource type="Script" path="res://scripts/utils/Customers.gd" id="14_qfe0o"]
 [ext_resource type="PackedScene" uid="uid://dbth4mwyr2lix" path="res://scenes/customers/zombie_steak_customer.tscn" id="15_rhndt"]
 [ext_resource type="PackedScene" uid="uid://dwt4ncn1a6641" path="res://scenes/customers/zombie_stew_customer.tscn" id="16_ebpbd"]
-[ext_resource type="PackedScene" path="res://scenes/map.tscn" id="19_m0bhs"]
+[ext_resource type="PackedScene" uid="uid://caprw45gee3sq" path="res://scenes/map.tscn" id="19_m0bhs"]
 [ext_resource type="Texture2D" uid="uid://csyafrxvilk13" path="res://art/levels/general/sign.png" id="20_6k7q1"]
 [ext_resource type="Texture2D" uid="uid://bh7pls1g23r35" path="res://art/levels/general/dogge.png" id="21_vc38d"]
 [ext_resource type="Script" path="res://scripts/entities/Doggo.gd" id="22_ikn6s"]
@@ -236,7 +236,7 @@ position = Vector2(896, -18)
 position = Vector2(4, -26)
 
 [node name="Map" parent="." instance=ExtResource("19_m0bhs")]
-position = Vector2(-59, -2)
+position = Vector2(-59, -5)
 
 [node name="Signpost3" type="Sprite2D" parent="."]
 position = Vector2(58, 6)
