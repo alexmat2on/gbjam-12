@@ -237,7 +237,7 @@ func _start_mallet():
 	_animated_sprite.play("atk_mallet_start")
 
 func _physics_process_mallet(delta):
-	_base_movement(delta, true, true, movement_type.ANY if _animated_sprite.animation.ends_with("_channel") else movement_type.AERIAL, 0.6)
+	_base_movement(delta, true, true, movement_type.ANY if !_animated_sprite.animation.ends_with("_end") else movement_type.AERIAL, 0.6)
 	
 	# Handle jump
 	if Input.is_action_just_pressed("up") and _seconds_since_started_falling <= COYOTE_TIME:

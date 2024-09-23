@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/components/Hurtbox2D.gd" id="4_tewki"]
 [ext_resource type="PackedScene" uid="uid://uwf634yd7txp" path="res://scenes/entities/projectiles/cleaver_projectile.tscn" id="5_e6val"]
 [ext_resource type="PackedScene" uid="uid://cxab4g5uyjvwb" path="res://scenes/entities/projectiles/fireball.tscn" id="6_dwdv3"]
-[ext_resource type="PackedScene" path="res://scenes/entities/projectiles/mallet_projectile.tscn" id="8_lsrfr"]
+[ext_resource type="PackedScene" uid="uid://0kj3rafmxqta" path="res://scenes/entities/projectiles/mallet_projectile.tscn" id="8_lsrfr"]
 [ext_resource type="Texture2D" uid="uid://dat0m52xxlryl" path="res://art/cooking/bone-chips.png" id="9_7s6ig"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qvcwe"]
@@ -285,7 +285,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"atk_mallet_start",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -361,8 +361,9 @@ script = ExtResource("2_loqi2")
 z_index = 99
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_u0yn2")
-animation = &"idle"
-frame_progress = 0.340344
+animation = &"atk_mallet_start"
+frame = 2
+frame_progress = 1.0
 offset = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
