@@ -1,21 +1,25 @@
 class_name Health
 extends Node
 
-@export var max_health: int = 5;
-var _health: int;
+var _max_health: int = 5
+var _health: int
 
 signal health_updated(new_health: int)
 signal health_zero(drop_items: bool)
 
 func _ready():
-	_health = max_health;
+	if GlobalState.is_serve_mode():
+		_max_health = 3
+	else:
+		_max_health = 5
+	_health = _max_health
 	health_updated.emit(_health)
 
 func get_health():
 	return _health;
 
 func add_health(amount: int = 1):
-	_health = min(max_health, _health + amount)
+	_health = min(_max_health, _health + amount)
 	health_updated.emit(_health)
 
 func remove_health(amount: int = 1, drop_item_on_death: bool = false):
