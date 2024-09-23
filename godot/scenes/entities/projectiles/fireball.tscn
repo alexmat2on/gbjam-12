@@ -52,6 +52,7 @@ linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("1_32el3")
 lifetime = 0.2
+has_piercing = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s1u5w")
