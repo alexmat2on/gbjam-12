@@ -32,7 +32,9 @@ func clear():
 	get_tree().node_added.connect(on_node_added)
 	_game_state = GameState.SETUP
 	Inventory.clear()
+	carried_health = 5
 	_first_foray = true
+	pause_tick = false
 	_day = 0
 	_orders = 0
 	player_tool_a = Enums.Tool.NONE
