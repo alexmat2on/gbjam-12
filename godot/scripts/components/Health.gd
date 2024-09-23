@@ -1,7 +1,7 @@
 class_name Health
 extends Node
 
-@export var max_health: int = 3;
+@export var max_health: int = 5;
 var _health: int;
 
 signal health_updated(new_health: int)

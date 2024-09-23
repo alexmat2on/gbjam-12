@@ -72,6 +72,7 @@ func interact(_player):
 		return
 	self.recipe_menu.set_recipes(self.get_recipes(), self)
 	self.recipe_menu.show_menu()
+	SoundManager.play(Enums.SoundEffect.BLIP)
 
 # Attempts to cook the recipe on the appliance.
 # Returns true if cooking began successfully, false otherwise.
@@ -119,6 +120,7 @@ func can_cook(recipe: Enums.Recipe) -> bool:
 		return false
 	if not RecipeUtils.sufficient_items_for_recipe(recipe):
 		print("Insufficient items for recipe!")
+		SoundManager.play(Enums.SoundEffect.TAKE_DAMAGE)
 		return false
 	return true
 

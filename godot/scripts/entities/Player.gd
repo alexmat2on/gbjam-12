@@ -177,6 +177,7 @@ func _physics_process_idle(delta):
 	if Input.is_action_just_pressed("up") and _seconds_since_started_falling <= COYOTE_TIME:
 		velocity.y = JUMP_SPEED
 		_animated_sprite.play("walk") # TODO: Jump animation
+		SoundManager.play(Enums.SoundEffect.JUMP)
 	
 	if Input.is_action_pressed(BUTTON_A):
 		if _equip_state[BUTTON_A].tool != null && _equip_state[BUTTON_A].is_ready_to_spawn:
@@ -226,6 +227,7 @@ func _activate_cleaver():
 	
 	s.spawn(s.direction if is_facing_right() else Vector2(-s.direction.x, s.direction.y))
 	es.is_ready_to_spawn = false
+	SoundManager.play(Enums.SoundEffect.LIGHT_WEAPON)
 	
 	_current_state = State.IDLE
 	
@@ -247,6 +249,7 @@ func _physics_process_mallet(delta):
 		var spawn_offset = Vector2(24, 12) if is_facing_right() else Vector2(-24, 12)
 		s.spawn(spawn_direction, spawn_offset)
 		_animated_sprite.play("atk_mallet_end")
+		SoundManager.play(Enums.SoundEffect.HEAVY_WEAPON)
 	
 func _activate_mallet():
 	_animated_sprite.play("atk_mallet_channel")
@@ -265,7 +268,7 @@ func _physics_process_flamethrower(delta):
 	
 	if Input.is_action_just_released(flamethrower_button):
 		_equip_state[flamethrower_button].spawner.disable_auto_spawn()
-		print("action released")
+		SoundManager.stop(Enums.SoundEffect.FLAMETHROWER)
 		_animated_sprite.play("atk_ft_end")
 
 func _activate_flamethrower():
@@ -276,6 +279,7 @@ func _activate_flamethrower():
 	es.spawner.enable_auto_spawn()
 	
 	_animated_sprite.play("atk_ft_channel")
+	SoundManager.play(Enums.SoundEffect.FLAMETHROWER)
 
 func _on_interaction_area_entered(interactable: Area2D):
 	if _current_interactable == null && interactable.get_parent() is Interactable2D:
@@ -302,6 +306,7 @@ func _on_health_updated(new_health):
 func take_damage(hitbox: Hitbox2D, hurt_mod: Array[Enums.HurtModifier]):
 	# TODO: also include damage type (light, heavy, fire)
 	health.remove_health(hitbox.damage)
+	SoundManager.play(Enums.SoundEffect.TAKE_DAMAGE)
 
 func _death(drop_items: bool) -> void:
 	print("death!")

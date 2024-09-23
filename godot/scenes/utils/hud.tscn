@@ -40,7 +40,7 @@ anchors_preset = 0
 layout_mode = 0
 offset_left = 3.0
 offset_top = 131.0
-offset_right = 43.0
+offset_right = 53.0
 offset_bottom = 141.0
 theme_override_constants/separation = 2
 script = ExtResource("1_afltq")
@@ -72,15 +72,16 @@ script = ExtResource("3_mh2xg")
 
 [node name="ToolDisplay" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 47.0
-offset_top = 128.0
-offset_right = 78.0
-offset_bottom = 142.0
+offset_left = 126.0
+offset_top = 127.0
+offset_right = 157.0
+offset_bottom = 141.0
 script = ExtResource("3_c4pi8")
 
 [node name="BgA" type="NinePatchRect" parent="ToolDisplay"]
 layout_mode = 0
-offset_right = 14.0
+offset_left = 17.0
+offset_right = 31.0
 offset_bottom = 14.0
 texture = ExtResource("5_xxbgm")
 patch_margin_left = 4
@@ -98,8 +99,7 @@ offset_bottom = 12.0
 [node name="BgB" type="NinePatchRect" parent="ToolDisplay"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 17.0
-offset_right = 31.0
+offset_right = 14.0
 offset_bottom = 14.0
 texture = ExtResource("5_xxbgm")
 patch_margin_left = 4
@@ -114,23 +114,23 @@ offset_top = 2.0
 offset_right = 12.0
 offset_bottom = 12.0
 
-[node name="LabelA" type="Label" parent="ToolDisplay"]
+[node name="LabelB" type="Label" parent="ToolDisplay"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = -9.0
 offset_right = 12.0
 offset_bottom = 1.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_3se64")
-text = "a"
+text = "b"
 
-[node name="LabelB" type="Label" parent="ToolDisplay"]
+[node name="LabelA" type="Label" parent="ToolDisplay"]
 layout_mode = 0
 offset_left = 21.0
 offset_top = -9.0
 offset_right = 29.0
 offset_bottom = 1.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_3se64")
-text = "b"
+text = "a"
 
 [node name="InventoryDisplay" type="Control" parent="."]
 anchors_preset = 0
