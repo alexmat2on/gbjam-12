@@ -87,6 +87,6 @@ offset_bottom = 18.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fc3ws")
-text = "X:Select
-Z:Back"
+text = "A:Select
+B:Back"
 autowrap_mode = 2

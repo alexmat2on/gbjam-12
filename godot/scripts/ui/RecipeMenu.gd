@@ -22,13 +22,13 @@ func _ready():
 func _process(delta):
 	if not self.visible:
 		return
-	if Input.is_action_pressed("left"):
+	if Input.is_action_just_released("left"):
 		self._cursor_left()
-	elif Input.is_action_pressed("right"):
+	elif Input.is_action_just_released("right"):
 		self._cursor_right()
-	elif Input.is_action_pressed("button_a"):
+	elif Input.is_action_just_released("button_a"):
 		self.confirm_recipe()
-	elif Input.is_action_pressed("button_b"):
+	elif Input.is_action_just_released("button_b"):
 		self.hide_menu()
 
 func set_recipes(new_recipes: Array, appliance) -> void:
@@ -53,6 +53,8 @@ func _cursor_left() -> void:
 	else:
 		self._index -= 1
 	_update_selection()
+	if len(self._recipes) > 1:
+		SoundManager.play(Enums.SoundEffect.BLIP)
 
 func _cursor_right() -> void:
 	if self._index == len(self._recipes) - 1:
@@ -60,6 +62,8 @@ func _cursor_right() -> void:
 	else:
 		self._index += 1
 	_update_selection()
+	if len(self._recipes) > 1:
+		SoundManager.play(Enums.SoundEffect.BLIP)
 
 func _update_selection() -> void:
 	for i in range(len(self._recipes)):
@@ -94,3 +98,4 @@ func confirm_recipe() -> void:
 	var recipe_type = selected_choice["type"]
 	self._current_appliance.cook(recipe_type)
 	self.hide_menu()
+	SoundManager.play(Enums.SoundEffect.BLIP)

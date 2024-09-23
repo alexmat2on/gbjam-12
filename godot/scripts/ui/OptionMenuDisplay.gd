@@ -28,16 +28,19 @@ func _process(delta):
 	if Input.is_action_just_pressed("down"):
 		_current_selection_index = (_current_selection_index + 1) % _current_option_menu.options.size()
 		_update_display()
+		SoundManager.play(Enums.SoundEffect.BLIP)
 	elif Input.is_action_just_pressed("up"):
 		_current_selection_index = (_current_selection_index - 1)
 		if _current_selection_index < 0:
 			_current_selection_index += _current_option_menu.options.size()
 		_update_display()
+		SoundManager.play(Enums.SoundEffect.BLIP)
 	elif Input.is_action_just_pressed("button_a"):
 		visible = false
 		if !_stay_paused_on_select:
 			get_tree().paused = false
 		SignalBus.selected_option.emit(_current_option_menu.options[_current_selection_index].id)
+		SoundManager.play(Enums.SoundEffect.BLIP)
 	elif Input.is_action_just_pressed("button_b"):
 		visible = false
 		get_tree().paused = false
