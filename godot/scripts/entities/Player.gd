@@ -105,6 +105,9 @@ func _ready():
 			equip_tool(GlobalState.player_tool_b, BUTTON_B)
 
 func _physics_process(_delta):
+	if health.get_health() == 0:
+		return
+
 	if is_instance_valid(_current_interactable) && Input.is_action_just_pressed("select"):
 		_current_interactable.interact(self)
 
