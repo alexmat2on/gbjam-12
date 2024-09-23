@@ -1,6 +1,7 @@
 extends EntityBehavior
 class_name PatrolBehavior
 
+@onready var animated_sprite = get_parent().get_node_or_null("AnimatedSprite2D")
 
 @export var speed = 100.0
 @export var edge_detecting_x_distance = 8
@@ -18,6 +19,13 @@ func apply_behavior(entity: Entity, delta: float):
 	if entity.is_on_wall() || _is_near_edge(entity) || _walked_out_of_patrol_area(entity):
 		entity.scale.x = -1
 		entity._is_facing_right = !entity._is_facing_right
+
+	if is_instance_valid(animated_sprite):
+		animated_sprite.flip_h = true # I drew the default walk animation the wrong way... :facepalm:
+		if speed > 0:
+			animated_sprite.play("walk")
+		else:
+			animated_sprite.play("idle")
 		
 	entity.velocity.x = (1 if entity._is_facing_right else -1) * speed
 	

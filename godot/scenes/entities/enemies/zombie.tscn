@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://58x3fo260fua"]
+[gd_scene load_steps=25 format=3 uid="uid://58x3fo260fua"]
 
 [ext_resource type="Script" path="res://scripts/entities/Entity.gd" id="1_c078v"]
 [ext_resource type="Script" path="res://scripts/components/behaviors/PatrolBehavior.gd" id="1_pa6th"]
@@ -10,18 +10,72 @@
 [ext_resource type="Script" path="res://scripts/entities/Spawner.gd" id="8_rm5bo"]
 [ext_resource type="PackedScene" uid="uid://dtqhot2ycu2rh" path="res://scenes/drops/zombie-flesh.tscn" id="9_v6wr4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l3f74"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lshgu"]
 atlas = ExtResource("1_vs8e5")
-region = Rect2(0, 0, 16, 32)
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0frah"]
+atlas = ExtResource("1_vs8e5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlmby"]
+atlas = ExtResource("1_vs8e5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1rav"]
+atlas = ExtResource("1_vs8e5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcxkd"]
+atlas = ExtResource("1_vs8e5")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm7t4"]
+atlas = ExtResource("1_vs8e5")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy4uj"]
+atlas = ExtResource("1_vs8e5")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nglxg"]
+atlas = ExtResource("1_vs8e5")
+region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tpbw6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l3f74")
+"texture": SubResource("AtlasTexture_lshgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0frah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlmby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1rav")
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcxkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm7t4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy4uj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nglxg")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -56,7 +110,7 @@ undetection_area = NodePath("UnDetectionArea2D")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_tpbw6")
-animation = &"idle"
+animation = &"walk"
 offset = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

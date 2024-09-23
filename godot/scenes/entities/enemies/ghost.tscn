@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dqhymk434xpmh"]
+[gd_scene load_steps=20 format=3 uid="uid://dqhymk434xpmh"]
 
 [ext_resource type="Texture2D" uid="uid://b1f321jv54b0y" path="res://art/entities/enemies/ghost/ghost.png" id="1_bjw6m"]
 [ext_resource type="Script" path="res://scripts/entities/Entity.gd" id="1_hncny"]
@@ -10,19 +10,40 @@
 [ext_resource type="Script" path="res://scripts/entities/Spawner.gd" id="8_luf5s"]
 [ext_resource type="PackedScene" uid="uid://df0vqsgdwkrh3" path="res://scenes/drops/ecto-seasoning.tscn" id="9_rc7ho"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ma0nn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t558"]
 atlas = ExtResource("1_bjw6m")
 region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjqbe"]
+atlas = ExtResource("1_bjw6m")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16akv"]
+atlas = ExtResource("1_bjw6m")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wum2e"]
+atlas = ExtResource("1_bjw6m")
+region = Rect2(48, 0, 16, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_378mb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ma0nn")
+"texture": SubResource("AtlasTexture_6t558")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjqbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16akv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wum2e")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8mkj0"]

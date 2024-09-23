@@ -7,6 +7,8 @@ class_name ChaseBehavior
 @export var jump_velocity = -200.0
 @export var min_chase_distance = 0
 
+@onready var animated_sprite = get_parent().get_node_or_null("AnimatedSprite2D")
+
 func reset_behavior():
 	return
 	
@@ -25,6 +27,13 @@ func apply_behavior(entity: Entity, delta: float):
 			entity.velocity.y = jump_velocity
 			
 		entity.velocity.x = (1 if entity._is_facing_right else -1) * speed
+		
+		if is_instance_valid(animated_sprite):
+			animated_sprite.flip_h = true # I drew the default walk animation the wrong way... :facepalm:
+			if speed > 0:
+				animated_sprite.play("walk")
+			else:
+				animated_sprite.play("idle")
 	else:
 		entity.velocity.x = 0
 	
