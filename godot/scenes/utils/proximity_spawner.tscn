@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwjcn6wptypa6"]
+
+[ext_resource type="Script" path="res://scripts/entities/ProximitySpawner.gd" id="1_nwons"]
+[ext_resource type="Script" path="res://scripts/entities/Spawner.gd" id="2_vwqt5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmmhe"]
+
+[node name="ProximitySpawner" type="Node"]
+script = ExtResource("1_nwons")
+invert_detection = true
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("2_vwqt5")
+
+[node name="Detector2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector2D"]
+shape = SubResource("RectangleShape2D_dmmhe")

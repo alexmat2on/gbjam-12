@@ -17,5 +17,5 @@ tooltip = "Fight Zombies, Ghosts, and Skeletons"
 
 [resource]
 script = ExtResource("2_jpr4u")
-dialogue = "Select a location to go to"
+dialogue = "Select a location to go to."
 options = Array[ExtResource("1_pikdr")]([SubResource("Resource_iwbvp"), SubResource("Resource_r628w")])

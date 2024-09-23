@@ -19,6 +19,9 @@ func _ready():
 		Enums.Tool.MALLET: _mallet_icon,
 		Enums.Tool.FLAMETHROWER: _flamethrower_icon
 	}
+	for tool in Enums.Tool.values():
+		if tool != Enums.Tool.NONE && (tool == GlobalState.player_tool_a || tool == GlobalState.player_tool_b):
+			_tool_icons[tool].hide()
 
 func interact(player: Player):
 	# show all tools
@@ -36,7 +39,7 @@ func on_option_selected(id: String):
 	var selected_tool = _determine_tool_from_option(id)
 	if selected_tool == null:
 		for tool in Enums.Tool.values():
-			if tool == _current_player._equip_state["button_a"].tool || tool == _current_player._equip_state["button_b"].tool:
+			if tool != Enums.Tool.NONE && (tool == _current_player._equip_state["button_a"].tool || tool == _current_player._equip_state["button_b"].tool):
 				_tool_icons[tool].hide()
 		_current_player = null
 		_current_menu = ""

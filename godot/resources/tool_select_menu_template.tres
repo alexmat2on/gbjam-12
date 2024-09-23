@@ -23,5 +23,5 @@ tooltip = "Midrange tool that damages all enemies, but burns ingredients from fr
 
 [resource]
 script = ExtResource("2_dt53y")
-dialogue = "Select a tool to assign to {button}"
+dialogue = "Select a tool to assign to {button}."
 options = Array[ExtResource("1_tnomm")]([SubResource("Resource_d820n"), SubResource("Resource_d4qvq"), SubResource("Resource_2150g")])
