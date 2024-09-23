@@ -36,7 +36,7 @@ layout_mode = 0
 offset_left = 3.0
 offset_right = 153.0
 offset_bottom = 34.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.0666667, 0.0117647, 0.172549, 1)
 theme_override_constants/line_spacing = -2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fc3ws")
 text = "Test Text fosduifhgj sdoauhg dsfuhg fouhdfg fsr gsd ughd fhgduf g df"
@@ -59,31 +59,6 @@ theme_override_constants/v_separation = 1
 
 [node name="Option1Rect" parent="OptionsContainer" instance=ExtResource("3_poqbj")]
 layout_mode = 2
-
-[node name="Option2Rect" type="NinePatchRect" parent="OptionsContainer"]
-custom_minimum_size = Vector2(114, 10)
-layout_mode = 2
-texture = ExtResource("2_aem34")
-region_rect = Rect2(0, 0, 16, 16)
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
-[node name="OptionLabel" type="Label" parent="OptionsContainer/Option2Rect"]
-self_modulate = Color(0.894118, 1, 1, 1)
-layout_mode = 0
-offset_left = 3.0
-offset_right = 111.0
-offset_bottom = 10.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = -2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_fc3ws")
-text = "Flamethrower"
-horizontal_alignment = 1
-autowrap_mode = 2
 
 [node name="ControlsRect" type="NinePatchRect" parent="."]
 anchors_preset = 2

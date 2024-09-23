@@ -71,11 +71,13 @@ func equip_tool(tool: Enums.Tool, button: String):
 				_equip_state[BUTTON_A].tool = tool
 				_equip_state[BUTTON_A].spawner = _spawner_map[tool]
 				_equip_state[BUTTON_A].spawner.ready_to_spawn.connect(func(): _equip_state[BUTTON_A].is_ready_to_spawn = true)
+				GlobalState.player_tool_a = tool
 		BUTTON_B:
 			if _equip_state[BUTTON_A].tool != tool:
 				_equip_state[BUTTON_B].tool = tool
 				_equip_state[BUTTON_B].spawner = _spawner_map[tool]
 				_equip_state[BUTTON_B].spawner.ready_to_spawn.connect(func(): _equip_state[BUTTON_B].is_ready_to_spawn = true)
+				GlobalState.player_tool_b = tool
 		_:
 			print("ERROR: unsupported button: " + button)
 
@@ -95,6 +97,11 @@ func _ready():
 		Enums.Tool.MALLET: mallet_spawner,
 		Enums.Tool.FLAMETHROWER: fireball_spawner
 	}
+	
+	if GlobalState.player_tool_a != Enums.Tool.NONE:
+		equip_tool(GlobalState.player_tool_a, BUTTON_A)
+	if GlobalState.player_tool_b != Enums.Tool.NONE:
+		equip_tool(GlobalState.player_tool_b, BUTTON_B)
 
 func _physics_process(_delta):
 	if health.get_health() == 0:
@@ -251,7 +258,7 @@ func _physics_process_flamethrower(delta):
 	_base_movement(delta, true, false, movement_type.ANY if _animated_sprite.animation.ends_with("_channel") else movement_type.AERIAL)
 	
 	# Handle jump
-	if !_animated_sprite.animation.ends_with("_channel") && Input.is_action_just_pressed("up") and _seconds_since_started_falling <= COYOTE_TIME:
+	if Input.is_action_just_pressed("up") and _seconds_since_started_falling <= COYOTE_TIME:
 		velocity.y = JUMP_SPEED
 	
 	var flamethrower_button = get_tool_button(Enums.Tool.FLAMETHROWER)

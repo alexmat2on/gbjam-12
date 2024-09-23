@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b50oigvb5804i"]
+[gd_scene load_steps=5 format=3 uid="uid://0kj3rafmxqta"]
 
 [ext_resource type="Script" path="res://scripts/entities/Projectile.gd" id="1_uqnbk"]
 [ext_resource type="Script" path="res://scripts/components/Hitbox2D.gd" id="2_ycfw0"]
@@ -23,7 +23,7 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("2_ycfw0")
 hit_mod = Array[int]([1])
-damage = 1
+damage = 80
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D"]
 position = Vector2(0, -10)

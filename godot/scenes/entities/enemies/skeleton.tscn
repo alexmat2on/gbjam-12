@@ -272,11 +272,13 @@ auto_spawn = false
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("9_a1qwm")
+max_health = 60
 
 [node name="Hurtbox2D" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 2
 script = ExtResource("10_lakpf")
-hurt_mod = Array[int]([3])
+hurt_mod = Array[int]([2])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
 position = Vector2(0, -16)
