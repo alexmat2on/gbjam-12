@@ -1,12 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://cpsja80kfbip7"]
+[gd_scene load_steps=16 format=3 uid="uid://cpsja80kfbip7"]
 
 [ext_resource type="Script" path="res://scripts/ui/HealthDisplay.gd" id="1_afltq"]
 [ext_resource type="Script" path="res://scripts/ui/InventoryDisplay.gd" id="2_f0qp4"]
 [ext_resource type="Script" path="res://scripts/ui/ToolDisplay.gd" id="3_c4pi8"]
 [ext_resource type="Script" path="res://scripts/ui/RightOrderIndicator.gd" id="3_mh2xg"]
 [ext_resource type="Script" path="res://scripts/ui/LeftOrderIndicator.gd" id="4_11fxb"]
-[ext_resource type="Texture2D" uid="uid://dpmdr0dk3xnrq" path="res://art/tools/tool-container.png" id="4_ch68k"]
 [ext_resource type="Script" path="res://scripts/ui/OrdersLeft.gd" id="5_mpeqh"]
+[ext_resource type="Texture2D" uid="uid://dmhnjgv3koty7" path="res://art/ui/menu.png" id="5_xxbgm"]
 [ext_resource type="Texture2D" uid="uid://dvirj06qwk5yr" path="res://art/cooking/ingredients/bone-ing.png" id="7_wp1bm"]
 [ext_resource type="Texture2D" uid="uid://dh5etc8q5a8bm" path="res://art/cooking/ingredients/zombie-flesh-ing.png" id="8_etrx5"]
 [ext_resource type="Texture2D" uid="uid://do5jt6250k0pe" path="res://art/cooking/ingredients/ecto-seasoning-ing.png" id="9_g6ns6"]
@@ -15,6 +15,9 @@
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2fw6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3se64"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2lj7"]
@@ -27,14 +30,18 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 layout_mode = 3
 anchors_preset = 0
 
-[node name="HeartMeter" type="Label" parent="."]
+[node name="HealthDisplay" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_top = 132.0
-offset_right = 33.0
-offset_bottom = 155.0
-size_flags_horizontal = 3
-horizontal_alignment = 1
+offset_left = 3.0
+offset_top = 131.0
+offset_right = 43.0
+offset_bottom = 141.0
+theme_override_constants/separation = 2
 script = ExtResource("1_afltq")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="HealthDisplay"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="LeftOrderIndicator" type="Label" parent="."]
 layout_mode = 0
@@ -59,39 +66,65 @@ script = ExtResource("3_mh2xg")
 
 [node name="ToolDisplay" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 47.0
+offset_top = 128.0
+offset_right = 78.0
+offset_bottom = 142.0
 script = ExtResource("3_c4pi8")
 
-[node name="BgA" type="TextureRect" parent="ToolDisplay"]
+[node name="BgA" type="NinePatchRect" parent="ToolDisplay"]
 layout_mode = 0
-offset_left = 34.0
-offset_top = 132.0
-offset_right = 46.0
-offset_bottom = 144.0
-texture = ExtResource("4_ch68k")
+offset_right = 14.0
+offset_bottom = 14.0
+texture = ExtResource("5_xxbgm")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="SlotA" type="TextureRect" parent="ToolDisplay/BgA"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 11.0
-offset_bottom = 11.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 12.0
+offset_bottom = 12.0
 
-[node name="BgB" type="TextureRect" parent="ToolDisplay"]
-layout_mode = 0
-offset_left = 47.0
-offset_top = 132.0
-offset_right = 59.0
-offset_bottom = 144.0
-texture = ExtResource("4_ch68k")
+[node name="BgB" type="NinePatchRect" parent="ToolDisplay"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 17.0
+offset_right = 31.0
+offset_bottom = 14.0
+texture = ExtResource("5_xxbgm")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="SlotB" type="TextureRect" parent="ToolDisplay/BgB"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 11.0
-offset_bottom = 11.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 12.0
+offset_bottom = 12.0
+
+[node name="LabelA" type="Label" parent="ToolDisplay"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -9.0
+offset_right = 12.0
+offset_bottom = 1.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_3se64")
+text = "a"
+
+[node name="LabelB" type="Label" parent="ToolDisplay"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = -9.0
+offset_right = 29.0
+offset_bottom = 1.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_3se64")
+text = "b"
 
 [node name="OrdersLeft" type="Label" parent="."]
 layout_mode = 0
