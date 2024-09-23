@@ -1,4 +1,4 @@
-class_name Consts
+class_name Constants
 
 const ToolTexture: Dictionary = {
 	Enums.Tool.CLEAVER: preload("res://art/tools/cleaver.png"),
