@@ -294,7 +294,6 @@ func _on_interaction_area_exited(interactable: Area2D):
 		_current_interactable = null
 
 func _on_animation_finished():
-	print("last played anim: ", _animated_sprite.animation)
 	if _animated_sprite.animation.ends_with("die"):
 		_game_over()
 	if _animated_sprite.animation.ends_with("_start"):
