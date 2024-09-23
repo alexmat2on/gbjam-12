@@ -89,7 +89,6 @@ func _ready():
 	
 	health.set_health(GlobalState.carried_health)
 	health.connect("health_updated", self._on_health_updated)
-	print(health.health_zero)
 	health.health_zero.connect(self._death)
 	SignalBus.player_health_updated.emit(health.get_health())
 	
@@ -106,9 +105,6 @@ func _ready():
 			equip_tool(GlobalState.player_tool_b, BUTTON_B)
 
 func _physics_process(_delta):
-	if health.get_health() == 0:
-		return
-
 	if is_instance_valid(_current_interactable) && Input.is_action_just_pressed("select"):
 		_current_interactable.interact(self)
 
