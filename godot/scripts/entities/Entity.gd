@@ -42,7 +42,6 @@ func _ready():
 	if is_instance_valid(animated_sprite):
 		animated_sprite.play("idle")
 	
-	health.connect("health_updated", self._on_health_updated)
 	get_tree().create_timer(0.01).timeout.connect(_initialize_spawn_point)
 
 func _on_death(drop_items):

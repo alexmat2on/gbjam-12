@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d27y573aox5wo" path="res://scenes/ui/recipe_menu.tscn" id="10_kxk1k"]
 [ext_resource type="PackedScene" uid="uid://cdyf3om11ummy" path="res://scenes/tools/flamethrower_tool.tscn" id="11_fo00j"]
 [ext_resource type="PackedScene" uid="uid://bnohdpspx1h3r" path="res://scenes/tools/mallet_tool.tscn" id="12_nwcby"]
-[ext_resource type="PackedScene" uid="uid://ipeq1yuy8ssp" path="res://scenes/tools/tool_rack.tscn" id="14_7er4o"]
+[ext_resource type="PackedScene" uid="uid://d1ya4ohs77sy3" path="res://scenes/tools/tool_rack.tscn" id="14_7er4o"]
 [ext_resource type="PackedScene" uid="uid://b6eqe082ieh3j" path="res://scenes/customers/bone_chips_customer.tscn" id="14_kxeof"]
 [ext_resource type="Script" path="res://scripts/utils/Customers.gd" id="14_qfe0o"]
 [ext_resource type="PackedScene" uid="uid://dbth4mwyr2lix" path="res://scenes/customers/zombie_steak_customer.tscn" id="15_rhndt"]

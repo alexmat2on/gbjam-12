@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="OptionMenu" load_steps=4 format=3 uid="uid://x6jxa0r4ghe8"]
+[gd_resource type="Resource" script_class="OptionMenu" load_steps=4 format=3 uid="uid://dtp8787qmovdp"]
 
 [ext_resource type="Script" path="res://scripts/resources/OptionMenuOption.gd" id="1_61cgs"]
 [ext_resource type="Script" path="res://scripts/resources/OptionMenu.gd" id="2_g41d2"]
