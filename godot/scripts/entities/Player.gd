@@ -237,7 +237,7 @@ func _physics_process_mallet(delta):
 	
 	# Handle jump
 	if Input.is_action_just_pressed("up") and _seconds_since_started_falling <= COYOTE_TIME:
-		velocity.y = JUMP_SPEED * 0.6
+		velocity.y = JUMP_SPEED * 0.8
 	
 	var mallet_button = get_tool_button(Enums.Tool.MALLET)
 	var s = _equip_state[mallet_button].spawner

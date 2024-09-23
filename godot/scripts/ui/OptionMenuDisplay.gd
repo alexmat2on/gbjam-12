@@ -1,4 +1,5 @@
 extends CanvasLayer
+
 @onready var dialogue_label = $DialogueRect/DialogueLabel
 @onready var options_container = $OptionsContainer
 

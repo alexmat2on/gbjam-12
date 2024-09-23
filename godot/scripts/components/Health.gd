@@ -21,8 +21,6 @@ func add_health(amount: int = 1):
 func remove_health(amount: int = 1, drop_item_on_death: bool = false):
 	_health = max(0, _health - amount)
 	health_updated.emit(_health)
-	print(_health)
 	
 	if (_health == 0):
-		print("health is zero! emitting")
 		health_zero.emit(drop_item_on_death)
