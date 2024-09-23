@@ -1,7 +1,7 @@
 extends Node
 
-@onready var slot_a = $BgA/SlotA
-@onready var slot_b = $BgB/SlotB
+@onready var slot_a: TextureRect = $BgA/SlotA
+@onready var slot_b: TextureRect = $BgB/SlotB
 
 func _ready():
 	SignalBus.player_tool_equipped.connect(_on_player_tool_equipped)

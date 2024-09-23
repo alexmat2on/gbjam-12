@@ -124,7 +124,6 @@ position = Vector2(527, 46)
 recipe_menu = NodePath("../CanvasLayer/RecipeMenu")
 
 [node name="BGM" type="Node" parent="."]
-process_mode = 3
 script = ExtResource("8_bygvf")
 stream = ExtResource("9_f4l8i")
 autoplay = true
