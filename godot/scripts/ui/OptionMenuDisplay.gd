@@ -56,7 +56,7 @@ func _init_display():
 	dialogue_label.text = _current_option_menu.dialogue
 	for i in range(_current_option_menu.options.size()):
 		var option_rect_instance = option_rect.instantiate()
-		option_rect_instance.get_node("OptionLabel").text = _current_option_menu.options[i].id
+		option_rect_instance.get_node("OptionLabel").text = _current_option_menu.options[i].text
 		option_rect_instance.get_node("SelectedIndicator").visible = _current_selection_index == i
 		options_container.add_child(option_rect_instance)
 		_option_rects.append(option_rect_instance)

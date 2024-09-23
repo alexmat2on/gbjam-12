@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://cpsja80kfbip7"]
+[gd_scene load_steps=22 format=3 uid="uid://cpsja80kfbip7"]
 
 [ext_resource type="Script" path="res://scripts/ui/HealthDisplay.gd" id="1_afltq"]
+[ext_resource type="Script" path="res://scripts/ui/TimeDisplay.gd" id="1_rifok"]
 [ext_resource type="Script" path="res://scripts/ui/InventoryDisplay.gd" id="2_f0qp4"]
 [ext_resource type="Script" path="res://scripts/ui/ToolDisplay.gd" id="3_c4pi8"]
 [ext_resource type="Script" path="res://scripts/ui/RightOrderIndicator.gd" id="3_mh2xg"]
@@ -13,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://ukix01g0820f" path="res://art/cooking/small-eye.png" id="11_d1w4p"]
 [ext_resource type="Script" path="res://scripts/ui/DayDisplay.gd" id="12_gm6mc"]
 [ext_resource type="Texture2D" uid="uid://bo1mepkm22gua" path="res://art/ui/day.png" id="12_ymall"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_thqcm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sf1wa"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -35,6 +38,15 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [node name="HUD" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 10.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_thqcm")
+text = "120"
+horizontal_alignment = 1
+script = ExtResource("1_rifok")
 
 [node name="HealthDisplay" type="HBoxContainer" parent="."]
 layout_mode = 0
