@@ -1,6 +1,6 @@
 extends Node
 
-var _day: int = 0
+var _day: int = 2
 var _orders: int = 0
 
 func get_day() -> int:

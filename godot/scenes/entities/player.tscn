@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://75n2j6mgpexf"]
+[gd_scene load_steps=52 format=3 uid="uid://75n2j6mgpexf"]
 
 [ext_resource type="Script" path="res://scripts/entities/Player.gd" id="1_0ke4j"]
 [ext_resource type="Texture2D" uid="uid://c00hm435rt6bc" path="res://art/entities/player/lechef.png" id="2_e1o3v"]
@@ -113,6 +113,22 @@ region = Rect2(48, 64, 48, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwoax"]
 atlas = ExtResource("2_e1o3v")
 region = Rect2(0, 64, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwme6"]
+atlas = ExtResource("2_e1o3v")
+region = Rect2(0, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbisa"]
+atlas = ExtResource("2_e1o3v")
+region = Rect2(48, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1px0q"]
+atlas = ExtResource("2_e1o3v")
+region = Rect2(96, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xjkd"]
+atlas = ExtResource("2_e1o3v")
+region = Rect2(144, 192, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ftmi"]
 atlas = ExtResource("2_e1o3v")
@@ -273,6 +289,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_cwme6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbisa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1px0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xjkd")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2ftmi")
 }, {
 "duration": 1.0,
@@ -328,7 +361,7 @@ script = ExtResource("2_loqi2")
 z_index = 99
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_u0yn2")
-animation = &"atk_cleaver"
+animation = &"die"
 offset = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

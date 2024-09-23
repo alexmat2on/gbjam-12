@@ -86,6 +86,8 @@ func _ready():
 	_animated_sprite.animation_finished.connect(self._on_animation_finished)
 	
 	health.connect("health_updated", self._on_health_updated)
+	print(health.health_zero)
+	health.health_zero.connect(self._death)
 	SignalBus.player_health_updated.emit(health.get_health())
 	
 	_spawner_map = {
@@ -95,6 +97,9 @@ func _ready():
 	}
 
 func _physics_process(_delta):
+	if health.get_health() == 0:
+		return
+
 	if is_instance_valid(_current_interactable) && Input.is_action_just_pressed("start"):
 		_current_interactable.interact(self)
 
@@ -277,6 +282,8 @@ func _on_interaction_area_exited(interactable: Area2D):
 
 func _on_animation_finished():
 	print("last played anim: ", _animated_sprite.animation)
+	if _animated_sprite.animation.ends_with("die"):
+		_game_over()
 	if _animated_sprite.animation.ends_with("_start"):
 		_activate_tool()
 	elif _animated_sprite.animation.ends_with("_end"):
@@ -288,6 +295,13 @@ func _on_health_updated(new_health):
 func take_damage(hitbox: Hitbox2D, hurt_mod: Array[Enums.HurtModifier]):
 	# TODO: also include damage type (light, heavy, fire)
 	health.remove_health(hitbox.damage)
+
+func _death(drop_items: bool) -> void:
+	print("death!")
+	_animated_sprite.play("die")
+
+func _game_over() -> void:
+	self.get_tree().change_scene_to_file("res://scenes/ui/game_over.tscn")
 
 func is_facing_right():
 	# godot is stupid
