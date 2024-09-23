@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://dyaci2ciwkxfh"]
+[gd_scene load_steps=33 format=4 uid="uid://dyaci2ciwkxfh"]
 
 [ext_resource type="PackedScene" uid="uid://75n2j6mgpexf" path="res://scenes/entities/player.tscn" id="2_fnirg"]
 [ext_resource type="TileSet" uid="uid://cnqwervwv7jpn" path="res://tilesets/tiles.tres" id="3_e15md"]
@@ -20,74 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://dwt4ncn1a6641" path="res://scenes/customers/zombie_stew_customer.tscn" id="16_ebpbd"]
 [ext_resource type="PackedScene" uid="uid://caprw45gee3sq" path="res://scenes/map.tscn" id="19_m0bhs"]
 [ext_resource type="Texture2D" uid="uid://csyafrxvilk13" path="res://art/levels/general/sign.png" id="20_6k7q1"]
-[ext_resource type="Texture2D" uid="uid://bh7pls1g23r35" path="res://art/levels/general/dogge.png" id="21_vc38d"]
-[ext_resource type="Script" path="res://scripts/entities/Doggo.gd" id="22_ikn6s"]
 [ext_resource type="Texture2D" uid="uid://cwu2ntonpq0yc" path="res://art/levels/general/campfire.png" id="23_5sc56"]
+[ext_resource type="PackedScene" uid="uid://0w0l4afwek6r" path="res://scenes/doggo/dog.tscn" id="23_ypvo0"]
 [ext_resource type="Script" path="res://scripts/entities/Campfire.gd" id="24_8o14i"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0k4e7"]
-atlas = ExtResource("21_vc38d")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v78pq"]
-atlas = ExtResource("21_vc38d")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dsjs2"]
-atlas = ExtResource("21_vc38d")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h8eld"]
-atlas = ExtResource("21_vc38d")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qfmoo"]
-atlas = ExtResource("21_vc38d")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dfthh"]
-atlas = ExtResource("21_vc38d")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qllmt"]
-atlas = ExtResource("21_vc38d")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u38lu"]
-atlas = ExtResource("21_vc38d")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_onq32"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0k4e7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v78pq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dsjs2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h8eld")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qfmoo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dfthh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qllmt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u38lu")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0h57s"]
 atlas = ExtResource("23_5sc56")
@@ -251,12 +186,10 @@ texture = ExtResource("20_6k7q1")
 position = Vector2(371, 38)
 texture = ExtResource("20_6k7q1")
 
-[node name="Doggo" type="AnimatedSprite2D" parent="."]
-position = Vector2(430, 30)
-sprite_frames = SubResource("SpriteFrames_onq32")
-script = ExtResource("22_ikn6s")
-
 [node name="Campfire" type="AnimatedSprite2D" parent="."]
 position = Vector2(311, 30)
 sprite_frames = SubResource("SpriteFrames_4vi5d")
 script = ExtResource("24_8o14i")
+
+[node name="Dog" parent="." instance=ExtResource("23_ypvo0")]
+position = Vector2(425, 46)

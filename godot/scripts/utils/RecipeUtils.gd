@@ -17,8 +17,8 @@ const _recipe_data: Dictionary = {
 			Enums.Item.BONES: 1,
 			Enums.Item.ZOMBIE_FLESH: 1
 		},
-		"cook_time": 10.0,
-		"burn_time": 12.0,
+		"cook_time": 9.5,
+		"burn_time": 16.0,
 		"texture": preload("res://art/cooking/zombie-stew.png")
 	},
 	Enums.Recipe.ZOMBIE_STEAK: {
@@ -37,7 +37,7 @@ const _recipe_data: Dictionary = {
 			Enums.Item.BONES: 1,
 			Enums.Item.ECTO_SEASONING: 1
 		},
-		"cook_time": 8.0,
+		"cook_time": 7.5,
 		"burn_time": 6.0,
 		"texture": preload("res://art/cooking/bone-chips.png")
 	}
