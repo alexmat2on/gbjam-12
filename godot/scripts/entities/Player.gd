@@ -310,6 +310,7 @@ func take_damage(hitbox: Hitbox2D, hurt_mod: Array[Enums.HurtModifier]):
 
 func _death(drop_items: bool) -> void:
 	print("death!")
+	SoundManager.stop(Enums.SoundEffect.FLAMETHROWER)
 	_animated_sprite.play("die")
 
 func _game_over() -> void:
