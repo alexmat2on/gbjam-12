@@ -89,7 +89,6 @@ func _ready():
 	
 	health.set_health(GlobalState.carried_health)
 	health.connect("health_updated", self._on_health_updated)
-	print(health.health_zero)
 	health.health_zero.connect(self._death)
 	SignalBus.player_health_updated.emit(health.get_health())
 	
