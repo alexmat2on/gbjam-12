@@ -23,3 +23,4 @@ func on_option_selected(id: String):
 	else:
 		GlobalState.next_day()
 	GlobalState.pause_tick = false
+	GlobalState.carried_health = 5

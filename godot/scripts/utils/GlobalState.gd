@@ -13,6 +13,7 @@ const gather_levels = [
 
 const ROUND_TIME = 60.0
 
+var carried_health = 5
 var _first_foray = true
 var _day: int = 0
 var _orders: int = 0
@@ -47,7 +48,7 @@ func on_node_added(node: Node):
 	elif gather_levels.any(func(n): return n == node.name):
 		get_tree().node_added.disconnect(on_node_added)
 		_game_state = GameState.GATHER
-		
+
 func _physics_process(delta):
 	match _game_state:
 		GameState.GATHER:
