@@ -12,7 +12,7 @@ func _ready():
 		_max_health = 3
 	else:
 		_max_health = 5
-	_health = _max_health
+	_health = GlobalState.carried_health
 	health_updated.emit(_health)
 
 func get_health():
