@@ -14,6 +14,8 @@ var player_tool_b: Enums.Tool = Enums.Tool.NONE
 
 
 func clear():
+	_game_state = GameState.GATHER
+	Inventory.clear()
 	_day = 0
 	_orders = 0
 	player_tool_a = Enums.Tool.NONE

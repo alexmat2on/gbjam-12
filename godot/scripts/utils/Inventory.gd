@@ -10,6 +10,10 @@ var _inventory: Dictionary = {}
 # Inventory.add(Enums.Item.ZOMBIE_FLESH)
 # var removed = Inventory.remove(Enums.Item.ECTO_SEASONING, 2)
 
+func clear():
+	_inventory = {}
+
+
 func add(item: Enums.Item, amount: int = 1) -> void:
 	_inventory[item] = self.count(item) + amount
 
