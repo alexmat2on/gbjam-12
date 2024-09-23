@@ -15,6 +15,7 @@ extends Interactable2D
 @onready var _burn_progress: AnimatedSprite2D = $BurnProgress
 @onready var _active_recipe: Sprite2D = $ActiveRecipe
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
+@onready var _audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var _player_ref: Player
 var _state: Array
@@ -105,6 +106,7 @@ func cook(recipe: Enums.Recipe) -> bool:
 	}
 	self._state[dish_slot] = dish_in_progress
 	cook_timer.start()
+	self._audio_stream_player.play()
 	return true
 
 # Returns true if all the requirements for cooking the given recipe are satisfied:
@@ -130,10 +132,6 @@ func pickup(slot: int = 0) -> bool:
 	if self._state[slot] == null:
 		return false
 
-	if self._player_ref.is_carrying_dish():
-		print("Player has their hands full!")
-		return false
-
 	var dish = self._state[slot]
 	if not dish["ready"]:
 		print("Dish is not ready to be collected!")
@@ -147,7 +145,7 @@ func pickup(slot: int = 0) -> bool:
 			timer.queue_free()
 	self._player_ref.pick_up_dish(dish["recipe"])
 	self._state[slot] = null
-
+	self._audio_stream_player.stop()
 	return true
 
 # Clears the dish at the given slot.
@@ -183,6 +181,7 @@ func _on_cooking_complete(slot: int) -> void:
 
 # Runs whenever a dish is burned on an appliance slot.
 func _on_burned(slot: int) -> void:
+	self._audio_stream_player.stop()
 	self._animation_player.stop()
 	var dish = self._state[slot]
 	dish["ready"] = false

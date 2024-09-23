@@ -27,7 +27,7 @@ var _spawns_for_day = {
 
 var _easy_spawns = [Vector2(346, 46), Vector2(603, 46)]
 var _medium_spawns = [Vector2(262, 46), Vector2(694, 46)]
-var _hard_spawns = [Vector2(159, 14), Vector2(771, 30)]
+var _hard_spawns = [Vector2(160, 14), Vector2(771, 30)]
 var _insane_spawns = [Vector2(29, 126), Vector2(896, -18)]
 
 func _get_easy_spawns() -> Array:

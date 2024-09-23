@@ -7,7 +7,6 @@ const LEVEL_PATH_TEMPLATE = "res://scenes/levels/{id}.tscn"
 
 var map_menu: OptionMenu = load("res://resources/map_menu.tres")
 
-
 func interact(player: Player):
 	_menu_handler.open_menu(map_menu)
 	
