@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck1tawyd67y7a"]
+
+[ext_resource type="Script" path="res://scripts/ui/ColorSwapper.gd" id="1_svwu0"]
+[ext_resource type="Shader" path="res://shaders/color_swapper.gdshader" id="2_htsbw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_45e3n"]
+shader = ExtResource("2_htsbw")
+shader_parameter/original_palette = null
+shader_parameter/new_palette = null
+
+[node name="ColorSwapper" type="CanvasLayer"]
+script = ExtResource("1_svwu0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_45e3n")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
